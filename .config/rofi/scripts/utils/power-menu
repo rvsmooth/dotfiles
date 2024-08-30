@@ -1,0 +1,27 @@
+#!/bin/bash
+
+# Define the options
+options="Shutdown\nReboot\nLogout\nSuspend"
+
+# Use rofi to display the menu
+selected=$(echo -e "$options" | rofi -dmenu -p "Power Menu:" -theme-str ' listview { lines:1; columns:4; padding: 10px;}' -theme-str 'element {padding: 50px;}')
+
+# Act based on the selected option
+case "$selected" in
+    Shutdown)
+        systemctl poweroff
+        ;;
+    Reboot)
+        systemctl reboot
+        ;;
+    Logout)
+        hyprctl dispatch exit
+        ;;
+    Suspend)
+        systemctl suspend
+        ;;
+    *)
+        echo "Invalid option"
+        ;;
+esac
+
