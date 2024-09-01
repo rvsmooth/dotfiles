@@ -10,39 +10,81 @@
 # Copyright (c) 2024 RVSmooth
 # https://gitlab.com/RVSmooth 
 
+#!/bin/bash
+
+show_help() {
+    echo "Usage: $0 [options]"
+    echo "--pw-incvol   Increase volume (PipeWire)"
+    echo "--pw-decvol   Decrease volume (PipeWire)"
+    echo "--pw-mute     Toggle mute (PipeWire)"
+    echo "--pa-mute     Toggle mute (PulseAudio)"
+    echo "--pa-incvol   Increase volume (PulseAudio)"
+    echo "--pa-decvol   Decrease volume (PulseAudio)"
+}
+
+notify_volume() {
+    local volume
+    local mute
+    if [[ "$USE_PIPEWIRE" == "true" ]]; then
+        volume=$(wpctl get-volume @DEFAULT_AUDIO_SINK@ | awk '{print int($2*100)}')
+        mute=$(wpctl get-volume @DEFAULT_AUDIO_SINK@ | awk '{print $3}')
+    else
+        volume=$(pamixer --get-volume)
+        mute=$(pamixer --get-mute)
+    fi
+
+    echo "Volume: $volume"
+    echo "Mute: $mute"      
+
+    local volume_text
+    if [[ "$mute" == "[MUTED]" ]]; then
+        volume_text="Muted"
+        volume=0  
+    else
+        volume_text="Volume: ${volume}%"
+    fi
+
+    echo "Notification text: $volume_text" 
+
+    dunstify -a 'VolumeChange' -i audio-volume-high-symbolic -t 2000 \
+        -h int:value:"$volume" "$volume_text" \
+        -h string:synchronous:volume
+}
 
 if [ $# -eq 0 ]; then
     show_help
     exit 1
 fi
 
-NOTIFY_VOL="dunstify -a 'VolumeChange' -i audio-volume-high-symbolic -t 2000 -h int:value:"$(pamixer --get-volume / 2)" "$(pamixer --get-mute | grep -q 'true' && echo 'Muted' || echo "Volume: $(pamixer --get-volume)%")" -h string:synchronous:volume"
 
 for arg in "$@"; do
     case $arg in
         --pw-incvol)
-            wpctl set-volume @DEFAULT_AUDIO_SINK@ 5%+; 
-            $NOTIFY_VOL
+            USE_PIPEWIRE=true
+            wpctl set-volume @DEFAULT_AUDIO_SINK@ 5%+;
+            notify_volume
             ;;
         --pw-decvol)
+            USE_PIPEWIRE=true
             wpctl set-volume @DEFAULT_AUDIO_SINK@ 5%-;
-            $NOTIFY_VOL
+            notify_volume
             ;;
         --pw-mute)
+            USE_PIPEWIRE=true
             wpctl set-mute @DEFAULT_AUDIO_SINK@ toggle;
-            $NOTIFY_VOL
+            notify_volume
             ;;
         --pa-mute)
             pamixer -t;
-            $NOTIFY_VOL
+            notify_volume
             ;;
         --pa-incvol)
             pamixer -i 5;
-            $NOTIFY_VOL
+            notify_volume
             ;;
         --pa-decvol)
             pamixer -d 5;
-            $NOTIFY_VOL
+            notify_volume
             ;;
         *)
             echo "Unknown option: $arg"
@@ -51,3 +93,8 @@ for arg in "$@"; do
             ;;
     esac
 done
+
+
+
+
+
