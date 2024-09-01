@@ -1,0 +1,86 @@
+* {
+ background: #282828 ;
+ foreground: #ebdbb2 ;
+  
+ black: #1d2021;
+ red: #cc241d;
+ green: #98971a;
+ yellow: #d79921;
+ blue: #458588;
+ purple: #b16286;
+ aqua: #689d6a;
+ white: #f9f5d7;
+ comment: #7c6f64;
+ orange: #d65d0e;
+ identifier: #b8bb26;
+ statement: #cc241d;
+ type: #8ec07c;
+ special: #d3869b ;
+ 
+ background-color: @background;
+ border-radius: 5px;
+}
+
+window {
+ width: 750;
+ height: 400;
+ padding: 10px;
+ border: 2px;
+ border-color: @green;
+}
+
+element {
+ padding: 5px;
+ cursor: pointer;
+ spacing: 5px;
+ border: 0;
+ text-color: @foreground;
+}
+
+element normal.normal {
+ background-color: @black;
+}
+
+element selected.normal {
+ background-color: @green;
+ text-color: @black;
+}
+
+element-text {
+    background-color: transparent;
+    cursor:           inherit;
+    highlight:        inherit;
+    text-color:       inherit;
+}
+
+inputbar {
+    padding:    5px ;
+    spacing:    0px ;
+    text-color: @green;
+}
+
+prompt {
+    spacing:    0;
+    text-color: @foreground;
+    background-color: @orange;
+    padding: 7px 13px 5px 13px;
+    border-radius: 5px;
+}
+
+entry {
+    text-color:        @foreground;
+    cursor:            text;
+    spacing:           0;
+    placeholder-color: Gray;
+    placeholder:       "Type to filter";
+    margin: 7px 0 7px 225;
+}
+
+listview {
+    padding:      2px 0px 0px ;
+    scrollbar:    true; 
+    spacing:      2px ;
+    fixed-height: 0;
+    margin: 10px 0 0 0;
+}
+

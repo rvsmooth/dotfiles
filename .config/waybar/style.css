@@ -60,7 +60,7 @@ button:hover {
 }
 
 #workspaces button:hover {
-    background-color: #d79921; /* Gruvbox yellow */
+    background-color: #fabd2f; /* Gruvbox yellow */
 }
 
 #mode {
@@ -84,7 +84,7 @@ button:hover {
 
 
 #clock {
-    background-color: #7c6f64; /* Gruvbox medium brown */
+    background-color: #689d6a; /* Gruvbox medium brown */
 }
 
 @keyframes blink {
@@ -119,7 +119,8 @@ label:focus {
 }
 
 #pulseaudio {
-    background-color: #fabd2f; /* Gruvbox yellow */
+    background-color: #D49721; /* Gruvbox yellow */
+    
 }
 
 #pulseaudio.muted {
