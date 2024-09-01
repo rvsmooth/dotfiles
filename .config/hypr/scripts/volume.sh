@@ -16,7 +16,7 @@ if [ $# -eq 0 ]; then
     exit 1
 fi
 
-NOTIFY_VOL="dunstify -a 'volumeChange' -i audio-volume-high-symbolic -t 2000 -h int:value:"$(pamixer --get-volume / 2)" "$(pamixer --get-mute | grep -q 'true' && echo 'Muted' || echo "Volume: $(pamixer --get-volume)%")""
+NOTIFY_VOL="dunstify -a 'VolumeChange' -i audio-volume-high-symbolic -t 2000 -h int:value:"$(pamixer --get-volume / 2)" "$(pamixer --get-mute | grep -q 'true' && echo 'Muted' || echo "Volume: $(pamixer --get-volume)%")" -h string:synchronous:volume"
 
 for arg in "$@"; do
     case $arg in
