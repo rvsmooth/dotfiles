@@ -5,7 +5,8 @@
 #|    /| | | |`--. \ '_ ` _ \ / _ \ / _ \| __| '_ \ 
 #| |\ \\ \_/ /\__/ / | | | | | (_) | (_) | |_| | | |
 #\_| \_|\___/\____/|_| |_| |_|\___/ \___/ \__|_| |_|
-#                                                   
+# 
+# desc: A Simple Screenshot Script utilising grim & slurp                                                  
 # Copyright (c) 2024 RVSmooth
 # https://gitlab.com/RVSmooth 
                  
