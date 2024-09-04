@@ -88,6 +88,12 @@ keys = [
     Key([mod, "shift"], "f", lazy.spawn(fileman), desc="Launch file-manager"),
     Key([mod], "u",          lazy.spawn(home + "/.config/rofi/scripts/rofi-utils"), desc="Launch rofi utilities script"),
 
+    # Volume Management
+
+    Key([mod], "F3",          lazy.spawn(home + "/.config/scripts-common/volume.sh --pw-incvol"), desc="Increase Volume(Pipewire)"),
+    Key([mod], "F1",          lazy.spawn(home + "/.config/scripts-common/volume.sh --pw-decvol"), desc="Decrease Volume(Pipewire)"),
+    Key([mod], "F2",          lazy.spawn(home + "/.config/scripts-common/volume.sh --pw-mute"), desc="Mute Volume(Pipewire)"),
+
 ]
 
 # Add key bindings to switch VTs in Wayland.
