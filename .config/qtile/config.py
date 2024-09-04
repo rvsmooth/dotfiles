@@ -42,7 +42,7 @@ keys = [
     Key([mod], "right", lazy.layout.right(), desc="Move focus to right"),
     Key([mod], "down",  lazy.layout.down(), desc="Move focus down"),
     Key([mod], "up",    lazy.layout.up(), desc="Move focus up"),
-    Key([mod], "space", lazy.layout.next(), desc="Move window focus to other window"),
+    Key([mod], "tab", lazy.layout.next(), desc="Move window focus to other window"),
 
     # Move windows between left/right columns or move up/down in current stack.
     # Moving out of range in Columns layout will create new column.
@@ -67,7 +67,7 @@ keys = [
     
     # Toggle between different layouts as defined below
     Key([mod], "Tab",          lazy.next_layout(), desc="Toggle between layouts"),
-    Key([mod], "f",            lazy.window.toggle_fullscreen(), desc="Toggle fullscreen on the focused window"),
+    Key([mod], "space",            lazy.window.toggle_fullscreen(), desc="Toggle fullscreen on the focused window"),
     Key([mod], "t",            lazy.window.toggle_floating(), desc="Toggle floating on the focused window"),
     Key([mod, "shift"], "q",   lazy.window.kill(), desc="Kill focused window"),
 
@@ -161,8 +161,6 @@ screens = [
                     },
                     name_transform=lambda name: name.upper(),
                 ),
-                widget.TextBox("default config", name="default"),
-                widget.TextBox("Press &lt;M-r&gt; to spawn", foreground="#d75f5f"),
                 # NB Systray is incompatible with Wayland, consider using StatusNotifier instead
                 # widget.StatusNotifier(),
                 widget.Systray(),
