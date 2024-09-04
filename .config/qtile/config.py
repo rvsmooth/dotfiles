@@ -28,12 +28,16 @@ import subprocess
 from libqtile import bar, layout, qtile, widget, hook
 from libqtile.config import Click, Drag, Group, Key, Match, Screen
 from libqtile.lazy import lazy
+from pathlib import Path
+
 
 mod       = "mod4"
 terminal  = "kitty"
 browser   = "thorium-browser"
 fileman   = "nemo"
 rofi      = "rofi -show drun"
+home = str(Path.home())
+
 
 keys = [
     # A list of available commands that can be bound to keys can be found
@@ -82,6 +86,7 @@ keys = [
     Key([mod], "p",          lazy.spawn(rofi), desc="Launch Rofi run launcher"),
     Key([mod], "b",          lazy.spawn(browser), desc="Launch browser"),
     Key([mod, "shift"], "f", lazy.spawn(fileman), desc="Launch file-manager"),
+    Key([mod], "u",          lazy.spawn(home + "/.config/rofi/scripts/rofi-utils"), desc="Launch rofi utilities script"),
 
 ]
 
