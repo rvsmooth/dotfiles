@@ -25,11 +25,13 @@
 # SOFTWARE.
 import os
 import subprocess
-from libqtile import bar, layout, qtile, widget, hook
+from libqtile import bar, layout, qtile, hook
 from libqtile.config import Click, Drag, Group, Key, Match, Screen
 from libqtile.lazy import lazy
 from pathlib import Path
-
+from qtile_extras import widget
+from qtile_extras.widget.decorations import PowerLineDecoration
+from colors import gruvbox, gruv_mat
 
 mod       = "mod4"
 terminal  = "kitty"
@@ -63,7 +65,21 @@ keys = [
     Key([mod, "control"], "j", lazy.layout.grow_down(), desc="Grow window down"),
     Key([mod, "control"], "k", lazy.layout.grow_up(), desc="Grow window up"),
     Key([mod], "n", lazy.layout.normalize(), desc="Reset all window sizes"),
-    
+   
+      # Grow/shrink windows left/right. 
+    # This is mainly for the 'monadtall' and 'monadwide' layouts
+    # although it does also work in the 'bsp' and 'columns' layouts.
+    Key([mod], "equal",
+        lazy.layout.grow_left().when(layout=["bsp", "columns"]),
+        lazy.layout.grow().when(layout=["monadtall", "monadwide"]),
+        desc="Grow window to the left"
+    ),
+    Key([mod], "minus",
+        lazy.layout.grow_right().when(layout=["bsp", "columns"]),
+        lazy.layout.shrink().when(layout=["monadtall", "monadwide"]),
+        desc="Grow window to the left"
+    ),
+
     # Toggle between split and unsplit sides of stack.
     # Split = all windows displayed
     # Unsplit = 1 window displayed, like Max layout, but still with
@@ -111,12 +127,13 @@ for vt in range(1, 8):
 
 
 groups = [
-    Group("1", layout='monadtall'),
-    Group("2", layout='monadtall'),
-    Group("3", layout='monadtall'),
-    Group("4", layout='max'),
-    Group("5", layout='floating'),
+    Group("1", layout='monadtall', label=''),
+    Group("2", layout='monadtall', label=''),
+    Group("3", layout='monadtall', label=''),
+    Group("4", layout='max',       label=''),
+    Group("5", layout='floating',  label=''),
 ]
+
 for i in groups:
     keys.extend(
         [
@@ -152,6 +169,55 @@ layouts = [
         layout.Floating(),
 ]
 
+arrow_powerlineRight = {
+    "decorations": [
+        PowerLineDecoration(
+            path="arrow_right",
+            size=8,
+        )
+    ]
+}
+arrow_powerlineLeft = {
+    "decorations": [
+        PowerLineDecoration(
+            path="arrow_left",
+            size=8,
+        )
+    ]
+}
+rounded_powerlineRight = {
+    "decorations": [
+        PowerLineDecoration(
+            path="rounded_right",
+            size=8,
+        )
+    ]
+}
+rounded_powerlineLeft = {
+    "decorations": [
+        PowerLineDecoration(
+            path="rouded_left",
+            size=8,
+        )
+    ]
+}
+slash_powerlineRight = {
+    "decorations": [
+        PowerLineDecoration(
+            path="forward_slash",
+            size=8,
+        )
+    ]
+}
+slash_powerlineLeft = {
+    "decorations": [
+        PowerLineDecoration(
+            path="back_slash",
+            size=8,
+        )
+    ]
+}
+
 widget_defaults = dict(
     font="JetBrainsMono NF Medium",
     fontsize=12,
@@ -161,32 +227,105 @@ extension_defaults = widget_defaults.copy()
 
 screens = [
     Screen(
-        bottom=bar.Bar(
+        top=bar.Bar(
             [
-                widget.CurrentLayout(),
-                widget.GroupBox(),
-                widget.Prompt(),
-                widget.WindowName(),
-                widget.Chord(
-                    chords_colors={
-                        "launch": ("#ff0000", "#ffffff"),
-                    },
-                    name_transform=lambda name: name.upper(),
+                #########################
+                # Widget Configurations #
+                #########################
+                widget.Spacer(
+                    length=1,
+                    background=gruvbox["yellow"],
+                    **arrow_powerlineLeft,
                 ),
-                # NB Systray is incompatible with Wayland, consider using StatusNotifier instead
-                # widget.StatusNotifier(),
-                widget.Systray(),
-                widget.Clock(format="%Y-%m-%d %a %I:%M %p"),
-                widget.QuickExit(),
+                widget.GroupBox(
+                    font="JetBrainsMono Nerd Font",
+                    fontsize=15,
+                    padding_x=8,
+                    padding_y=5,
+                    rounded=False,
+                    center_aligned=True,
+                    disable_drag=True,
+                    borderwidth=3,
+                    highlight_method="line",
+                    active=gruvbox["cream"],
+                    inactive=gruvbox["blue-alt"],
+                    highlight_color=gruvbox["dark-grey"],
+                    this_current_screen_border=gruvbox["yellow"],
+                    this_screen_border=gruv_mat["disabled"],
+                    other_screen_border=gruv_mat["red"],
+                    other_current_screen_border=gruv_mat["red"],
+                    background=gruvbox["dark-grey"],
+                    foreground=gruv_mat["disabled"],
+                    **arrow_powerlineLeft,
+                ),
+                widget.TaskList(
+                    margin=-2,
+                    icon_size=0,
+                    fontsize=13,
+                    borderwidth=1,
+                    rounded=True,
+                    highlight_method="block",
+                    title_width_method="uniform",
+                    urgent_alert_methond="border",
+                    foreground=gruv_mat["black"],
+                    background=gruvbox["cream"],
+                    border=gruvbox["cream"],
+                    urgent_border=gruv_mat["red-alt"],
+                    txt_floating=" ",
+                    txt_maximized=" ",
+                    txt_minimized=" ",
+                ),
+                widget.Spacer(
+                    length=1,
+                    background=gruvbox["cream"],
+                    **rounded_powerlineRight,
+                ),
+                widget.CPU(
+                    padding=5,
+                    format="  {freq_current}GHz {load_percent}%",
+                    foreground=gruvbox["cream"],
+                    background=gruvbox["dark-grey"],
+                    **slash_powerlineRight,
+                ),
+                widget.Memory(
+                    padding=5,
+                    format="󰈀 {MemUsed:.0f}{mm}",
+                    background=gruvbox["cream"],
+                    foreground=gruvbox["dark-grey"],
+                    **slash_powerlineRight,
+                ),
+                widget.Clock(
+                    padding=5,
+                    format="  %a %d %b %H:%M:%S",
+                    foreground=gruvbox["yellow"],
+                    background=gruvbox["dark-grey"],
+                    **slash_powerlineRight,
+                ),
+                widget.Volume(
+                    fmt="󰕾 {}",
+                    volume_app='wpctl',
+                    foreground=gruvbox["dark"],
+                    background=gruvbox["yellow"],
+                    padding=10,
+                    **slash_powerlineRight,
+                ),
+                widget.Systray(
+                    padding=7,
+                    icon_size=15,
+                ),
+                widget.CurrentLayoutIcon(
+                    padding=5,
+                    scale=0.8,
+                ),
             ],
-            24,
-            # border_width=[2, 0, 2, 0],  # Draw top and bottom borders
-            # border_color=["ff00ff", "000000", "ff00ff", "000000"]  # Borders are magenta
+            ######################
+            # BAR CONGIGURATIONS #
+            ######################
+            20,
+            margin=[6, 10, 6, 10],
+            border_width=[0, 0, 0, 0],
+            background=gruv_mat["dark"],
         ),
-        # You can uncomment this variable if you see that on X11 floating resize/moving is laggy
-        # By default we handle these events delayed to already improve performance, however your system might still be struggling
-        # This variable is set to None (no cap) by default, but you can set it to 60 to indicate that you limit it to 60 events per second
-        # x11_drag_polling_rate = 60,
     ),
 ]
 
