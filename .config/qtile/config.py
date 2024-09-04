@@ -98,8 +98,13 @@ for vt in range(1, 8):
     )
 
 
-groups = [Group(i) for i in "123456789"]
-
+groups = [
+    Group("1", layout='monadtall'),
+    Group("2", layout='monadtall'),
+    Group("3", layout='monadtall'),
+    Group("4", layout='max'),
+    Group("5", layout='floating'),
+]
 for i in groups:
     keys.extend(
         [
@@ -124,24 +129,19 @@ for i in groups:
         ]
     )
 
+layout_theme = {"border_width": 2,
+                "margin": 13,
+                "border_focus": "#98971a",
+                "border_normal": "#282828"
+                } 
 layouts = [
-    layout.Columns(border_focus_stack=["#d75f5f", "#8f3d3d"], border_width=4),
-    layout.Max(),
-    # Try more layouts by unleashing below layouts.
-    # layout.Stack(num_stacks=2),
-    # layout.Bsp(),
-    # layout.Matrix(),
-    # layout.MonadTall(),
-    # layout.MonadWide(),
-    # layout.RatioTile(),
-    # layout.Tile(),
-    # layout.TreeTab(),
-    # layout.VerticalTile(),
-    # layout.Zoomy(),
+        layout.MonadTall(**layout_theme),
+        layout.Max(),
+        layout.Floating(),
 ]
 
 widget_defaults = dict(
-    font="sans",
+    font="JetBrainsMono NF Medium",
     fontsize=12,
     padding=3,
 )
