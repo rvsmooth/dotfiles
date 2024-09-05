@@ -1,6 +1,30 @@
-set -g fish_greeting
-set -x TERM xterm-256color
-set PATH $PATH ~/.local/bin
+#
+# ~/.bashrc
+#
+
+# If not running interactively, don't do anything
+[[ $- != *i* ]] && return
+
+PS1='[\u@\h \W]\$ '
+#ignore upper and lowercase when TAB completion
+bind "set completion-ignore-case on"
+
+#                            _       
+#                           | |      
+#  _____  ___ __   ___  _ __| |_ ___ 
+# / _ \ \/ | '_ \ / _ \| '__| __/ __|
+#|  __/>  <| |_) | (_) | |  | |_\__ \
+# \___/_/\_| .__/ \___/|_|   \__|___/
+#          | |                       
+#          |_|                      
+
+if [ -f "$HOME/.local/bin/lvim" ] ; then
+export EDITOR='lvim'
+export VISUAL='lvim'
+else
+export EDITOR='nvim'
+export VISUAL='nvim'
+fi
 
 #  __                  _   _                 
 # / _|                | | (_)                
@@ -8,27 +32,39 @@ set PATH $PATH ~/.local/bin
 #|  _| | | | '_ \ / __| __| |/ _ \| '_ \/ __|
 #| | | |_| | | | | (__| |_| | (_) | | | \__ \
 #|_|  \__,_|_| |_|\___|\__|_|\___/|_| |_|___/
-function ssh_git
-	eval (ssh-agent -c)
-	ssh-add $argv
-end
 
-function config
-    set -l git_cmd "/usr/bin/git"
-    set -l git_options "--git-dir=$HOME/.dotfiles --work-tree=$HOME"
+function sssh() {
+eval "$(ssh-agent -s)"
+ssh-add $1
+}
+
+function config() {
+    git_cmd="/usr/bin/git"
+    git_options="--git-dir=$HOME/.dotfiles --work-tree=$HOME"
     
-    set -l untracked_files (eval $git_cmd $git_options config --get status.showUntrackedFiles)
+    untracked_files=$($git_cmd $git_options config --get status.showUntrackedFiles 2>/dev/null)
     
-    if test -z "$untracked_files" -o "$untracked_files" = "all"
-        eval $git_cmd $git_options config --unset status.showUntrackedFiles
-        eval $git_cmd $git_options config status.showUntrackedFiles no
+    if [[ -z "$untracked_files" || "$untracked_files" == "all" ]]; then
+        $git_cmd $git_options config --unset status.showUntrackedFiles
+        $git_cmd $git_options config status.showUntrackedFiles no
         echo "UntrackedFiles was set to 'all' or not set. Changed to 'no'."
     else
         echo "UntrackedFiles is already set to no."
-    end
+    fi
     
-    eval $git_cmd $git_options $argv
-end
+    $git_cmd $git_options "$@"
+}
+
+#             _   _         
+#            | | | |        
+# _ __   __ _| |_| |__  ___ 
+#| '_ \ / _` | __| '_ \/ __|
+#| |_) | (_| | |_| | | \__ \
+#| .__/ \__,_|\__|_| |_|___/
+#| |                        
+#|_|                        
+
+export PATH="$HOME/.local/bin:$PATH"
 
 #       _ _                    
 #      | (_)                   
@@ -66,4 +102,5 @@ alias mirror="sudo reflector -f 30 -l 30 --number 10 --verbose --save /etc/pacma
 #Recently Installed Packages
 alias rip="expac --timefmt='%Y-%m-%d %T' '%l\t%n %v' | sort | tail -200 | nl"
 alias riplong="expac --timefmt='%Y-%m-%d %T' '%l\t%n %v' | sort | tail -3000 | nl"
+
 
