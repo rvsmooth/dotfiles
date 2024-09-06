@@ -1,3 +1,14 @@
+[username]
+show_always = true
+style_root = "red bold"
+format = '[$user]($style) '
+
+[hostname]
+ssh_only = false
+format = 'on [$hostname](bold blue) '
+trim_at = "."
+disabled = false
+
 [aws]
 symbol = "  "
 
@@ -51,9 +62,6 @@ symbol = " "
 
 [hg_branch]
 symbol = " "
-
-[hostname]
-ssh_symbol = " "
 
 [java]
 symbol = " "
