@@ -89,7 +89,7 @@ alias spsii='sudo pacman -Sii'
 alias spqi='pacman -Qi'
 alias unlock="sudo rm /var/lib/pacman/db.lck"
 alias pupdate='paru -Syyu --noconfirm'
-alias yupdate='yay -Syyu --noconrim'
+alias yupdate='yay -Syyu --noconfirm'
 
 #switch between shells
 alias tobash="sudo chsh $USER -s /bin/bash && echo 'Re-login to apply.'"
