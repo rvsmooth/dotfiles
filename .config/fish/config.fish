@@ -8,7 +8,8 @@ set PATH $PATH ~/.local/bin
 #|  _| | | | '_ \ / __| __| |/ _ \| '_ \/ __|
 #| | | |_| | | | | (__| |_| | (_) | | | \__ \
 #|_|  \__,_|_| |_|\___|\__|_|\___/|_| |_|___/
-function ssh_git
+
+function sssh
 	eval (ssh-agent -c)
 	ssh-add $argv
 end
@@ -57,8 +58,8 @@ alias yupdate='yay -Syyu --noconrim'
 
 #switch between shells
 alias tobash="sudo chsh $USER -s /bin/bash && echo 'Re-login to apply.'"
-alias tozsh="sudo chsh $USER -s /bin/zsh && echo 'Re-login to apply."
-alias tofish="sudo chsh $USER -s /bin/fish && echo 'Re-login to apply."
+alias tozsh="sudo chsh $USER -s /bin/zsh && echo 'Re-login to apply.'"
+alias tofish="sudo chsh $USER -s /bin/fish && echo 'Re-login to apply.'"
 
 #mirrors
 alias mirror="sudo reflector -f 30 -l 30 --number 10 --verbose --save /etc/pacman.d/mirrorlist"
