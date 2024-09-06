@@ -68,3 +68,12 @@ alias mirror="sudo reflector -f 30 -l 30 --number 10 --verbose --save /etc/pacma
 alias rip="expac --timefmt='%Y-%m-%d %T' '%l\t%n %v' | sort | tail -200 | nl"
 alias riplong="expac --timefmt='%Y-%m-%d %T' '%l\t%n %v' | sort | tail -3000 | nl"
 
+
+#                                 _   
+# _ __  _ __ ___  _ __ ___  _ __ | |_ 
+#| '_ \| '__/ _ \| '_ ` _ \| '_ \| __|
+#| |_) | | | (_) | | | | | | |_) | |_ 
+#| .__/|_|  \___/|_| |_| |_| .__/ \__|
+#|_|                       |_|        
+
+starship init fish | source
