@@ -35,7 +35,7 @@ from colors import gruvbox_palette
 
 mod       = "mod4"
 terminal  = "kitty"
-browser   = "thorium-browser"
+browser   = "librewolf"
 fileman   = "nemo"
 rofi      = "rofi -show drun"
 home = str(Path.home())
