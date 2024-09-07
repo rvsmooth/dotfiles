@@ -30,8 +30,8 @@ from libqtile.config import Click, Drag, Group, Key, Match, Screen
 from libqtile.lazy import lazy
 from pathlib import Path
 from qtile_extras import widget
-from qtile_extras.widget.decorations import PowerLineDecoration
-from colors import gruvbox, gruv_mat
+from qtile_extras.widget.decorations import RectDecoration
+from colors import gruvbox_palette
 
 mod       = "mod4"
 terminal  = "kitty"
@@ -90,7 +90,7 @@ keys = [
     Key([mod], "Tab",          lazy.next_layout(), desc="Toggle between layouts"),
     Key([mod], "space",            lazy.window.toggle_fullscreen(), desc="Toggle fullscreen on the focused window"),
     Key([mod], "t",            lazy.window.toggle_floating(), desc="Toggle floating on the focused window"),
-    Key([mod, "shift"], "q",   lazy.window.kill(), desc="Kill focused window"),
+    Key([mod, "shift"], "c",   lazy.window.kill(), desc="Kill focused window"),
 
     # Basic utils
     Key([mod, "shift"], "r",   lazy.reload_config(), desc="Reload the config"),
@@ -127,11 +127,12 @@ for vt in range(1, 8):
 
 
 groups = [
-    Group("1", layout='monadtall', label=''),
-    Group("2", layout='monadtall', label=''),
-    Group("3", layout='monadtall', label=''),
-    Group("4", layout='max',       label=''),
-    Group("5", layout='floating',  label=''),
+    Group("1", layout='monadtall', label=''),
+    Group("2", layout='monadtall', label='󰐹'),
+    Group("3", layout='monadtall', label=''),
+    Group("4", layout='tile',      label=''),
+    Group("5", layout='max',       label=''),
+    Group("6", layout='floating',  label=''),
 ]
 
 for i in groups:
@@ -166,64 +167,30 @@ layout_theme = {"border_width": 2,
 layouts = [
         layout.MonadTall(**layout_theme),
         layout.Max(),
-        layout.Floating(),
+        layout.Tile(
+            border_width=1,
+            margin=0,
+            border_focus="#98971a",
+            border_normal="#282828",
+            ratio=0.5,
+),
 ]
 
-arrow_powerlineRight = {
+decoration_group = {
     "decorations": [
-        PowerLineDecoration(
-            path="arrow_right",
-            size=8,
-        )
-    ]
+        RectDecoration(colour=gruvbox_palette["dark0"], radius=10, filled=True, group=True),
+    ],
+    "padding": 10,
 }
-arrow_powerlineLeft = {
-    "decorations": [
-        PowerLineDecoration(
-            path="arrow_left",
-            size=8,
-        )
-    ]
-}
-rounded_powerlineRight = {
-    "decorations": [
-        PowerLineDecoration(
-            path="rounded_right",
-            size=8,
-        )
-    ]
-}
-rounded_powerlineLeft = {
-    "decorations": [
-        PowerLineDecoration(
-            path="rouded_left",
-            size=8,
-        )
-    ]
-}
-slash_powerlineRight = {
-    "decorations": [
-        PowerLineDecoration(
-            path="forward_slash",
-            size=8,
-        )
-    ]
-}
-slash_powerlineLeft = {
-    "decorations": [
-        PowerLineDecoration(
-            path="back_slash",
-            size=8,
-        )
-    ]
-}
-
 widget_defaults = dict(
     font="JetBrainsMono NF Medium",
     fontsize=12,
     padding=3,
 )
 extension_defaults = widget_defaults.copy()
+
+left = ""
+right = ""
 
 screens = [
     Screen(
@@ -232,99 +199,94 @@ screens = [
                 #########################
                 # Widget Configurations #
                 #########################
+                widget.CurrentLayoutIcon(
+                    scale=0.6,
+                    **decoration_group
+                ),
                 widget.Spacer(
-                    length=1,
-                    background=gruvbox["yellow"],
-                    **arrow_powerlineLeft,
+                    length=10,
                 ),
                 widget.GroupBox(
                     font="JetBrainsMono Nerd Font",
-                    fontsize=15,
+                    fontsize=14,
                     padding_x=8,
-                    padding_y=5,
+                    padding_y=-10,
                     rounded=False,
                     center_aligned=True,
                     disable_drag=True,
-                    borderwidth=3,
-                    highlight_method="line",
-                    active=gruvbox["cream"],
-                    inactive=gruvbox["blue-alt"],
-                    highlight_color=gruvbox["dark-grey"],
-                    this_current_screen_border=gruvbox["yellow"],
-                    this_screen_border=gruv_mat["disabled"],
-                    other_screen_border=gruv_mat["red"],
-                    other_current_screen_border=gruv_mat["red"],
-                    background=gruvbox["dark-grey"],
-                    foreground=gruv_mat["disabled"],
-                    **arrow_powerlineLeft,
-                ),
-                widget.TaskList(
-                    margin=-2,
-                    icon_size=0,
-                    fontsize=13,
-                    borderwidth=1,
-                    rounded=True,
                     highlight_method="block",
-                    title_width_method="uniform",
-                    urgent_alert_methond="border",
-                    foreground=gruv_mat["black"],
-                    background=gruvbox["cream"],
-                    border=gruvbox["cream"],
-                    urgent_border=gruv_mat["red-alt"],
-                    txt_floating=" ",
-                    txt_maximized=" ",
-                    txt_minimized=" ",
+                    block_highlight_text_color=gruvbox_palette["bright_yellow"],
+                    active=gruvbox_palette["neutral_blue"],
+                    inactive=gruvbox_palette["dark_green_hard"],
+                    foreground=gruvbox_palette["dark2"],
+                    border="#98971a",
+                    **decoration_group,
                 ),
                 widget.Spacer(
-                    length=1,
-                    background=gruvbox["cream"],
-                    **rounded_powerlineRight,
+                    length=10,
+                ),
+
+                widget.TaskList(
+                    margin=-8,
+                    icon_size=0,
+                    fontsize=12,
+                    borderwidth=1,
+                    highlight_method="border",
+                    title_width_method="uniform",
+                    urgent_alert_method="border",
+                    foreground=gruvbox_palette["light1"],
+                    border=gruvbox_palette["light1"],
+                    urgent_border=gruvbox_palette["neutral_red"],
+                    txt_floating="󰋹 ",
+                    txt_maximized=" ",
+                    txt_minimized="󰈉 ",
+                    **decoration_group
+                ),
+                widget.Spacer(
+                    length=10,
                 ),
                 widget.CPU(
-                    padding=5,
-                    format="  {freq_current}GHz {load_percent}%",
-                    foreground=gruvbox["cream"],
-                    background=gruvbox["dark-grey"],
-                    **slash_powerlineRight,
+                    format=" {load_percent}%",
+                    foreground=gruvbox_palette["neutral_aqua"],
+                    **decoration_group
                 ),
                 widget.Memory(
-                    padding=5,
-                    format="󰈀 {MemUsed:.0f}{mm}",
-                    background=gruvbox["cream"],
-                    foreground=gruvbox["dark-grey"],
-                    **slash_powerlineRight,
+                    format=" {MemUsed:.0f}{mm}",
+                    foreground=gruvbox_palette["light_red"],
+                    **decoration_group
+                ),
+                widget.Spacer(
+                        length=10,
+                        ),
+                widget.Volume(
+                        fmt="󰕾 {}",
+                        volume_app='wpctl',
+                        foreground=gruvbox_palette["bright_green"],
+                        **decoration_group
+                        ),
+                widget.Spacer(
+                    length=10,
                 ),
                 widget.Clock(
-                    padding=5,
-                    format="  %a %d %b %H:%M:%S",
-                    foreground=gruvbox["yellow"],
-                    background=gruvbox["dark-grey"],
-                    **slash_powerlineRight,
+                    format="󰧰 %a %d/%m/%y 󰥔 %H:%M",
+                    foreground=gruvbox_palette["bright_yellow"],
+                    **decoration_group
                 ),
-                widget.Volume(
-                    fmt="󰕾 {}",
-                    volume_app='wpctl',
-                    foreground=gruvbox["dark"],
-                    background=gruvbox["yellow"],
-                    padding=10,
-                    **slash_powerlineRight,
+                widget.Spacer(
+                    length=10,
                 ),
                 widget.Systray(
-                    padding=7,
-                    icon_size=15,
-                ),
-                widget.CurrentLayoutIcon(
-                    padding=5,
-                    scale=0.8,
+                    icon_size=20,
+                    fmt="{}",
                 ),
             ],
             ######################
-            # BAR CONGIGURATIONS #
+            # BAR CONFIGURATIONS #
             ######################
-            20,
+            25,
             margin=[6, 10, 6, 10],
-            border_width=[0, 0, 0, 0],
-            background=gruv_mat["dark"],
+            border_width=0,
+            background="00000000"
         ),
     ),
 ]
@@ -343,6 +305,7 @@ bring_front_click = False
 floats_kept_above = True
 cursor_warp = False
 floating_layout = layout.Floating(
+        border_focus=gruvbox_palette["faded_blue"],
     float_rules=[
         # Run the utility of `xprop` to see the wm class and name of an X client.
         *layout.Floating.default_float_rules,

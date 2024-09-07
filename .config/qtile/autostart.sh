@@ -1,10 +1,8 @@
 #!/bin/bash
 
-## dunst notifications
+
+picom --daemon &
 dunst &
-
-## set wallpaper
-feh --bg-fill $HOME/Pictures/Walls/wall.png &
-
-## policy kit
+feh --bg-fill $HOME/Pictures/Walls/gruvbox_astro.jpg &
 /usr/bin/lxpolkit &
+

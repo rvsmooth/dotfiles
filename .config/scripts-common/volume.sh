@@ -61,12 +61,12 @@ for arg in "$@"; do
     case $arg in
         --pw-incvol)
             USE_PIPEWIRE=true
-            wpctl set-volume @DEFAULT_AUDIO_SINK@ 5%+;
+            wpctl set-volume @DEFAULT_AUDIO_SINK@ 2%+;
             notify_volume
             ;;
         --pw-decvol)
             USE_PIPEWIRE=true
-            wpctl set-volume @DEFAULT_AUDIO_SINK@ 5%-;
+            wpctl set-volume @DEFAULT_AUDIO_SINK@ 2%-;
             notify_volume
             ;;
         --pw-mute)
