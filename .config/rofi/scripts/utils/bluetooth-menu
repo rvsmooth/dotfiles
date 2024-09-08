@@ -19,7 +19,6 @@
 # Constants
 divider="---------"
 goback="Back"
-
 # Checks if bluetooth controller is powered on
 power_on() {
     if bluetoothctl show | grep -q "Powered: yes"; then
@@ -229,8 +228,8 @@ device_menu() {
     fi
     paired=$(device_paired "$mac")
     trusted=$(device_trusted "$mac")
-    options="$connected\n$paired\n$trusted\n$divider\n$goback\nExit"
-
+    btbatt="Battery: $(bluetoothctl info | awk -F '[()]' '/Percentage/ {print $2}')%"
+    options="$connected\n$paired\n$trusted\n$btbatt\n$divider\n$goback\nExit"
     # Open rofi menu, read chosen option
     chosen="$(echo -e "$options" | $rofi_command "$device_name")"
 
