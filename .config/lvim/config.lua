@@ -19,11 +19,19 @@ lvim.plugins = {
     end,
   },
 
- { "ellisonleao/gruvbox.nvim",
+  { "ellisonleao/gruvbox.nvim",
     priority = 1000 ,
     config = true,
     opts = ...
-  }
+  },
+
+  {
+    "iamcco/markdown-preview.nvim",
+    cmd = { "MarkdownPreviewToggle", "MarkdownPreview", "MarkdownPreviewStop" },
+    ft = { "markdown" },
+    build = function() vim.fn["mkdp#util#install"]() end,
+
+  },
 }
 
 lvim.colorscheme = "gruvbox"
