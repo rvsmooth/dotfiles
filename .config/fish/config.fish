@@ -60,6 +60,8 @@ alias mirror="sudo reflector -f 30 -l 30 --number 10 --verbose --save /etc/pacma
 alias rip="expac --timefmt='%Y-%m-%d %T' '%l\t%n %v' | sort | tail -200 | nl"
 alias riplong="expac --timefmt='%Y-%m-%d %T' '%l\t%n %v' | sort | tail -3000 | nl"
 
+#rtl8xxxu restart
+alias rsrtl="sudo rmmod rtl8xxxu;sudo modprobe rtl8xxxu"
 
 #                                 _   
 # _ __  _ __ ___  _ __ ___  _ __ | |_ 
