@@ -12,6 +12,14 @@
 # \___\___/|_| |_|_| |_|\__, |
 #                       |___/ 
 
+# tab autocompletions
+autoload -Uz compinit
+zstyle ':completion:*' menu select
+zmodload zsh/complist
+_comp_options+=(globdots)
+compinit -d $XDG_CACHE_HOME/zsh/zcompdump-$ZSH_VERSION
+zstyle ':completion:*' matcher-list 'm:{a-z}={A-Za-z}'
+
 # history
 export HISTSIZE=100000
 export SAVEHIST=20000
