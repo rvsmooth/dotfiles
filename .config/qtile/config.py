@@ -36,7 +36,7 @@ from colors import gruvbox_palette
 mod       = "mod4"
 terminal  = "kitty"
 browser   = "librewolf"
-fileman   = "nemo"
+fileman   = "thunar"
 rofi      = "rofi -show drun"
 home = str(Path.home())
 
@@ -105,11 +105,13 @@ keys = [
     Key([mod], "u",          lazy.spawn(home + "/.config/rofi/scripts/rofi-utils"), desc="Launch rofi utilities script"),
 
     # Volume Management
-
     Key([mod], "F3",          lazy.spawn(home + "/.config/scripts-common/volume.sh --pw-incvol"), desc="Increase Volume(Pipewire)"),
     Key([mod], "F1",          lazy.spawn(home + "/.config/scripts-common/volume.sh --pw-decvol"), desc="Decrease Volume(Pipewire)"),
     Key([mod], "F2",          lazy.spawn(home + "/.config/scripts-common/volume.sh --pw-mute"), desc="Mute Volume(Pipewire)"),
 
+    # Screenshots
+    Key([], "Print",          lazy.spawn("flameshot screen"), desc="Take a full screenshot"),
+    Key([mod], "Print",       lazy.spawn("flameshot gui"), desc="Take a partial screenshot"),
 ]
 
 # Add key bindings to switch VTs in Wayland.
@@ -200,9 +202,12 @@ screens = [
                 # Widget Configurations #
                 #########################
                 widget.CurrentLayoutIcon(
+                    custom_icon_paths=[
+                        os.path.expanduser("~/.config/qtile/icons")
+                        ],
                     scale=0.6,
-                    **decoration_group
-                ),
+                    **decoration_group,
+                    ),    
                 widget.Spacer(
                     length=10,
                 ),
