@@ -1,4 +1,4 @@
-config.load_autoconfig()
+config.load_autoconfig(False)
 config.source('gruvbox.py')
 
 # Aliases for commands. The keys of the given dictionary are the
@@ -118,4 +118,33 @@ config.set('content.headers.user_agent', 'Mozilla/5.0 ({os_info}; rv:71.0) Gecko
 # JavaScript requires a restart.
 # Type: FormatString
 config.set('content.headers.user_agent', 'Mozilla/5.0 ({os_info}; rv:71.0) Gecko/20100101 Firefox/71.0', 'https://drive.google.com/*')
+
+# Default font families to use. Whenever "default_family" is used in a
+# font setting, it's replaced with the fonts listed here. If set to an
+# empty value, a system-specific monospace default is used.
+# Type: List of Font, or Font
+c.fonts.default_family = '"JetBrainsMono Nerd Font"'
+
+# Default font size to use. Whenever "default_size" is used in a font
+# setting, it's replaced with the size listed here. Valid values are
+# either a float value with a "pt" suffix, or an integer value with a
+# "px" suffix.
+# Type: String
+c.fonts.default_size = '11pt'
+
+# Font used in the completion widget.
+# Type: Font
+c.fonts.completion.entry = '10pt "JetBrainsMono NF Medium"'
+
+# Font used for the debugging console.
+# Type: Font
+c.fonts.debug_console = '10pt "JetBrainsMono NF Medium"'
+
+# Font used for prompts.
+# Type: Font
+c.fonts.prompts = 'default_size sans-serif'
+
+# Font used in the statusbar.
+# Type: Font
+c.fonts.statusbar = '10pt "JetBrainsMono NF Medium"'
 
