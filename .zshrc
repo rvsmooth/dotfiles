@@ -1,13 +1,41 @@
-#
-# ~/.bashrc
+#           _              
+#   _______| |__  _ __ ___ 
+#  |_  / __| '_ \| '__/ __|
+# _ / /\__ \ | | | | | (__ 
+#(_)___|___/_| |_|_|  \___|
+
+
+#                  __ _       
+#  ___ ___  _ __  / _(_) __ _ 
+# / __/ _ \| '_ \| |_| |/ _` |
+#| (_| (_) | | | |  _| | (_| |
+# \___\___/|_| |_|_| |_|\__, |
+#                       |___/ 
+
+# history
+export HISTSIZE=100000
+export SAVEHIST=20000
+export HISTFILE="$HOME/.cache/zsh/history"
+setopt hist_ignore_dups     # do not record an event that was just recorded again
+setopt hist_ignore_all_dups # delete an old recorded event if a new event is a duplicate
+setopt hist_ignore_space    # do not record an event starting with a space
+setopt hist_save_no_dups    # do not write a duplicate event to the history file
+setopt inc_append_history   # write to the history file immediately, not when the shell exits
+setopt share_history        # share history between terminals
+
+#       _             _           
+# _ __ | |_   _  __ _(_)_ __  ___ 
+#| '_ \| | | | |/ _` | | '_ \/ __|
+#| |_) | | |_| | (_| | | | | \__ \
+#| .__/|_|\__,_|\__, |_|_| |_|___/
+#|_|            |___/             
 #
 
-# If not running interactively, don't do anything
-[[ $- != *i* ]] && return
-
-PS1='[\u@\h \W]\$ '
-#ignore upper and lowercase when TAB completion
-bind "set completion-ignore-case on"
+source ~/.config/zsh/plugins/auto-notify.plugin.zsh
+source ~/.config/zsh/plugins/you-should-use.plugin.zsh
+source ~/.config/zsh/plugins/zsh-autosuggestions.zsh
+source ~/.config/zsh/plugins/zsh-history-substring-search.zsh
+source ~/.config/zsh/plugins/zsh-syntax-highlighting.plugin.zsh
 
 #                            _       
 #                           | |      
@@ -46,8 +74,9 @@ function config() {
     $git_cmd --git-dir="$git_dir" --work-tree="$work_tree" config --unset status.showuntrackedfiles 2>/dev/null
     $git_cmd --git-dir="$git_dir" --work-tree="$work_tree" config status.showuntrackedfiles no
 
-    $git_cmd --git-dir="$git_dir" --work-tree="$work_tree" "$@" 2>/dev/null || echo "No additional git commands provided or an error occurred."
-}
+    $git_cmd --git-dir="$git_dir" --work-tree="$work_tree" "$@" 
+  }
+
 
 #             _   _         
 #            | | | |        
@@ -104,4 +133,4 @@ alias riplong="expac --timefmt='%Y-%m-%d %T' '%l\t%n %v' | sort | tail -3000 | n
 #| .__/|_|  \___/|_| |_| |_| .__/ \__|
 #|_|                       |_|        
 
-eval "$(starship init bash)"
+eval "$(starship init zsh)"
