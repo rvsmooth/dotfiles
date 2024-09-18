@@ -191,9 +191,6 @@ widget_defaults = dict(
 )
 extension_defaults = widget_defaults.copy()
 
-left = ""
-right = ""
-
 screens = [
     Screen(
         top=bar.Bar(
@@ -201,17 +198,7 @@ screens = [
                 #########################
                 # Widget Configurations #
                 #########################
-                widget.CurrentLayoutIcon(
-                    custom_icon_paths=[
-                        os.path.expanduser("~/.config/qtile/icons")
-                        ],
-                    scale=0.6,
-                    **decoration_group,
-                    ),    
-                widget.Spacer(
-                    length=10,
-                ),
-                widget.GroupBox(
+                  widget.GroupBox(
                     font="JetBrainsMono Nerd Font",
                     fontsize=14,
                     padding_x=8,
@@ -227,11 +214,31 @@ screens = [
                     border="#98971a",
                     **decoration_group,
                 ),
-                widget.Spacer(
-                    length=10,
-                ),
+                  widget.TextBox(
+                      text="┃",
+                      foreground=gruvbox_palette["dark_aqua_soft"],
+                      decorations=[
+                          RectDecoration(
+                              colour=gruvbox_palette["dark0"],
+                              radius=10,
+                              filled=True,
+                              group=True
+                              )
+                          ],
+                      ),
+                     widget.CurrentLayoutIcon(
+                    custom_icon_paths=[
+                        os.path.expanduser("~/.config/qtile/icons")
+                        ],
+                    scale=0.6,
+                    **decoration_group,
+                    ),    
 
-                widget.TaskList(
+                  widget.Spacer(
+                      length=10,
+                      ),
+
+                  widget.TaskList(
                     margin=-8,
                     icon_size=0,
                     fontsize=12,
