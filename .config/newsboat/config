@@ -1,8 +1,7 @@
 #show-read-feeds no
 auto-reload yes
 
-external-url-viewer "urlscan -dc -r 'linkhandler {}'"
-
+#keybindings
 bind-key j down
 bind-key k up
 bind-key j next articlelist
@@ -11,35 +10,10 @@ bind-key J next-feed articlelist
 bind-key K prev-feed articlelist
 bind-key G end
 bind-key g home
-bind-key d pagedown
-bind-key u pageup
-bind-key l open
 bind-key h quit
-bind-key a toggle-article-read
-bind-key n next-unread
-bind-key N prev-unread
-bind-key D pb-download
-bind-key U show-urls
-bind-key x pb-delete
 
-color listnormal cyan default
-color listfocus black yellow standout bold
-color listnormal_unread blue default
-color listfocus_unread yellow default bold
-color info red black bold
-color article white default bold
 
 browser "librewolf %u"
-macro , open-in-browser
-macro t set browser "qndl" ; open-in-browser ; set browser librewolf
-macro a set browser "tsp yt-dlp --embed-metadata -xic -f bestaudio/best --restrict-filenames" ; open-in-browser ; set browser librewolf
-macro v set browser "setsid -f mpv" ; open-in-browser ; set browser
-macro w set browser "lynx" ; open-in-browser ; set browser librewolf
-macro d set browser "dmenuhandler" ; open-in-browser ; set browser librewolf
-macro c set browser "echo %u | xclip -r -sel c" ; open-in-browser ; set browser librewolf
-macro C set browser "youtube-viewer --comments=%u" ; open-in-browser ; set browser librewolf
-macro p set browser "peertubetorrent %u 480" ; open-in-browser ; set browser librewolf
-macro P set browser "peertubetorrent %u 1080" ; open-in-browser ; set browser librewolf
 
 highlight all "---.*---" yellow
 highlight feedlist ".*(0/0))" black
@@ -53,3 +27,12 @@ highlight article "\\[embedded flash: [0-9][0-9]*\\]" green default bold
 highlight article ":.*\\(link\\)$" cyan default
 highlight article ":.*\\(image\\)$" blue default
 highlight article ":.*\\(embedded flash\\)$" magenta default
+
+# colors
+color background          default  color235
+color listnormal          color94  color235
+color listfocus           color235   color136   bold
+color listnormal_unread   color108  color235
+color listfocus_unread    color235 color136  bold
+color info                color235   color107  bold
+color article             white    color235
