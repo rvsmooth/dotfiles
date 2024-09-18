@@ -23,6 +23,12 @@ function config
   eval $git_cmd $git_options $argv
 end
 
+function convert_file
+
+  mv $argv (echo -e (ls $argv | tr ' ' '_'))
+
+end
+
 #       _ _                    
 #      | (_)                   
 #  __ _| |_  __ _ ___  ___ ___ 

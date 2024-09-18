@@ -39,14 +39,26 @@ ssh-add $1
 }
 
 function config() {
-    git_cmd='/usr/bin/git'
-    git_dir="$HOME/.dotfiles/"
-    work_tree="$HOME"
+    git_cmd="/usr/bin/git"
+    git_options="--git-dir=$HOME/.dotfiles --work-tree=$HOME"
+    
+    untracked_files=$($git_cmd $git_options config --get status.showUntrackedFiles 2>/dev/null)
+    
+    if [[ -z "$untracked_files" || "$untracked_files" == "all" ]]; then
+        $git_cmd $git_options config --unset status.showUntrackedFiles
+        $git_cmd $git_options config status.showUntrackedFiles no
+        echo "UntrackedFiles was set to 'all' or not set. Changed to 'no'."
+    else
+        echo "UntrackedFiles is already set to no."
+    fi
+    
+    $git_cmd $git_options "$@"
+}
 
-    $git_cmd --git-dir="$git_dir" --work-tree="$work_tree" config --unset status.showuntrackedfiles 2>/dev/null
-    $git_cmd --git-dir="$git_dir" --work-tree="$work_tree" config status.showuntrackedfiles no
+function convert_file(){
 
-    $git_cmd --git-dir="$git_dir" --work-tree="$work_tree" "$@" 2>/dev/null || echo "No additional git commands provided or an error occurred."
+mv "$1" $(echo -e $(ls "$1" | tr ' ' '_'))
+
 }
 
 #             _   _         
@@ -96,9 +108,6 @@ alias mirror="sudo reflector -f 30 -l 30 --number 10 --verbose --save /etc/pacma
 #Recently Installed Packages
 alias rip="expac --timefmt='%Y-%m-%d %T' '%l\t%n %v' | sort | tail -200 | nl"
 alias riplong="expac --timefmt='%Y-%m-%d %T' '%l\t%n %v' | sort | tail -3000 | nl"
-
-#rtl8xxxu restart
-alias rsrtl="sudo rmmod rtl8xxxu;sudo modprobe rtl8xxxu"
 
 #                                 _   
 # _ __  _ __ ___  _ __ ___  _ __ | |_ 

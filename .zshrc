@@ -85,6 +85,11 @@ function config() {
     $git_cmd --git-dir="$git_dir" --work-tree="$work_tree" "$@" 
   }
 
+function convert_file(){
+
+mv "$1" $(echo -e $(ls "$1" | tr ' ' '_'))
+
+}
 
 #             _   _         
 #            | | | |        
