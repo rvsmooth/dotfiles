@@ -1,0 +1,42 @@
+#!/bin/bash
+
+APP='ColorShift'
+
+NOTIFY(){
+
+  notify-send --icon=redshift "$APP" "$@"
+
+}
+
+TEMP_OPTIONS=(
+  "ON"
+  "OFF"
+  "Custom"
+)
+
+# Create a menu for Rofi
+CHOICE=$(printf "%s\n" "${TEMP_OPTIONS[@]}" | rofi -dmenu -i -p "$APP")
+
+case "$CHOICE" in
+ "Custom")
+      CUSTOM_TEMP=$(rofi -dmenu -i -p "Custom temperature (e.g., 3000K):")
+      if [[ -n "$CUSTOM_TEMP" ]]; then
+        redshift -O "$CUSTOM_TEMP" &&
+        NOTIFY "Temperature has been set to "$CUSTOM_TEMP"."
+      else
+        NOTIFY "No custom temperature entered."
+      fi
+       ;;
+  "ON")
+        redshift -O 4500K &&
+        NOTIFY "Bluelight filter has been turned on."
+       ;;
+  "OFF")
+        redshift -x && 
+        NOTIFY "Bluelight filter has been turned off."
+       ;;
+   *)
+        NOTIFY "The operation has been aborted."
+       ;;
+esac
+

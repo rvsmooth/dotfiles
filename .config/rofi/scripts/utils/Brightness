@@ -1,0 +1,78 @@
+#!/bin/bash
+
+APP='Brightness Control'
+CURRENT_BRIGHTNESS=$(ddcutil getvcp 10 | awk -F '=' '{print $3}' | xargs)
+NOTIFY(){
+    notify-send --icon=brightness "$APP" "$@"
+}
+THEME_STR=''
+BRIGHTNESS_OPTS=(
+    "10%"
+    "20%"
+    "30%"
+    "40%"
+    "50%"
+    "60%"
+    "70%"
+    "80%"
+    "90%"
+    "100%"
+    "Custom"
+)
+
+# Create a menu for Rofi
+CHOICE=$(printf "%s\n" "${BRIGHTNESS_OPTS[@]}" | rofi -dmenu -i -p "Current Brightness: $CURRENT_BRIGHTNESS%" -theme-str 'window { height: 440; }')
+
+case "$CHOICE" in
+    "10%")
+        ddcutil setvcp 10 10 && NOTIFY "Brightness set to 10%."
+        ;;
+    "20%")
+        ddcutil setvcp 10 20 && NOTIFY "Brightness set to 20%."
+        ;;
+    "30%")
+        ddcutil setvcp 10 30 && NOTIFY "Brightness set to 30%."
+        ;;
+    "40%")
+        ddcutil setvcp 10 40 && NOTIFY "Brightness set to 40%."
+        ;;
+    "50%")
+        ddcutil setvcp 10 50 && NOTIFY "Brightness set to 50%."
+        ;;
+    "60%")
+        ddcutil setvcp 10 60 && NOTIFY "Brightness set to 60%."
+        ;;
+    "70%")
+        ddcutil setvcp 10 70 && NOTIFY "Brightness set to 70%."
+        ;;
+    "80%")
+        ddcutil setvcp 10 80 && NOTIFY "Brightness set to 80%."
+        ;;
+    "90%")
+        ddcutil setvcp 10 90 && NOTIFY "Brightness set to 90%."
+        ;;
+    "100%")
+        ddcutil setvcp 10 100 && NOTIFY "Brightness set to 100%."
+        ;;
+    "Custom")
+        CUSTOM_BRIGHTNESS=$(rofi -dmenu -i -p "Custom brightness (0-100):")
+        if [[ -n "$CUSTOM_BRIGHTNESS" && "$CUSTOM_BRIGHTNESS" =~ ^[0-9]+$ ]] && [ "$CUSTOM_BRIGHTNESS" -ge 0 ] && [ "$CUSTOM_BRIGHTNESS" -le 100 ]; then
+            ddcutil setvcp 10 "$CUSTOM_BRIGHTNESS" &&
+            NOTIFY "Brightness set to $CUSTOM_BRIGHTNESS%."
+        else
+            NOTIFY "Invalid custom brightness entered."
+        fi
+        ;;
+    "ON")
+        ddcutil setvcp 10 100 &&
+        NOTIFY "Brightness set to 100%."
+        ;;
+    "OFF")
+        ddcutil setvcp 10 0 && 
+        NOTIFY "Brightness turned off."
+        ;;
+    *)
+        NOTIFY "The operation has been aborted."
+        ;;
+esac
+
