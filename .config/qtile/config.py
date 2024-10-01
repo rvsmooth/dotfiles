@@ -304,7 +304,7 @@ screens = [
                     length=10,
                 ),
                 widget.Clock(
-                    format="󰧰 %a %d/%m/%y 󰥔 %H:%M",
+                    format="󰧰  %a %d/%m/%y  󰥔  %H:%M",
                     foreground=gruvbox_palette["bright_yellow"],
                     **decoration_group
                 ),
