@@ -26,7 +26,7 @@
 import os
 import subprocess
 from libqtile import bar, layout, qtile, hook
-from libqtile.config import Click, Drag, Group, Key, Match, Screen
+from libqtile.config import Click, Drag, Group, Key, Match, Screen, KeyChord, ScratchPad, DropDown
 from libqtile.lazy import lazy
 from pathlib import Path
 from qtile_extras import widget
@@ -36,8 +36,9 @@ from colors import gruvbox_palette
 mod       = "mod4"
 terminal  = "kitty"
 browser   = "librewolf"
-fileman   = "thunar"
+fileman   = "pcmanfm"
 rofi      = "rofi -show drun"
+Emacs = "emacsclient -c -a 'emacs' " # The space at the end is IMPORTANT!
 home = str(Path.home())
 
 
@@ -103,6 +104,7 @@ keys = [
     Key([mod], "b",          lazy.spawn(browser), desc="Launch browser"),
     Key([mod, "shift"], "f", lazy.spawn(fileman), desc="Launch file-manager"),
     Key([mod], "u",          lazy.spawn(home + "/.config/rofi/scripts/rofi-utils"), desc="Launch rofi utilities script"),
+    Key([mod], "e", lazy.spawn(Emacs), desc='Emacs Dashboard'),
 
     # Volume Management
     Key([mod], "F3",          lazy.spawn(home + "/.config/scripts-common/volume.sh --pw-incvol"), desc="Increase Volume(Pipewire)"),
@@ -112,8 +114,16 @@ keys = [
     # Screenshots
     Key([], "Print",          lazy.spawn("flameshot screen"), desc="Take a full screenshot"),
     Key([mod], "Print",       lazy.spawn("flameshot gui"), desc="Take a partial screenshot"),
-]
 
+    # variety keybindings
+    KeyChord([mod], "v", [
+        Key([], "n", lazy.spawn("variety --next"), desc='Listen to online radio'),
+        Key([], "p", lazy.spawn("variety --previous"), desc='Search various engines'),
+        Key([], "t", lazy.spawn("variety --trash"), desc='Translate text'),
+        Key([], "f", lazy.spawn("variety --favorite"), desc='Translate text')
+    ]),
+
+]
 # Add key bindings to switch VTs in Wayland.
 # We can't check qtile.core.name in default config as it is loaded before qtile is started
 # We therefore defer the check until the key binding is run by using .when(func=...)
@@ -161,6 +171,21 @@ for i in groups:
         ]
     )
 
+## ScratchPads
+layout_mus = { 'x': 0.30, 'y': 0.1, 'width': 0.40, 'height': 0.45, }
+layout_term = { 'x': 0.25, 'y': 0.1, 'width': 0.50, 'height': 0.45,'on_focus_lost_hide': False }
+
+groups.append(ScratchPad("7", [
+    DropDown("terminal", terminal, **layout_term),
+    DropDown("music", "kitty -e musikcube", **layout_mus),
+]))
+
+keys.extend([
+    Key([mod], 'F5', lazy.group["7"].dropdown_toggle("terminal")),
+    Key([mod], 'F6', lazy.group["7"].dropdown_toggle("music")),
+])
+
+
 layout_theme = {"border_width": 2,
                 "margin": 13,
                 "border_focus": "#98971a",
@@ -185,7 +210,7 @@ decoration_group = {
     "padding": 10,
 }
 widget_defaults = dict(
-    font="JetBrainsMono NF Medium",
+    font="Fira Sans",
     fontsize=12,
     padding=3,
 )
@@ -199,7 +224,6 @@ screens = [
                 # Widget Configurations #
                 #########################
                   widget.GroupBox(
-                    font="JetBrainsMono Nerd Font",
                     fontsize=14,
                     padding_x=8,
                     padding_y=-10,
@@ -239,7 +263,7 @@ screens = [
                       ),
 
                   widget.TaskList(
-                    margin=-8,
+                    margin=-6,
                     icon_size=0,
                     fontsize=12,
                     borderwidth=1,
@@ -258,12 +282,12 @@ screens = [
                     length=10,
                 ),
                 widget.CPU(
-                    format=" {load_percent}%",
+                    format="  {load_percent}%",
                     foreground=gruvbox_palette["neutral_aqua"],
                     **decoration_group
                 ),
                 widget.Memory(
-                    format=" {MemUsed:.0f}{mm}",
+                    format="  {MemUsed:.0f}{mm}",
                     foreground=gruvbox_palette["light_red"],
                     **decoration_group
                 ),
@@ -317,7 +341,7 @@ bring_front_click = False
 floats_kept_above = True
 cursor_warp = False
 floating_layout = layout.Floating(
-        border_focus=gruvbox_palette["faded_blue"],
+        border_focus=gruvbox_palette["dark_green_hard"],
     float_rules=[
         # Run the utility of `xprop` to see the wm class and name of an X client.
         *layout.Floating.default_float_rules,
