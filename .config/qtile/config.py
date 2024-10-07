@@ -319,8 +319,8 @@ screens = [
             ######################
             # BAR CONFIGURATIONS #
             ######################
-            25,
-            margin=[6, 10, 6, 10],
+            28,
+            margin=[4, 10, 4, 10],
             border_width=0,
             background="00000000"
         ),
