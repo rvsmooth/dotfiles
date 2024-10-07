@@ -320,7 +320,7 @@ screens = [
             # BAR CONFIGURATIONS #
             ######################
             28,
-            margin=[4, 10, 4, 10],
+            margin=[6, 10, 4, 10],
             border_width=0,
             background="00000000"
         ),
