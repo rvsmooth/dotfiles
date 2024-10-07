@@ -243,7 +243,7 @@ screens = [
                       foreground=gruvbox_palette["dark_aqua_soft"],
                       decorations=[
                           RectDecoration(
-                              colour=gruvbox_palette["dark0"],
+                              colour=gruvbox_palette["dark0_hard"],
                               radius=10,
                               filled=True,
                               group=True
