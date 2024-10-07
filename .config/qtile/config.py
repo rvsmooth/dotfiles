@@ -282,12 +282,12 @@ screens = [
                     length=10,
                 ),
                 widget.CPU(
-                    format="   {load_percent}%",
+                    format=" {load_percent}%",
                     foreground=gruvbox_palette["neutral_aqua"],
                     **decoration_group
                 ),
                 widget.Memory(
-                    format="   {MemUsed:.0f}{mm}",
+                    format=" {MemUsed:.0f}{mm}",
                     foreground=gruvbox_palette["light_red"],
                     **decoration_group
                 ),
@@ -295,7 +295,7 @@ screens = [
                         length=10,
                         ),
                 widget.Volume(
-                        fmt="󰕾  {}",
+                        fmt="󰕾 {}",
                         volume_app='wpctl',
                         foreground=gruvbox_palette["bright_green"],
                         **decoration_group
@@ -304,7 +304,7 @@ screens = [
                     length=10,
                 ),
                 widget.Clock(
-                    format="󰧰  %a %d/%m/%y  󰥔  %H:%M",
+                    format="󰧰 %a %d/%m/%y  󰥔 %H:%M",
                     foreground=gruvbox_palette["bright_yellow"],
                     **decoration_group
                 ),
