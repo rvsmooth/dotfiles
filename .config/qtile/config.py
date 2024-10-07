@@ -186,7 +186,7 @@ keys.extend([
 ])
 
 
-layout_theme = {"border_width": 2,
+layout_theme = {"border_width": 1,
                 "margin": 13,
                 "border_focus": "#98971a",
                 "border_normal": "#282828"
@@ -205,12 +205,12 @@ layouts = [
 
 decoration_group = {
     "decorations": [
-        RectDecoration(colour=gruvbox_palette["dark0"], radius=10, filled=True, group=True),
+        RectDecoration(colour=gruvbox_palette["dark0_hard"], radius=10, filled=True, group=True),
     ],
     "padding": 10,
 }
 widget_defaults = dict(
-    font="Fira Sans",
+    font="JetBrainsMono Nerd Font",
     fontsize=12,
     padding=3,
 )
@@ -282,12 +282,12 @@ screens = [
                     length=10,
                 ),
                 widget.CPU(
-                    format="  {load_percent}%",
+                    format="   {load_percent}%",
                     foreground=gruvbox_palette["neutral_aqua"],
                     **decoration_group
                 ),
                 widget.Memory(
-                    format="  {MemUsed:.0f}{mm}",
+                    format="   {MemUsed:.0f}{mm}",
                     foreground=gruvbox_palette["light_red"],
                     **decoration_group
                 ),
@@ -295,7 +295,7 @@ screens = [
                         length=10,
                         ),
                 widget.Volume(
-                        fmt="󰕾 {}",
+                        fmt="󰕾  {}",
                         volume_app='wpctl',
                         foreground=gruvbox_palette["bright_green"],
                         **decoration_group
