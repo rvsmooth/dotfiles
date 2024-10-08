@@ -31,17 +31,18 @@ from libqtile.lazy import lazy
 from pathlib import Path
 from qtile_extras import widget
 from qtile_extras.widget.decorations import RectDecoration
-from colors import gruvbox_palette
+import colors
 
+# Strings
 mod       = "mod4"
 terminal  = "kitty"
-browser   = "librewolf"
+browser   = "firefox-nightly"
 fileman   = "pcmanfm"
 rofi      = "rofi -show drun"
 Emacs = "emacsclient -c -a 'emacs' " # The space at the end is IMPORTANT!
 home = str(Path.home())
 
-
+# Keybindings
 keys = [
     # A list of available commands that can be bound to keys can be found
     # at https://docs.qtile.org/en/latest/manual/config/lazy.html
@@ -137,7 +138,7 @@ for vt in range(1, 8):
         )
     )
 
-
+# Workspaces
 groups = [
     Group("1", layout='monadtall', label=''),
     Group("2", layout='monadtall', label='󰐹'),
@@ -185,27 +186,28 @@ keys.extend([
     Key([mod], 'F6', lazy.group["7"].dropdown_toggle("music")),
 ])
 
+colors = colors.EverforestDarkHard
 
 layout_theme = {"border_width": 1,
                 "margin": 13,
-                "border_focus": "#98971a",
-                "border_normal": "#282828"
-                } 
+                "border_focus": colors[4],
+                "border_normal": colors[0],
+} 
 layouts = [
         layout.MonadTall(**layout_theme),
         layout.Max(),
         layout.Tile(
             border_width=1,
             margin=0,
-            border_focus="#98971a",
-            border_normal="#282828",
+            border_focus=colors[4],
+            border_normal=colors[0],
             ratio=0.5,
 ),
 ]
 
 decoration_group = {
     "decorations": [
-        RectDecoration(colour=gruvbox_palette["dark0_hard"], radius=10, filled=True, group=True),
+        RectDecoration(colour=colors[2], radius=10, filled=True, group=True),
     ],
     "padding": 10,
 }
@@ -231,19 +233,19 @@ screens = [
                     center_aligned=True,
                     disable_drag=True,
                     highlight_method="block",
-                    block_highlight_text_color=gruvbox_palette["bright_yellow"],
-                    active=gruvbox_palette["neutral_blue"],
-                    inactive=gruvbox_palette["dark_green_hard"],
-                    foreground=gruvbox_palette["dark2"],
-                    border="#98971a",
+                    block_highlight_text_color=colors[5],
+                    active=colors[6],
+                    inactive=colors[4],
+                    foreground=colors[5],
+                    border=colors[5],
                     **decoration_group,
                 ),
                   widget.TextBox(
                       text="┃",
-                      foreground=gruvbox_palette["dark_aqua_soft"],
+                      foreground=colors[1],
                       decorations=[
                           RectDecoration(
-                              colour=gruvbox_palette["dark0_hard"],
+                              colour=colors[2],
                               radius=10,
                               filled=True,
                               group=True
@@ -270,9 +272,9 @@ screens = [
                     highlight_method="border",
                     title_width_method="uniform",
                     urgent_alert_method="border",
-                    foreground=gruvbox_palette["light1"],
-                    border=gruvbox_palette["light1"],
-                    urgent_border=gruvbox_palette["neutral_red"],
+                    foreground=colors[1],
+                    border=colors[1],
+                    urgent_border=colors[4],
                     txt_floating="󰋹 ",
                     txt_maximized=" ",
                     txt_minimized="󰈉 ",
@@ -283,12 +285,12 @@ screens = [
                 ),
                 widget.CPU(
                     format=" {load_percent}%",
-                    foreground=gruvbox_palette["neutral_aqua"],
+                    foreground=colors[8],
                     **decoration_group
                 ),
                 widget.Memory(
                     format=" {MemUsed:.0f}{mm}",
-                    foreground=gruvbox_palette["light_red"],
+                    foreground=colors[4],
                     **decoration_group
                 ),
                 widget.Spacer(
@@ -297,7 +299,7 @@ screens = [
                 widget.Volume(
                         fmt="󰕾 {}",
                         volume_app='wpctl',
-                        foreground=gruvbox_palette["bright_green"],
+                        foreground=colors[5],
                         **decoration_group
                         ),
                 widget.Spacer(
@@ -305,7 +307,7 @@ screens = [
                 ),
                 widget.Clock(
                     format="󰧰 %a %d/%m/%y  󰥔 %H:%M",
-                    foreground=gruvbox_palette["bright_yellow"],
+                    foreground=colors[6],
                     **decoration_group
                 ),
                 widget.Spacer(
@@ -341,7 +343,7 @@ bring_front_click = False
 floats_kept_above = True
 cursor_warp = False
 floating_layout = layout.Floating(
-        border_focus=gruvbox_palette["dark_green_hard"],
+        border_focus=colors[5],
     float_rules=[
         # Run the utility of `xprop` to see the wm class and name of an X client.
         *layout.Floating.default_float_rules,
