@@ -1,0 +1,23 @@
+* {
+  background: #1E2326;
+  foreground: #D3C6AA;
+
+  black: #1E2326;
+  red: #E67E80;
+  green: #A7C080;
+  yellow: #DBBC7F;
+  blue: #7FBBB3;
+  purple: #D699B6;
+  aqua: #83C092;
+  white: #D3C6AA;
+  comment: #7A8478;
+  orange: #E69875;
+  identifier: #DBBC7F;
+  statement: #E67E80;
+  type: #A7C080;
+  special: #D699B6;
+
+  background-color: #1E2326;
+  border-radius: 5px;
+}
+

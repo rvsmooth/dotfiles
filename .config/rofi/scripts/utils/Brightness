@@ -5,7 +5,6 @@ CURRENT_BRIGHTNESS=$(ddcutil getvcp 10 | awk -F 'current value =' '{print $2}' |
 NOTIFY(){
     notify-send --icon=brightness "$APP" "$@"
 }
-THEME_STR=''
 BRIGHTNESS_OPTS=(
     "10%"
     "20%"
@@ -25,34 +24,34 @@ CHOICE=$(printf "%s\n" "${BRIGHTNESS_OPTS[@]}" | rofi -dmenu -i -p "Current Brig
 
 case "$CHOICE" in
     "10%")
-        ddcutil setvcp 10 10 && NOTIFY "Brightness set to 10%."
+        ddcutil setvcp 10 10 && NOTIFY "Brightness has been set to 10%."
         ;;
     "20%")
-        ddcutil setvcp 10 20 && NOTIFY "Brightness set to 20%."
+        ddcutil setvcp 10 20 && NOTIFY "Brightness has been set to 20%."
         ;;
     "30%")
-        ddcutil setvcp 10 30 && NOTIFY "Brightness set to 30%."
+        ddcutil setvcp 10 30 && NOTIFY "Brightness has been set to 30%."
         ;;
     "40%")
-        ddcutil setvcp 10 40 && NOTIFY "Brightness set to 40%."
+        ddcutil setvcp 10 40 && NOTIFY "Brightness has been set to 40%."
         ;;
     "50%")
-        ddcutil setvcp 10 50 && NOTIFY "Brightness set to 50%."
+        ddcutil setvcp 10 50 && NOTIFY "Brightness has been set to 50%."
         ;;
     "60%")
-        ddcutil setvcp 10 60 && NOTIFY "Brightness set to 60%."
+        ddcutil setvcp 10 60 && NOTIFY "Brightness has been set to 60%."
         ;;
     "70%")
-        ddcutil setvcp 10 70 && NOTIFY "Brightness set to 70%."
+        ddcutil setvcp 10 70 && NOTIFY "Brightness has been set to 70%."
         ;;
     "80%")
-        ddcutil setvcp 10 80 && NOTIFY "Brightness set to 80%."
+        ddcutil setvcp 10 80 && NOTIFY "Brightness has been set to 80%."
         ;;
     "90%")
-        ddcutil setvcp 10 90 && NOTIFY "Brightness set to 90%."
+        ddcutil setvcp 10 90 && NOTIFY "Brightness has been set to 90%."
         ;;
     "100%")
-        ddcutil setvcp 10 100 && NOTIFY "Brightness set to 100%."
+        ddcutil setvcp 10 100 && NOTIFY "Brightness has been set to 100%."
         ;;
     "Custom")
         CUSTOM_BRIGHTNESS=$(rofi -dmenu -i -p "Custom brightness (0-100):")

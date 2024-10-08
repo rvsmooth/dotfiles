@@ -1,25 +1,4 @@
-* {
- background: #282828 ;
- foreground: #ebdbb2 ;
-  
- black: #1d2021;
- red: #cc241d;
- green: #98971a;
- yellow: #d79921;
- blue: #458588;
- purple: #b16286;
- aqua: #689d6a;
- white: #f9f5d7;
- comment: #7c6f64;
- orange: #d65d0e;
- identifier: #b8bb26;
- statement: #cc241d;
- type: #8ec07c;
- special: #d3869b ;
- 
- background-color: @background;
- border-radius: 5px;
-}
+@import "~/.config/rofi/themes/colors/EverforestDarkHard.rasi"
 
 window {
  width: 750;
