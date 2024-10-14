@@ -16,7 +16,8 @@
  statement: #cc241d;
  type: #8ec07c;
  special: #d3869b ;
- 
+
+ accent: @orange;
  background-color: @background;
  border-radius: 5px;
 }
