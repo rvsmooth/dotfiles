@@ -140,12 +140,12 @@ for vt in range(1, 8):
 
 # Workspaces
 groups = [
-    Group("1", layout='monadtall', label=''),
-    Group("2", layout='monadtall', label='󰐹'),
-    Group("3", layout='monadtall', label=''),
-    Group("4", layout='tile',      label=''),
-    Group("5", layout='max',       label=''),
-    Group("6", layout='floating',  label=''),
+    Group("1", layout='monadtall', label='1'),
+    Group("2", layout='monadtall', label='2'),
+    Group("3", layout='monadtall', label='3'),
+    Group("4", layout='tile',      label='4'),
+    Group("5", layout='max',       label='5'),
+    Group("6", layout='floating',  label='6'),
 ]
 
 for i in groups:
@@ -187,35 +187,33 @@ keys.extend([
 ])
 
 # colorscheme
-colors = colors.EverforestDarkHard
+colors = colors.Dracula
 
-layout_theme = {"border_width": 2,
-                "margin": 13,
-                "border_focus": colors[4],
-                "border_normal": colors[0],
+layout_theme = {
+        "border_width": 2,
+        "margin": 13,
+        "border_focus": colors[4],
+        "border_normal": colors[3],
 } 
 layouts = [
         layout.MonadTall(**layout_theme),
         layout.Max(),
         layout.Tile(
-            border_width=2,
+            border_width=0,
             margin=0,
             border_focus=colors[4],
-            border_normal=colors[0],
+            border_normal=colors[3],
             ratio=0.5,
 ),
 ]
 
 decoration_group = {
-    "decorations": [
-        RectDecoration(colour=colors[2], radius=10, filled=True, group=True),
-    ],
-    "padding": 10,
+        "foreground": colors[10],
+        "padding": 10,
 }
 widget_defaults = dict(
-    font="JetBrainsMono Nerd Font",
-    fontsize=12,
-    padding=3,
+    font="JetBrainsMono Nerd Font Bold",
+    fontsize=13,
 )
 extension_defaults = widget_defaults.copy()
 
@@ -226,93 +224,33 @@ screens = [
                 #########################
                 # Widget Configurations #
                 #########################
-                  widget.GroupBox(
-                    fontsize=14,
-                    padding_x=8,
-                    padding_y=-10,
-                    rounded=False,
-                    center_aligned=True,
-                    disable_drag=True,
-                    highlight_method="block",
-                    block_highlight_text_color=colors[5],
-                    active=colors[6],
-                    inactive=colors[4],
-                    foreground=colors[5],
-                    border=colors[5],
-                    **decoration_group,
-                ),
-                  widget.TextBox(
-                      text="┃",
-                      foreground=colors[1],
-                      decorations=[
-                          RectDecoration(
-                              colour=colors[2],
-                              radius=10,
-                              filled=True,
-                              group=True
-                              )
-                          ],
-                      ),
-                     widget.CurrentLayoutIcon(
+                widget.CurrentLayoutIcon(
                     custom_icon_paths=[
                         os.path.expanduser("~/.config/qtile/icons")
                         ],
-                    scale=0.6,
+                    scale=0.5,
                     **decoration_group,
-                    ),    
+                ),    
+                  widget.GroupBox(
+                    font="JetBrainsMono Nerd Font Bold",
+                    padding=5,
+                    active=colors[10],
+                    disable_drag=True,
+                    highlight_method='line',
+                    highlight_color=colors[0],
+                    this_current_screen_border = colors[4],
+                ),
 
-                  widget.Spacer(
-                      length=10,
-                      ),
-
-                  widget.TaskList(
-                    margin=-6,
-                    icon_size=0,
-                    fontsize=12,
-                    borderwidth=1,
-                    highlight_method="border",
-                    title_width_method="uniform",
-                    urgent_alert_method="border",
-                    foreground=colors[1],
-                    border=colors[1],
-                    urgent_border=colors[4],
-                    txt_floating="󰋹 ",
-                    txt_maximized=" ",
-                    txt_minimized="󰈉 ",
-                    **decoration_group
-                ),
-                widget.Spacer(
-                    length=10,
-                ),
-                widget.CPU(
-                    format=" {load_percent}%",
-                    foreground=colors[8],
-                    **decoration_group
-                ),
-                widget.Memory(
-                    format=" {MemUsed:.0f}{mm}",
-                    foreground=colors[4],
-                    **decoration_group
-                ),
-                widget.Spacer(
-                        length=10,
-                        ),
-                widget.Volume(
-                        fmt="󰕾 {}",
-                        volume_app='wpctl',
-                        foreground=colors[5],
-                        **decoration_group
-                        ),
-                widget.Spacer(
-                    length=10,
-                ),
+                widget.Spacer(length=bar.STRETCH),
                 widget.Clock(
-                    format="󰧰 %a %d/%m/%y  󰥔 %H:%M",
-                    foreground=colors[6],
+                    format="%b %d %I:%M %p",
                     **decoration_group
                 ),
-                widget.Spacer(
-                    length=10,
+                widget.Spacer(length=bar.STRETCH),
+                widget.Volume(
+                    fmt="󰕾 {}",
+                    volume_app='wpctl',
+                    **decoration_group
                 ),
                 widget.Systray(
                     icon_size=20,
@@ -322,10 +260,10 @@ screens = [
             ######################
             # BAR CONFIGURATIONS #
             ######################
-            28,
-            margin=[6, 10, 4, 10],
+            25,
+            margin=[0, 0, 0, 0],
             border_width=0,
-            background="00000000"
+            background=colors[0]
         ),
     ),
 ]
