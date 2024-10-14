@@ -36,7 +36,7 @@ import colors
 # Strings
 mod       = "mod4"
 terminal  = "kitty"
-browser   = "firefox-nightly"
+browser   = "brave"
 fileman   = "pcmanfm"
 rofi      = "rofi -show drun"
 Emacs = "emacsclient -c -a 'emacs' " # The space at the end is IMPORTANT!
@@ -186,9 +186,10 @@ keys.extend([
     Key([mod], 'F6', lazy.group["7"].dropdown_toggle("music")),
 ])
 
+# colorscheme
 colors = colors.EverforestDarkHard
 
-layout_theme = {"border_width": 1,
+layout_theme = {"border_width": 2,
                 "margin": 13,
                 "border_focus": colors[4],
                 "border_normal": colors[0],
@@ -197,7 +198,7 @@ layouts = [
         layout.MonadTall(**layout_theme),
         layout.Max(),
         layout.Tile(
-            border_width=1,
+            border_width=2,
             margin=0,
             border_focus=colors[4],
             border_normal=colors[0],

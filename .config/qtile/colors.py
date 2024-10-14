@@ -183,5 +183,6 @@ EverforestDarkHard = [
     ["#3A94C5", "#3A94C5"], # accent #color06
     ["#D699B6", "#D699B6"], # purple #color07
     ["#7FBBB3", "#7FBBB3"], # blue #color08
+    ["#DBBC7F", ""]
 ]
 
