@@ -2,9 +2,21 @@
 
 # Define the options
 options="Shutdown\nReboot\nLogout\nSuspend"
+run_rofi() {
 
+rofi -dmenu \
+   -theme-str 'inputbar {enabled: false;}' \
+   -theme-str 'prompt {enabled: false;}' \
+   -theme-str 'window {height: 195;}' \
+   -theme-str 'listview {margin: 14px; spacing: 10px; lines: 4; columns: 4; fixed-columns: true; padding: 10px; layout: horizontal;}' \
+   -theme-str 'element {padding: 50px;}' \
+   -theme-str 'inputbar {enabled: false;}' \
+   -theme-str 'prompt {enabled: false;}' \
+   -theme-str ' window {height: 195;}' 
+
+}
 # Use rofi to display the menu
-selected=$(echo -e "$options" | rofi -dmenu -theme-str 'inputbar {enabled: false;}' -theme-str 'prompt {enabled: false;}' -theme-str ' window {height: 195;}' -theme-str ' listview { margin: 14px; spacing: 10px; lines:4; columns:4; fixed-columns: true; padding: 10px; layout: horizontal;}' -theme-str 'element {padding: 50px;}')
+selected=$(echo -e "$options" | run_rofi)
 
 # Act based on the selected option
 case "$selected" in
