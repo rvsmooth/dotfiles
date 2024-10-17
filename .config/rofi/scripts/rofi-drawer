@@ -1,6 +1,6 @@
 #!/usr/bin/env bash
 
-rofi -show drun -show-icons -p "Apps:" \
+rofi -show drun -drun-display-format {name} -show-icons -p "Apps:" \
     -theme-str '* {background-color: @background;}' \
     -theme-str 'window {width: 1700; height: 900;}' \
     -theme-str 'listview {margin: 40px 0px -40 0px; spacing: 20px; columns: 10; layout: vertical; dynamic: true;}' \
@@ -9,6 +9,5 @@ rofi -show drun -show-icons -p "Apps:" \
     -theme-str 'element selected.normal { background-color: @accent; text-color: @black; }' \
     -theme-str 'element normal.normal { background-color: @background; }' \
     -theme-str 'prompt {enabled: false;}' \
-    -theme-str 'entry { horizontal-align: 0.5;}' \
     -theme-str 'mainbox {padding: 2% 0% 2% 1%;}' \
-    -theme-str 'entry {background-color: @accent; padding: 7px 0px 7px 0px; border-radius: 50%;}'
+    -theme-str 'entry {horizontal-align: 0.5; placeholder-color: @black; text-color: @black; background-color: @accent; padding: 7px 0px 7px 0px; border-radius: 50%;}'
