@@ -1,15 +1,17 @@
 Dracula  = [
     ["#000000", "#000000"], #c0-crust
-    ["#282a36", "#282a36"], #c1-background
-    ["#f8f8f2", "#f8f8f2"], #c2-foreground
+    ["#282A36", "#282A36"], #c1-background
+    ["#F8F8F2", "#F8F8F2"], #c2-foreground
     ["#44475A", "#44475A"], #c3-grey
-    ["#bd93f9", "#bd93f9"], #c4-accent
-    ["#ff5555", "#ff5555"], #c5-red 
-    ["#50fa7b", "#50fa7b"], #c6-green
-    ["#f1fa8c", "#f1fa8c"], #c7-yellow
-    ["#ff79c6", "#ff79c6"], #c8-pink
-    ["#9aedfe", "#9aedfe"], #c9-blue
-    ["#f8f8f2", "#f8f8f2"]  #c10-text
+    ["#BD93F9", "#BD93F9"], #c4-accent
+    ["#FF5555", "#FF5555"], #c5-red 
+    ["#50FA7B", "#50FA7B"], #c6-green
+    ["#F1FA8C", "#F1FA8C"], #c7-yellow
+    ["#FFB86C", "#FFB86C"], #c8-orange
+    ["#FF79C6", "#FF79C6"], #c9-pink
+    ["#9AEDFE", "#9AEDFE"], #c10-blue
+    ["#F8F8F2", "#F8F8F2"],  #c11-text
+    ["#282A3688", "#282A3688"], #c12-bar
     ]
 
 EverforestDarkHard = [

@@ -1,0 +1,15 @@
+#!/usr/bin/env bash
+
+
+
+rofi -show drun -show-icons -p "Apps:" \
+    -theme-str '* {background-color: transparent;}' \
+    -theme-str 'window {width: 1700; height: 900;}' \
+    -theme-str 'listview {margin: 30px 10px 10px 10px; spacing: 20px; columns: 10; flow: vertical;}' \
+    -theme-str 'element {padding: 10px; spacing: 20px; orientation: vertical; border-radius: 16px;}' \
+    -theme-str 'element-icon { size: 2.5em; horizontal-align: 0.5;}' \
+    -theme-str 'element-text { horizontal-align: 0.5; }' \
+    -theme-str 'element.selected { background-color: @accent; }' \
+    -theme-str 'element.normal.normal { background-color: transparent; }' \
+    -theme-str 'prompt {enabled: false;}' \
+    -theme-str 'entry { horizontal-align: 0.5;}'

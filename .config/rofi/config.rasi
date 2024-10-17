@@ -1,8 +1,8 @@
 configuration {
-  modes: [ combi ];
+  modes: [ combi, drun ];
   combi-modes: [ window, drun, run ];
   font: "JetBrainsMono NF Medium 11";
 }
 
-@theme "~/.config/rofi/themes/RVS_Static.rasi"
+@theme "~/.config/rofi/themes/RVS_Menu.rasi"
 

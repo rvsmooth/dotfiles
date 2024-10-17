@@ -1,7 +1,7 @@
 #!/bin/bash
 picom --daemon &
 dunst &
-feh --bg-fill $HOME/Pictures/wallpapers/arch.png &
+feh --bg-fill $HOME/Pictures/wallpapers/forest_07.jpg &
 /usr/bin/lxpolkit &
 /usr/bin/emacs --daemon &
 # variety &

@@ -140,12 +140,12 @@ for vt in range(1, 8):
 
 # Workspaces
 groups = [
-    Group("1", layout='monadtall', label='1'),
-    Group("2", layout='monadtall', label='2'),
-    Group("3", layout='monadtall', label='3'),
-    Group("4", layout='tile',      label='4'),
-    Group("5", layout='max',       label='5'),
-    Group("6", layout='floating',  label='6'),
+    Group("1", layout='monadtall', label='●'),
+    Group("2", layout='monadtall', label='●'),
+    Group("3", layout='monadtall', label='●'),
+    Group("4", layout='tile',      label='●'),
+    Group("5", layout='max',       label='●'),
+    Group("6", layout='floating',  label='●'),
 ]
 
 for i in groups:
@@ -173,7 +173,7 @@ for i in groups:
     )
 
 ## ScratchPads
-layout_mus = { 'x': 0.30, 'y': 0.1, 'width': 0.40, 'height': 0.45, }
+layout_mus = { 'x': 0.30, 'y': 0.1, 'width': 0.40, 'height': 0.45, 'on_focus_lost_hide': False }
 layout_term = { 'x': 0.25, 'y': 0.1, 'width': 0.50, 'height': 0.45,'on_focus_lost_hide': False }
 
 groups.append(ScratchPad("7", [
@@ -208,8 +208,11 @@ layouts = [
 ]
 
 decoration_group = {
-        "foreground": colors[10],
+        "foreground": colors[11],
         "padding": 10,
+        "decorations": [
+            RectDecoration(colour=colors[1], radius=13, filled=True, padding_y=4, group=True)
+            ]
 }
 widget_defaults = dict(
     font="JetBrainsMono Nerd Font Bold",
@@ -224,22 +227,23 @@ screens = [
                 #########################
                 # Widget Configurations #
                 #########################
-                widget.CurrentLayoutIcon(
-                    custom_icon_paths=[
-                        os.path.expanduser("~/.config/qtile/icons")
-                        ],
-                    scale=0.5,
-                    **decoration_group,
-                ),    
+                  widget.Spacer(length=5),
                   widget.GroupBox(
                     font="JetBrainsMono Nerd Font Bold",
-                    padding=5,
-                    active=colors[10],
+                    active=colors[4],
+                    inactive=colors[3],
                     disable_drag=True,
-                    highlight_method='line',
-                    highlight_color=colors[0],
-                    this_current_screen_border = colors[4],
+                    highlight_method='block',
+                    highlight_color=colors[12],
+                    this_current_screen_border = "#00000000",
+                    block_highlight_text_color=colors[8],
+                    **decoration_group
                 ),
+                  widget.Spacer(length=10),
+                  widget.CurrentLayout(
+                      scale=0.5,
+                      **decoration_group,
+                ),    
 
                 widget.Spacer(length=bar.STRETCH),
                 widget.Clock(
@@ -247,6 +251,30 @@ screens = [
                     **decoration_group
                 ),
                 widget.Spacer(length=bar.STRETCH),
+                widget.Bluetooth(
+                default_text='{connected_devices}',
+                fmt='󰂯 {}',
+                max_chars=10,
+                **decoration_group
+                ),
+                widget.Spacer(length=10),
+                widget.CPU(
+                    format='{load_percent}%',
+                    fmt=' {}',
+                    **decoration_group
+                ),
+                widget.HDD(
+                    format='{HDDPercent}%',
+                    fmt=' {}',
+                    **decoration_group
+                ),
+                widget.Memory(
+                    measure_mem='G',
+                    format='{MemUsed:.0f}{mm}/{MemTotal:.0f}{mm}',
+                    fmt='  {}',
+                    **decoration_group
+                ),
+                widget.Spacer(length=10),
                 widget.Volume(
                     fmt="󰕾 {}",
                     volume_app='wpctl',
@@ -256,14 +284,15 @@ screens = [
                     icon_size=20,
                     fmt="{}",
                 ),
+                widget.Spacer(length=5),
             ],
             ######################
             # BAR CONFIGURATIONS #
             ######################
-            25,
-            margin=[0, 0, 0, 0],
+            38,
+            margin=[10, 8, 0, 8],
             border_width=0,
-            background=colors[0]
+            background=colors[12]
         ),
     ),
 ]
@@ -282,7 +311,8 @@ bring_front_click = False
 floats_kept_above = True
 cursor_warp = False
 floating_layout = layout.Floating(
-        border_focus=colors[5],
+        border_focus=colors[4],
+        border_normal=colors[3],
     float_rules=[
         # Run the utility of `xprop` to see the wm class and name of an X client.
         *layout.Floating.default_float_rules,
