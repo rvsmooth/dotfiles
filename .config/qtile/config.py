@@ -244,7 +244,12 @@ screens = [
                       scale=0.5,
                       **decoration_group,
                 ),    
-
+                  widget.Spacer(length=10),
+                  widget.TextBox(
+                      text="Apps",
+                      mouse_callbacks={"Button1": lambda: qtile.cmd_spawn(home + "/.config/rofi/scripts/rofi-drawer")},
+                      **decoration_group
+                ),
                 widget.Spacer(length=bar.STRETCH),
                 widget.Clock(
                     format="%b %d %I:%M %p",
