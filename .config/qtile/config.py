@@ -62,7 +62,12 @@ keys = [
     Key([mod], "right", lazy.layout.right(), desc="Move focus to right"),
     Key([mod], "down", lazy.layout.down(), desc="Move focus down"),
     Key([mod], "up", lazy.layout.up(), desc="Move focus up"),
-    Key([mod], "tab", lazy.layout.next(), desc="Move window focus to other window"),
+    Key(
+        [mod, "shift"],
+        "tab",
+        lazy.layout.next(),
+        desc="Move window focus to other window",
+    ),
     # Move windows between left/right columns or move up/down in current stack.
     # Moving out of range in Columns layout will create new column.
     Key(
@@ -199,7 +204,7 @@ groups = [
     Group("3", layout="monadtall", label="●"),
     Group("4", layout="tile", label="●"),
     Group("5", layout="max", label="●"),
-    Group("6", layout="floating", label="●"),
+    Group("6", layout="max", label="●"),
 ]
 
 for i in groups:
@@ -325,7 +330,10 @@ screens = [
                 ),
                 widget.Spacer(length=10),
                 widget.Volume(fmt="󰕾 {}", volume_app="wpctl", **decoration_group),
-                widget.Systray(icon_size=20, fmt="{}", **decoration_group),
+                widget.Systray(
+                    icon_size=20,
+                    fmt="{}",
+                ),
                 widget.Spacer(length=5),
             ],
             ######################
