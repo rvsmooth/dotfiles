@@ -83,7 +83,8 @@ keys = [
     Key([mod, "shift"], "k", lazy.layout.shuffle_up(), desc="Move window up"),
     # Grow windows. If current window is on the edge of screen and direction
     # will be to screen edge - window would shrink.
-    Key([mod, "control"], "h", lazy.layout.grow_left(), desc="Grow window to the left"),
+    Key([mod, "control"], "h", lazy.layout.grow_left(),
+        desc="Grow window to the left"),
     Key(
         [mod, "control"], "l", lazy.layout.grow_right(), desc="Grow window to the right"
     ),
@@ -168,21 +169,24 @@ keys = [
         desc="Mute Volume(Pipewire)",
     ),
     # Screenshots
-    Key([], "Print", lazy.spawn("flameshot screen"), desc="Take a full screenshot"),
-    Key([mod], "Print", lazy.spawn("flameshot gui"), desc="Take a partial screenshot"),
+    Key([], "Print", lazy.spawn("flameshot screen"),
+        desc="Take a full screenshot"),
+    Key([mod], "Print", lazy.spawn("flameshot gui"),
+        desc="Take a partial screenshot"),
     # variety keybindings
-    KeyChord(
-        [mod],
-        "v",
-        [
-            Key([], "n", lazy.spawn("variety --next"), desc="Listen to online radio"),
-            Key(
-                [], "p", lazy.spawn("variety --previous"), desc="Search various engines"
-            ),
-            Key([], "t", lazy.spawn("variety --trash"), desc="Translate text"),
-            Key([], "f", lazy.spawn("variety --favorite"), desc="Translate text"),
-        ],
-    ),
+#    KeyChord(
+#        [mod],
+#        "v",
+#        [
+#            Key([], "n", lazy.spawn("variety --next"),
+#                desc="Listen to online radio"),
+#            Key(
+#                [], "p", lazy.spawn("variety --previous"), desc="Search various engines"
+#            ),
+#            Key([], "t", lazy.spawn("variety --trash"), desc="Translate text"),
+#            Key([], "f", lazy.spawn("variety --favorite"), desc="Translate text"),
+#        ],
+#    ),
 ]
 # Add key bindings to switch VTs in Wayland.
 # We can't check qtile.core.name in default config as it is loaded before qtile is started
@@ -192,7 +196,8 @@ for vt in range(1, 8):
         Key(
             ["control", "mod1"],
             f"f{vt}",
-            lazy.core.change_vt(vt).when(func=lambda: qtile.core.name == "wayland"),
+            lazy.core.change_vt(vt).when(
+                func=lambda: qtile.core.name == "wayland"),
             desc=f"Switch to VT{vt}",
         )
     )
@@ -222,7 +227,8 @@ for i in groups:
                 [mod, "shift"],
                 i.name,
                 lazy.window.togroup(i.name, switch_group=True),
-                desc="Switch to & move focused window to group {}".format(i.name),
+                desc="Switch to & move focused window to group {}".format(
+                    i.name),
             ),
             # Or, use below if you prefer not to switch to that group.
             # # mod + shift + group number = move focused window to group
@@ -231,7 +237,7 @@ for i in groups:
         ]
     )
 
-## ScratchPads
+# ScratchPads
 layout_mus = {
     "x": 0.30,
     "y": 0.1,
@@ -288,11 +294,6 @@ layouts = [
 decoration_group = {
     "foreground": colors[11],
     "padding": 10,
-    "decorations": [
-        RectDecoration(
-            colour=colors[1], radius=13, filled=True, padding_y=4, group=True
-        )
-    ],
 }
 widget_defaults = dict(
     font="JetBrainsMono Nerd Font Bold",
@@ -315,7 +316,7 @@ screens = [
                     disable_drag=True,
                     highlight_method="block",
                     highlight_color=colors[12],
-                    this_current_screen_border="#00000000",
+                    this_current_screen_border=colors[1],
                     block_highlight_text_color=colors[8],
                     **decoration_group,
                 ),
@@ -328,9 +329,9 @@ screens = [
                     max_chars=10,
                     **decoration_group,
                 ),
-                widget.Spacer(length=10),
-                widget.Volume(fmt="󰕾 {}", volume_app="wpctl", **decoration_group),
-                widget.Systray(
+                widget.Spacer(length=5),
+                widget.Volume(fmt="󰕾 {}", volume_app="wpctl",
+                              **decoration_group),                widget.Systray(
                     icon_size=20,
                     fmt="{}",
                 ),
@@ -339,10 +340,10 @@ screens = [
             ######################
             # BAR CONFIGURATIONS #
             ######################
-            38,
-            margin=[10, 8, 0, 8],
+            25,
+            margin=[0, 0, 0, 0],
             border_width=0,
-            background=colors[12],
+            background=colors[1],
         ),
     ),
 ]

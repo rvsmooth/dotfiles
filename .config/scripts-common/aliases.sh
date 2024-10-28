@@ -6,8 +6,8 @@
 # \__,_|_|_|\__,_|___/\___|___/                           
 
 # list & grep
-alias ll='ls -alFh'
-alias ls='ls --color=auto'
+alias ll='ls -alFh --group-directories-first'
+alias ls='ls --color=auto --group-directories-first'
 alias grep='grep --color=auto'
 
 
