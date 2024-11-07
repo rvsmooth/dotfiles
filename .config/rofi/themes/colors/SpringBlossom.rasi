@@ -1,0 +1,19 @@
+* {
+background: #190f0d ;
+foreground: #E4E3E7 ;
+
+black: @background;
+red: #A4320F;
+green: #728827;
+yellow: #C19421;
+blue: #A8D6F0;
+aqua: #6C7887;
+white: @foreground;
+comment: #929a9b;
+orange: #BB4C12;
+accent: @orange;
+ 
+ background-color: @background;
+ border-radius: 5px;
+}
+
