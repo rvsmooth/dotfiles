@@ -27,11 +27,13 @@ import os
 import subprocess
 from pathlib import Path
 
-import colors
 from libqtile import bar, hook, layout, qtile
 from libqtile.config import Click, Drag, DropDown, Group, Key, Match, ScratchPad, Screen
 from libqtile.lazy import lazy
 from qtile_extras import widget
+from qtile_extras.widget.decorations import BorderDecoration
+
+import colors
 
 # Strings
 mod = "mod4"
@@ -184,12 +186,12 @@ for vt in range(1, 8):
 
 # groups and layouts
 groups = [
-    Group("1", layout="monadtall", label="●"),
-    Group("2", layout="monadtall", label="●"),
-    Group("3", layout="monadtall", label="●"),
-    Group("4", layout="tile", label="●"),
-    Group("5", layout="tile", label="●"),
-    Group("6", layout="tile", label="●"),
+    Group("1", layout="monadtall", label="1"),
+    Group("2", layout="monadtall", label="2"),
+    Group("3", layout="monadtall", label="3"),
+    Group("4", layout="tile", label="3"),
+    Group("5", layout="tile", label="4"),
+    Group("6", layout="tile", label="5"),
 ]
 
 layout_theme = {
@@ -272,7 +274,7 @@ decoration_group = {
     "padding": 10,
 }
 widget_defaults = dict(
-    font="JetBrainsMono Nerd Font Bold",
+    font="Roboto Bold",
     fontsize=13,
 )
 extension_defaults = widget_defaults.copy()
@@ -286,27 +288,77 @@ screens = [
                 #########################
                 widget.Spacer(length=5),
                 widget.GroupBox(
-                    font="JetBrainsMono Nerd Font Bold",
-                    active=colors[4],
+                    active=colors[2],
                     inactive=colors[3],
                     disable_drag=True,
-                    highlight_method="block",
+                    highlight_method="line",
                     highlight_color=colors[12],
-                    this_current_screen_border=colors[1],
-                    block_highlight_text_color=colors[8],
-                    **decoration_group,
+                    this_current_screen_border=colors[4],
                 ),
                 widget.Spacer(length=bar.STRETCH),
-                widget.Clock(format="%b %d %I:%M %p", **decoration_group),
+                widget.Clock(
+                    format="%b %d %I:%M %p",
+                    **decoration_group,
+                    decorations=[
+                        BorderDecoration(
+                            colour=colors[7],
+                            border_width=[0, 0, 3, 0],
+                            padding_y=-1,
+                        )
+                    ],
+                ),
                 widget.Spacer(length=bar.STRETCH),
                 widget.Bluetooth(
                     default_text="{connected_devices}",
                     fmt="󰂯 {}",
                     max_chars=10,
                     **decoration_group,
+                    decorations=[
+                        BorderDecoration(
+                            colour=colors[9],
+                            border_width=[0, 0, 3, 0],
+                            padding_y=-1,
+                        )
+                    ],
                 ),
                 widget.Spacer(length=5),
-                widget.Volume(fmt="󰕾 {}", volume_app="wpctl", **decoration_group),
+                widget.Volume(
+                    fmt="󰕾 {}",
+                    volume_app="wpctl",
+                    **decoration_group,
+                    decorations=[
+                        BorderDecoration(
+                            colour=colors[8],
+                            border_width=[0, 0, 3, 0],
+                            padding_y=-1,
+                        )
+                    ],
+                ),
+                widget.Spacer(length=5),
+                widget.CPU(
+                    format="   {load_percent}%",
+                    **decoration_group,
+                    decorations=[
+                        BorderDecoration(
+                            colour=colors[6],
+                            border_width=[0, 0, 3, 0],
+                            padding_y=-1,
+                        )
+                    ],
+                ),
+                widget.Spacer(length=5),
+                widget.HDD(
+                        format="  {HDDPercent}%",
+                    **decoration_group,
+                    decorations=[
+                        BorderDecoration(
+                            colour=colors[10],
+                            border_width=[0, 0, 3, 0],
+                            padding_y=-1,
+                        )
+                    ],
+
+                ),
                 widget.Systray(
                     icon_size=20,
                     fmt="{}",
@@ -316,7 +368,7 @@ screens = [
             ######################
             # BAR CONFIGURATIONS #
             ######################
-            25,
+            29,
             margin=[0, 0, 0, 0],
             border_width=0,
             background=colors[1],
