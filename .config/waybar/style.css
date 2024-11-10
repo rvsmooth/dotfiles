@@ -1,14 +1,17 @@
 * {
-    font-family: FontAwesome, Roboto, Helvetica, Arial, sans-serif;
-    font-size: 13px;
+    font-family: Roboto, JetbrainsMono NF;
+    font-size: 12px;
     min-height: 0;
+    font-weight: 500;
 }
 
+@import 'themes/dracula.css';
+
 window#waybar {
-    background-color: rgba(0, 0, 0, 0); /* Gruvbox dark background */
-    color: #ebdbb2; /* Gruvbox light foreground */
+    background-color: @base;
     transition-property: background-color;
     transition-duration: .5s;
+    border-radius: 0;
 }
 
 window#waybar.hidden {
@@ -16,56 +19,58 @@ window#waybar.hidden {
 }
 
 button {
-    /* Use box-shadow instead of border so the text isn't offset */
     box-shadow: inset 0 -3px transparent;
-    /* Avoid rounded borders under each button name */
     border: none;
-    border-radius: 0;
 }
 
 button:hover {
     background: inherit;
-    box-shadow: inset 0 -3px #ebdbb2; /* Gruvbox light foreground */
+    box-shadow: inset 0 -3px #f8f8f2;
 }
 
-/* you can set a style on hover for any module like this */
 #pulseaudio:hover {
-    background-color: #d65d0e; /* Gruvbox orange */
+    background-color: #ff79c6;
 }
 
 #workspaces {
-    color: #ebdbb2; /* Gruvbox light foreground */
-    border-radius: 100%;
+    color: #f8f8f2;
 }
 
-/* If workspaces is the leftmost module, omit left margin */
+#workspaces label {
+  font-size: 13px;
+  font-weight: bold;
+}
+
 .modules-left > widget:first-child > #workspaces {
     margin-left: 0;
 }
 
-/* If workspaces is the rightmost module, omit right margin */
 .modules-right > widget:last-child > #workspaces {
     margin-right: 0;
 }
 
 #workspaces button {
-    background-color: #7c6f64; /* Gruvbox medium brown */
-    border-radius: 50px;
-    margin: 0 3 0 3;
-    color: #282828; /* Gruvbox dark background */
+    color: @white;
+    border-bottom: 3px solid transparent;
+    border-radius: 0;
 }
 
 #workspaces button.active {
-    background-color: #fabd2f; /* Gruvbox light yellow */
+    color: @white;
+    border-bottom: 3px solid @purple;
 }
 
 #workspaces button:hover {
-    background-color: #fabd2f; /* Gruvbox yellow */
+    background-color: @background;
+}
+
+#workspaces button.empty {
+ color: @gray;
 }
 
 #mode {
-    background-color: #7c6f64; /* Gruvbox medium brown */
-    box-shadow: inset 0 -3px #ebdbb2; /* Gruvbox light foreground */
+    background-color: #44475a;
+    box-shadow: inset 0 -3px #f8f8f2;
 }
 
 #clock,
@@ -77,66 +82,69 @@ button:hover {
 #network,
 #pulseaudio,
 #tray {
-    padding: 0 14px 0 14px;
-    border-radius: 50px;
-    color: #282828; /* Gruvbox dark background */
+    padding: 0 5px 0 5px;
 }
 
-
 #clock {
-    background-color: #689d6a; /* Gruvbox medium brown */
+    color: @white;
+    border-bottom: 2px solid @yellow;
 }
 
 @keyframes blink {
     to {
-        background-color: #ebdbb2; /* Gruvbox light foreground */
-        color: #282828; /* Gruvbox dark background */
+        background-color: #f8f8f2;
+        color: #282a36;
     }
 }
 
 label:focus {
-    background-color: #282828; /* Gruvbox dark background */
+    background-color: #282a36;
 }
 
 #cpu {
-    background-color: #b8bb26; /* Gruvbox green */
+    color: @white;
+    border-bottom: 2px solid @green;
 }
 
 #memory {
-    background-color: #d3869b; /* Gruvbox pink */
+    color: @white;
+    border-bottom: 2px solid @blue;
 }
 
 #disk {
-    background-color: #8ec07c; /* Gruvbox green */
+    color: @white;
+    border-bottom: 2px solid @yellow;
 }
 
 #network {
-    background-color: #83a598; /* Gruvbox cyan */
+    color: @white;
+    border-bottom: 2px solid @pink;
 }
 
 #network.disconnected {
-    background-color: #fb4934; /* Gruvbox red */
+    color: @white;
 }
 
 #pulseaudio {
-    background-color: #D49721; /* Gruvbox yellow */
-    
+    color: @white;
+    border-bottom: 2px solid @orange;
 }
 
 #pulseaudio.muted {
-    background-color: #7c6f64; /* Gruvbox medium brown */
+    color: @white;
 }
 
 #wireplumber {
-    background-color: #b16286; /* Gruvbox purple */
+    color: @white;
 }
 
 #wireplumber.muted {
-    background-color: #fb4934; /* Gruvbox red */
+    color: @white;
 }
 
 #tray {
-    background-color: #83a598; /* Gruvbox cyan */
+    color: @white;
+    border-bottom: 2px solid transparent;
 }
 
 #tray > .passive {
@@ -145,6 +153,6 @@ label:focus {
 
 #tray > .needs-attention {
     -gtk-icon-effect: highlight;
-    background-color: #fb4934; /* Gruvbox red */
+    background-color: #ff5555;
 }
 
