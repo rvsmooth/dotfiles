@@ -19,7 +19,7 @@ CHOICE=$(printf "%s\n" "${TEMP_OPTIONS[@]}" | rofi -dmenu -i -p "$APP")
 
 case "$CHOICE" in
  "Custom")
-      CUSTOM_TEMP=$(rofi -dmenu -i -p "Custom temperature (e.g., 3000K):")
+      CUSTOM_TEMP=$(rofi -dmenu -i -p "Custom temperature (e.g., 3000K, only for xorg):")
       if [[ -n "$CUSTOM_TEMP" ]]; then
         redshift -O "$CUSTOM_TEMP" &&
         NOTIFY "Temperature has been set to "$CUSTOM_TEMP"."
@@ -28,12 +28,22 @@ case "$CHOICE" in
       fi
        ;;
   "ON")
-        redshift -O 4500K &&
-        NOTIFY "Bluelight filter has been turned on."
+	  if [[ $XDG_SESSION_DESKTOP == "Hyprland" ]]; then
+		  hyprctl keyword decoration:screen_shader $HOME/.config/hypr/scripts/screenShader.frag &&
+			  NOTIFY "Bluelight filter has been turned on."
+	  else
+		  redshift -O 4500K &&
+			  NOTIFY "Bluelight filter has been turned on."
+	  fi
        ;;
   "OFF")
-        redshift -x && 
-        NOTIFY "Bluelight filter has been turned off."
+	  if [[ $XDG_SESSION_DESKTOP == "Hyprland" ]]; then
+		  hyprctl keyword decoration:screen_shader "" &&
+			  NOTIFY "Bluelight filter has been turned off."
+	  else
+		  redshift -x &&
+			  NOTIFY "Bluelight filter has been turned off."
+	  fi
        ;;
    *)
         NOTIFY "The operation has been aborted."
