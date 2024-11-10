@@ -308,6 +308,21 @@ screens = [
                     ],
                 ),
                 widget.Spacer(length=bar.STRETCH),
+                widget.Wlan(
+                    ethernet_interface="enp0s29u1u2",
+                    interface="wlp0s29u1u6",
+                    format="   {essid}",
+                    disconnected_message="",
+                    update_interval=5,
+                    decorations=[
+                        BorderDecoration(
+                            colour=colors[9],
+                            border_width=[0, 0, 3, 0],
+                            padding_y=-1,
+                        )
+                    ],
+                ),
+                widget.Spacer(length=5),
                 widget.Bluetooth(
                     default_text="{connected_devices}",
                     fmt="󰂯 {}",
@@ -323,7 +338,7 @@ screens = [
                 ),
                 widget.Spacer(length=5),
                 widget.Volume(
-                    fmt="󰕾 {}",
+                    fmt="󰕾  {}",
                     volume_app="wpctl",
                     **decoration_group,
                     decorations=[
@@ -348,7 +363,7 @@ screens = [
                 ),
                 widget.Spacer(length=5),
                 widget.HDD(
-                        format="  {HDDPercent}%",
+                    format="  {HDDPercent}%",
                     **decoration_group,
                     decorations=[
                         BorderDecoration(
@@ -357,7 +372,6 @@ screens = [
                             padding_y=-1,
                         )
                     ],
-
                 ),
                 widget.Systray(
                     icon_size=20,
