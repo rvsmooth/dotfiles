@@ -27,31 +27,25 @@ import os
 import subprocess
 from pathlib import Path
 
-import colors
 from libqtile import bar, hook, layout, qtile
-from libqtile.config import (
-    Click,
-    Drag,
-    DropDown,
-    Group,
-    Key,
-    KeyChord,
-    Match,
-    ScratchPad,
-    Screen,
-)
+from libqtile.config import Click, Drag, DropDown, Group, Key, Match, ScratchPad, Screen
 from libqtile.lazy import lazy
 from qtile_extras import widget
-from qtile_extras.widget.decorations import RectDecoration
+from qtile_extras.widget.decorations import BorderDecoration
+
+import colors
 
 # Strings
 mod = "mod4"
 terminal = "kitty"
-browser = "brave"
+browser = "waterfox"
 fileman = "pcmanfm"
 rofi = "rofi -show drun"
 Emacs = "emacsclient -c -a 'emacs' "  # The space at the end is IMPORTANT!
 home = str(Path.home())
+
+# colorscheme
+colors = colors.Dracula
 
 # Keybindings
 keys = [
@@ -83,29 +77,20 @@ keys = [
     Key([mod, "shift"], "k", lazy.layout.shuffle_up(), desc="Move window up"),
     # Grow windows. If current window is on the edge of screen and direction
     # will be to screen edge - window would shrink.
-    Key([mod, "control"], "h", lazy.layout.grow_left(),
-        desc="Grow window to the left"),
-    Key(
-        [mod, "control"], "l", lazy.layout.grow_right(), desc="Grow window to the right"
-    ),
-    Key([mod, "control"], "j", lazy.layout.grow_down(), desc="Grow window down"),
-    Key([mod, "control"], "k", lazy.layout.grow_up(), desc="Grow window up"),
     Key([mod], "n", lazy.layout.normalize(), desc="Reset all window sizes"),
     # Grow/shrink windows left/right.
-    # This is mainly for the 'monadtall' and 'monadwide' layouts
-    # although it does also work in the 'bsp' and 'columns' layouts.
     Key(
-        [mod],
-        "equal",
-        lazy.layout.grow_left().when(layout=["bsp", "columns"]),
-        lazy.layout.grow().when(layout=["monadtall", "monadwide"]),
+        [mod, "control"],
+        "l",
+        lazy.layout.grow().when(layout=["monadtall"]),
+        lazy.layout.increase_ratio().when(layout=["tile"]),
         desc="Grow window to the left",
     ),
     Key(
-        [mod],
-        "minus",
-        lazy.layout.grow_right().when(layout=["bsp", "columns"]),
-        lazy.layout.shrink().when(layout=["monadtall", "monadwide"]),
+        [mod, "control"],
+        "h",
+        lazy.layout.shrink().when(layout=["monadtall"]),
+        lazy.layout.decrease_ratio().when(layout=["tile"]),
         desc="Grow window to the left",
     ),
     # Toggle between split and unsplit sides of stack.
@@ -169,24 +154,22 @@ keys = [
         desc="Mute Volume(Pipewire)",
     ),
     # Screenshots
-    Key([], "Print", lazy.spawn("flameshot screen"),
-        desc="Take a full screenshot"),
-    Key([mod], "Print", lazy.spawn("flameshot gui"),
-        desc="Take a partial screenshot"),
+    Key([], "Print", lazy.spawn("flameshot screen"), desc="Take a full screenshot"),
+    Key([mod], "Print", lazy.spawn("flameshot gui"), desc="Take a partial screenshot"),
     # variety keybindings
-#    KeyChord(
-#        [mod],
-#        "v",
-#        [
-#            Key([], "n", lazy.spawn("variety --next"),
-#                desc="Listen to online radio"),
-#            Key(
-#                [], "p", lazy.spawn("variety --previous"), desc="Search various engines"
-#            ),
-#            Key([], "t", lazy.spawn("variety --trash"), desc="Translate text"),
-#            Key([], "f", lazy.spawn("variety --favorite"), desc="Translate text"),
-#        ],
-#    ),
+    #    KeyChord(
+    #        [mod],
+    #        "v",
+    #        [
+    #            Key([], "n", lazy.spawn("variety --next"),
+    #                desc="Listen to online radio"),
+    #            Key(
+    #                [], "p", lazy.spawn("variety --previous"), desc="Search various engines"
+    #            ),
+    #            Key([], "t", lazy.spawn("variety --trash"), desc="Translate text"),
+    #            Key([], "f", lazy.spawn("variety --favorite"), desc="Translate text"),
+    #        ],
+    #    ),
 ]
 # Add key bindings to switch VTs in Wayland.
 # We can't check qtile.core.name in default config as it is loaded before qtile is started
@@ -196,20 +179,36 @@ for vt in range(1, 8):
         Key(
             ["control", "mod1"],
             f"f{vt}",
-            lazy.core.change_vt(vt).when(
-                func=lambda: qtile.core.name == "wayland"),
+            lazy.core.change_vt(vt).when(func=lambda: qtile.core.name == "wayland"),
             desc=f"Switch to VT{vt}",
         )
     )
 
-# Workspaces
+# groups and layouts
 groups = [
-    Group("1", layout="monadtall", label="●"),
-    Group("2", layout="monadtall", label="●"),
-    Group("3", layout="monadtall", label="●"),
-    Group("4", layout="tile", label="●"),
-    Group("5", layout="max", label="●"),
-    Group("6", layout="max", label="●"),
+    Group("1", layout="monadtall", label="1"),
+    Group("2", layout="monadtall", label="2"),
+    Group("3", layout="monadtall", label="3"),
+    Group("4", layout="tile", label="3"),
+    Group("5", layout="tile", label="4"),
+    Group("6", layout="tile", label="5"),
+]
+
+layout_theme = {
+    "border_width": 2,
+    "margin": 13,
+    "border_focus": colors[4],
+    "border_normal": colors[3],
+}
+layouts = [
+    layout.MonadTall(**layout_theme),
+    layout.Tile(
+        border_width=0,
+        margin=0,
+        border_focus=colors[4],
+        border_normal=colors[3],
+        ratio=0.7,
+    ),
 ]
 
 for i in groups:
@@ -227,8 +226,7 @@ for i in groups:
                 [mod, "shift"],
                 i.name,
                 lazy.window.togroup(i.name, switch_group=True),
-                desc="Switch to & move focused window to group {}".format(
-                    i.name),
+                desc="Switch to & move focused window to group {}".format(i.name),
             ),
             # Or, use below if you prefer not to switch to that group.
             # # mod + shift + group number = move focused window to group
@@ -270,33 +268,13 @@ keys.extend(
     ]
 )
 
-# colorscheme
-colors = colors.Dracula
-
-layout_theme = {
-    "border_width": 2,
-    "margin": 13,
-    "border_focus": colors[4],
-    "border_normal": colors[3],
-}
-layouts = [
-    layout.MonadTall(**layout_theme),
-    layout.Max(),
-    layout.Tile(
-        border_width=0,
-        margin=0,
-        border_focus=colors[4],
-        border_normal=colors[3],
-        ratio=0.5,
-    ),
-]
 
 decoration_group = {
     "foreground": colors[11],
     "padding": 10,
 }
 widget_defaults = dict(
-    font="JetBrainsMono Nerd Font Bold",
+    font="Roboto Bold",
     fontsize=13,
 )
 extension_defaults = widget_defaults.copy()
@@ -308,39 +286,103 @@ screens = [
                 #########################
                 # Widget Configurations #
                 #########################
-                widget.Spacer(length=5),
                 widget.GroupBox(
-                    font="JetBrainsMono Nerd Font Bold",
-                    active=colors[4],
+                    font="Roboto",
+                    padding=8,
+                    active=colors[2],
                     inactive=colors[3],
                     disable_drag=True,
-                    highlight_method="block",
+                    highlight_method="line",
                     highlight_color=colors[12],
-                    this_current_screen_border=colors[1],
-                    block_highlight_text_color=colors[8],
-                    **decoration_group,
+                    this_current_screen_border=colors[4],
                 ),
                 widget.Spacer(length=bar.STRETCH),
-                widget.Clock(format="%b %d %I:%M %p", **decoration_group),
+                widget.Clock(
+                    format="%b %d %I:%M %p",
+                    **decoration_group,
+                    decorations=[
+                        BorderDecoration(
+                            colour=colors[7],
+                            border_width=[0, 0, 3, 0],
+                            padding_y=-1,
+                        )
+                    ],
+                ),
                 widget.Spacer(length=bar.STRETCH),
                 widget.Bluetooth(
                     default_text="{connected_devices}",
                     fmt="󰂯 {}",
                     max_chars=10,
                     **decoration_group,
+                    decorations=[
+                        BorderDecoration(
+                            colour=colors[3],
+                            border_width=[0, 0, 3, 0],
+                            padding_y=-1,
+                        )
+                    ],
                 ),
                 widget.Spacer(length=5),
-                widget.Volume(fmt="󰕾 {}", volume_app="wpctl",
-                              **decoration_group),                widget.Systray(
+                widget.Wlan(
+                    ethernet_interface="enp0s29u1u2",
+                    interface="wlp0s29u1u6",
+                    format="   {essid}",
+                    disconnected_message="",
+                    update_interval=5,
+                    decorations=[
+                        BorderDecoration(
+                            colour=colors[9],
+                            border_width=[0, 0, 3, 0],
+                            padding_y=-1,
+                        )
+                    ],
+                ),
+                widget.Spacer(length=5),
+                widget.Volume(
+                    fmt="󰕾  {}",
+                    volume_app="wpctl",
+                    **decoration_group,
+                    decorations=[
+                        BorderDecoration(
+                            colour=colors[8],
+                            border_width=[0, 0, 3, 0],
+                            padding_y=-1,
+                        )
+                    ],
+                ),
+                widget.Spacer(length=5),
+                widget.CPU(
+                    format="   {load_percent}%",
+                    **decoration_group,
+                    decorations=[
+                        BorderDecoration(
+                            colour=colors[6],
+                            border_width=[0, 0, 3, 0],
+                            padding_y=-1,
+                        )
+                    ],
+                ),
+                widget.Spacer(length=5),
+                widget.HDD(
+                    format="  {HDDPercent}%",
+                    **decoration_group,
+                    decorations=[
+                        BorderDecoration(
+                            colour=colors[10],
+                            border_width=[0, 0, 3, 0],
+                            padding_y=-1,
+                        )
+                    ],
+                ),
+                widget.Systray(
                     icon_size=20,
                     fmt="{}",
                 ),
-                widget.Spacer(length=5),
             ],
             ######################
             # BAR CONFIGURATIONS #
             ######################
-            25,
+            29,
             margin=[0, 0, 0, 0],
             border_width=0,
             background=colors[1],

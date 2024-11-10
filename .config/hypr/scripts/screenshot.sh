@@ -1,4 +1,4 @@
-#!/bin/bash
+#!/usr/bin/env bash
 #______ _   _ _____                       _   _     
 #| ___ \ | | /  ___|                     | | | |    
 #| |_/ / | | \ `--. _ __ ___   ___   ___ | |_| |__  
@@ -11,7 +11,7 @@
 # https://gitlab.com/RVSmooth 
                  
                                                                       
-SCREENSHOT_DIR="$(xdg-user-dir PICTURES)"/Screenshots
+SCREENSHOT_DIR="$HOME/Pictures/screenshots"
 SCREENSHOT="$SCREENSHOT_DIR"/"$(date +'screenshot_%d-%m-%Y-%H:%M:%S.png')"
 
 if [ -d "$SCREENSHOT_DIR" ]; then
@@ -23,16 +23,16 @@ fi
 case "$1" in
   --full | -f)
     grim "$SCREENSHOT" && 
-	    notify-send  "Screenshot Captured" "Saved to $SCREENSHOT"
+	    notify-send -i camera "Screenshot Captured" "Saved to $SCREENSHOT"
     ;;
   --select | -s)
     grim -c -g "$(slurp)" "$SCREENSHOT" && 
-	    notify-send  "Screenshot Captured" "Saved to "$SCREENSHOT""
+	    notify-send -i camera "Screenshot Captured" "Saved to "$SCREENSHOT""
     ;;
   --sleep5shot | -s5s)
     notify-send  "Screenshot Capture" "Waiting for 5 seconds to Capture a Screenshot"
     sleep 5 && grim "$SCREENSHOT" && 
-	    notify-send  "Screenshot Captured" " Saved to $SCREENSHOT"
+	    notify-send -i camera "Screenshot Captured" " Saved to $SCREENSHOT"
     ;;
   *)
     usage

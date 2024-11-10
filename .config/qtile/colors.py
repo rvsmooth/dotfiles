@@ -2,7 +2,7 @@ Dracula = [
     ["#000000", "#000000"],  # c0-crust
     ["#282A36", "#282A36"],  # c1-background
     ["#F8F8F2", "#F8F8F2"],  # c2-foreground
-    ["#44475A", "#44475A"],  # c3-grey
+    ["#6272a4", "#6272a4"],  # c3-grey
     ["#BD93F9", "#BD93F9"],  # c4-accent
     ["#FF5555", "#FF5555"],  # c5-red
     ["#50FA7B", "#50FA7B"],  # c6-green

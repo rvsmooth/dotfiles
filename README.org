@@ -1,0 +1,24 @@
+#+title: RV's Dotfiles
+
+Hello, There!
+Welcome to my dotfiles repository. I keep here all of my dotfiles for various softwares I use. Like [[https://qtile.org/][QTile]], [[https://hyprland.org/][Hyprland]] for example.
+Dotfiles are the files whose name begins with a period(.) and are generally hidden which also are utilised by softwares to keep their configurations.
+
+* Table of contents :toc:
+- [[#qtile][QTile]]
+  - [[#screenshots][Screenshots]]
+- [[#hyprland][Hyprland]]
+  - [[#screenshots-1][Screenshots]]
+
+* QTile
+** Screenshots
+[[file:.config/assets/screenshots/qtile1.png]]
+[[file:.config/assets/screenshots/qtile2.png]]
+[[file:.config/assets/screenshots/qtile3.png]]
+
+* Hyprland
+** Screenshots
+[[file:.config/assets/screenshots/hypr1.png]]
+[[file:.config/assets/screenshots/hypr2.png]]
+[[file:.config/assets/screenshots/hypr3.png]]
+

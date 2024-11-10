@@ -12,7 +12,7 @@ elif [[ "$connected" =~ "disabled" ]]; then
 fi
 
 # Use rofi to select wifi network
-chosen_network=$(echo -e "$toggle\n$wifi_list" | uniq -u | rofi -dmenu -i -selected-row 1 -p "Wi-Fi SSID: " )
+chosen_network=$(echo -e "$toggle\n$wifi_list\n Back" | uniq -u | rofi -dmenu -i -selected-row 1 -p "Wi-Fi SSID: " )
 # Get name of connection
 read -r chosen_id <<< "${chosen_network:3}"
 
@@ -22,6 +22,8 @@ elif [ "$chosen_network" = "󰖩  Enable Wi-Fi" ]; then
 	nmcli radio wifi on
 elif [ "$chosen_network" = "󰖪  Disable Wi-Fi" ]; then
 	nmcli radio wifi off
+elif [ "$chosen_network" = "back" ]; then
+	bash $HOME/.config/rofi/scripts/rofi-utils
 else
 	# Message to show when connection is activated successfully
   	success_message="You are now connected to the Wi-Fi network \"$chosen_id\"."
