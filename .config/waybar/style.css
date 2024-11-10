@@ -116,6 +116,10 @@ label:focus {
     border-bottom: 2px solid @yellow;
 }
 
+#bluetooth{
+    color: @white;
+    border-bottom: 2px solid @gray;
+}
 #network {
     color: @white;
     border-bottom: 2px solid @pink;
