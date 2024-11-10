@@ -9,25 +9,12 @@ Dotfiles are the files, whose name begins with a period(.) and are generally hid
 Feel free to take anything from it, you can use the entire dotfiles as it is but it is recommended for you to go through all the files first
 and understand what they do.
 
-* Table of contents :toc:
-- [[#screenshots][Screenshots]]
-  - [[#qtile][QTile]]
-  - [[#hyprland][Hyprland]]
-  - [[#rofi][Rofi]]
-
 * Screenshots
 ** QTile
-[[file:.config/assets/screenshots/qtile1.png]]
-[[file:.config/assets/screenshots/qtile2.png]]
-[[file:.config/assets/screenshots/qtile3.png]]
+[[file:.config/assets/screenshots/qtile_out.png]]
 
 ** Hyprland
-[[file:.config/assets/screenshots/hypr1.png]]
-[[file:.config/assets/screenshots/hypr2.png]]
-[[file:.config/assets/screenshots/hypr3.png]]
+[[file:.config/assets/screenshots/hyprland_out.png]]
 
 ** Rofi
-[[file:.config/assets/screenshots/rofi1.png]]
-[[file:.config/assets/screenshots/rofi2.png]]
-[[file:.config/assets/screenshots/rofi3.png]]
-[[file:.config/assets/screenshots/rofi4.png]]
+[[file:.config/assets/screenshots/rofi_out.png]]
