@@ -36,7 +36,7 @@ from qtile_extras import widget
 # Strings
 mod = "mod4"
 terminal = "kitty"
-browser = "brave"
+browser = "waterfox"
 fileman = "pcmanfm"
 rofi = "rofi -show drun"
 Emacs = "emacsclient -c -a 'emacs' "  # The space at the end is IMPORTANT!
