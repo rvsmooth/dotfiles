@@ -286,8 +286,9 @@ screens = [
                 #########################
                 # Widget Configurations #
                 #########################
-                widget.Spacer(length=5),
                 widget.GroupBox(
+                    font="Roboto",
+                    padding=8,
                     active=colors[2],
                     inactive=colors[3],
                     disable_drag=True,
@@ -308,26 +309,26 @@ screens = [
                     ],
                 ),
                 widget.Spacer(length=bar.STRETCH),
-                widget.Wlan(
-                    ethernet_interface="enp0s29u1u2",
-                    interface="wlp0s29u1u6",
-                    format="   {essid}",
-                    disconnected_message="",
-                    update_interval=5,
+                widget.Bluetooth(
+                    default_text="{connected_devices}",
+                    fmt="󰂯 {}",
+                    max_chars=10,
+                    **decoration_group,
                     decorations=[
                         BorderDecoration(
-                            colour=colors[9],
+                            colour=colors[3],
                             border_width=[0, 0, 3, 0],
                             padding_y=-1,
                         )
                     ],
                 ),
                 widget.Spacer(length=5),
-                widget.Bluetooth(
-                    default_text="{connected_devices}",
-                    fmt="󰂯 {}",
-                    max_chars=10,
-                    **decoration_group,
+                widget.Wlan(
+                    ethernet_interface="enp0s29u1u2",
+                    interface="wlp0s29u1u6",
+                    format="   {essid}",
+                    disconnected_message="",
+                    update_interval=5,
                     decorations=[
                         BorderDecoration(
                             colour=colors[9],
@@ -377,7 +378,6 @@ screens = [
                     icon_size=20,
                     fmt="{}",
                 ),
-                widget.Spacer(length=5),
             ],
             ######################
             # BAR CONFIGURATIONS #
