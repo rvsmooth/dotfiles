@@ -1,24 +1,33 @@
 #+title: RV's Dotfiles
 
 Hello, There!
-Welcome to my dotfiles repository. I keep here all of my dotfiles for various softwares I use. Like [[https://qtile.org/][QTile]], [[https://hyprland.org/][Hyprland]] for example.
-Dotfiles are the files whose name begins with a period(.) and are generally hidden which also are utilised by softwares to keep their configurations.
+
+Welcome to my dotfiles repository. I keep here all of my dotfiles for various softwares I use. Like [[https://qtile.org/][QTile]], [[https://hyprland.org/][Hyprland]].
+
+Dotfiles are the files, whose name begins with a period(.) and are generally hidden, which are utilised by softwares to keep their configurations.
+
+Feel free to take anything from it, you can use the entire dotfiles as it is but it is recommended for you to go through all the files first
+and understand what they do.
 
 * Table of contents :toc:
-- [[#qtile][QTile]]
-  - [[#screenshots][Screenshots]]
-- [[#hyprland][Hyprland]]
-  - [[#screenshots-1][Screenshots]]
+- [[#screenshots][Screenshots]]
+  - [[#qtile][QTile]]
+  - [[#hyprland][Hyprland]]
+  - [[#rofi][Rofi]]
 
-* QTile
-** Screenshots
+* Screenshots
+** QTile
 [[file:.config/assets/screenshots/qtile1.png]]
 [[file:.config/assets/screenshots/qtile2.png]]
 [[file:.config/assets/screenshots/qtile3.png]]
 
-* Hyprland
-** Screenshots
+** Hyprland
 [[file:.config/assets/screenshots/hypr1.png]]
 [[file:.config/assets/screenshots/hypr2.png]]
 [[file:.config/assets/screenshots/hypr3.png]]
 
+** Rofi
+[[file:.config/assets/screenshots/rofi1.png]]
+[[file:.config/assets/screenshots/rofi2.png]]
+[[file:.config/assets/screenshots/rofi3.png]]
+[[file:.config/assets/screenshots/rofi4.png]]
