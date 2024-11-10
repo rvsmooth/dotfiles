@@ -27,7 +27,11 @@ case "$selected" in
         systemctl reboot
         ;;
     Logout)
-      qtile cmd-obj -o cmd -f shutdown        
+	  if [[ $XDG_SESSION_DESKTOP == "Hyprland" ]]; then
+		  hyprctl dispatch exit
+	  else
+		  qtile cmd-obj -o cmd -f shutdown
+	  fi
       ;;
     Suspend)
         systemctl suspend
