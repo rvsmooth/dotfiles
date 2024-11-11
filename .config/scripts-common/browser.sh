@@ -1,8 +1,8 @@
 #!/bin/bash
 
 # Function to display usage
-browser1="thorium-browser"
-browser2="firefox"
+browser1="firefox"
+browser2="thorium-browser"
 usage() {
   echo "Usage: $0 [-b1|--browser1] for "$browser1"  or [-b2|--browser2] for "$browser2""
   exit 1
