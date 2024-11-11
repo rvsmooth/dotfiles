@@ -188,9 +188,9 @@ groups = [
     Group("1", layout="monadtall", label="1"),
     Group("2", layout="monadtall", label="2"),
     Group("3", layout="monadtall", label="3"),
-    Group("4", layout="tile", label="3"),
-    Group("5", layout="tile", label="4"),
-    Group("6", layout="tile", label="5"),
+    Group("4", layout="tile", label="4"),
+    Group("5", layout="tile", label="5"),
+    Group("6", layout="tile", label="6"),
 ]
 
 layout_theme = {
@@ -273,8 +273,8 @@ decoration_group = {
     "padding": 10,
 }
 widget_defaults = dict(
-    font="Roboto Bold",
-    fontsize=13,
+    font="Roboto, JetBrainsMono NF",
+    fontsize=12,
 )
 extension_defaults = widget_defaults.copy()
 
@@ -311,7 +311,6 @@ screens = [
                 widget.Bluetooth(
                     default_text="{connected_devices}",
                     fmt="󰂯 {}",
-                    max_chars=10,
                     **decoration_group,
                     decorations=[
                         BorderDecoration(
@@ -321,13 +320,13 @@ screens = [
                         )
                     ],
                 ),
-                widget.Spacer(length=5),
+                widget.Spacer(length=6),
                 widget.Wlan(
                     ethernet_interface="enp0s29u1u2",
                     interface="wlp0s29u1u6",
                     format="   {essid}",
                     disconnected_message="",
-                    update_interval=5,
+                    update_interval=6,
                     decorations=[
                         BorderDecoration(
                             colour=colors[9],
@@ -336,7 +335,7 @@ screens = [
                         )
                     ],
                 ),
-                widget.Spacer(length=5),
+                widget.Spacer(length=6),
                 widget.Volume(
                     fmt="󰕾  {}",
                     volume_app="wpctl",
@@ -349,7 +348,7 @@ screens = [
                         )
                     ],
                 ),
-                widget.Spacer(length=5),
+                widget.Spacer(length=6),
                 widget.CPU(
                     format="   {load_percent}%",
                     **decoration_group,
@@ -361,7 +360,7 @@ screens = [
                         )
                     ],
                 ),
-                widget.Spacer(length=5),
+                widget.Spacer(length=6),
                 widget.HDD(
                     format="  {HDDPercent}%",
                     **decoration_group,
