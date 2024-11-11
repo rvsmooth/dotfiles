@@ -125,6 +125,7 @@ keys = [
     Key([mod], "Return", lazy.spawn(terminal), desc="Launch terminal"),
     Key([mod], "p", lazy.spawn(rofi), desc="Launch Rofi run launcher"),
     Key([mod], "b", lazy.spawn(home + "/.config/scripts-common/browser.sh -b1"), desc="Launch browser"),
+    Key([mod, "shift"], "b", lazy.spawn(home + "/.config/scripts-common/browser.sh -b2"), desc="Launch browser"),
     Key([mod, "shift"], "f", lazy.spawn(fileman), desc="Launch file-manager"),
     Key(
         [mod],
