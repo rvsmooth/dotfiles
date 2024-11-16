@@ -5,7 +5,7 @@
     font-weight: 500;
 }
 
-@import 'themes/dracula.css';
+@import 'themes/catppuccin.css';
 
 window#waybar {
     background-color: @base;
@@ -50,13 +50,13 @@ button:hover {
 }
 
 #workspaces button {
-    color: @white;
+    color: @text;
     border-bottom: 3px solid transparent;
     border-radius: 0;
 }
 
 #workspaces button.active {
-    color: @white;
+    color: @text;
     border-bottom: 3px solid @purple;
 }
 
@@ -86,7 +86,7 @@ button:hover {
 }
 
 #clock {
-    color: @white;
+    color: @text;
     border-bottom: 2px solid @yellow;
 }
 
@@ -102,52 +102,52 @@ label:focus {
 }
 
 #cpu {
-    color: @white;
+    color: @text;
     border-bottom: 2px solid @green;
 }
 
 #memory {
-    color: @white;
+    color: @text;
     border-bottom: 2px solid @blue;
 }
 
 #disk {
-    color: @white;
+    color: @text;
     border-bottom: 2px solid @yellow;
 }
 
 #bluetooth{
-    color: @white;
+    color: @text;
     border-bottom: 2px solid @gray;
 }
 #network {
-    color: @white;
+    color: @text;
     border-bottom: 2px solid @pink;
 }
 
 #network.disconnected {
-    color: @white;
+    color: @text;
 }
 
 #pulseaudio {
-    color: @white;
+    color: @text;
     border-bottom: 2px solid @orange;
 }
 
 #pulseaudio.muted {
-    color: @white;
+    color: @text;
 }
 
 #wireplumber {
-    color: @white;
+    color: @text;
 }
 
 #wireplumber.muted {
-    color: @white;
+    color: @text;
 }
 
 #tray {
-    color: @white;
+    color: @text;
     border-bottom: 2px solid transparent;
 }
 

@@ -44,7 +44,7 @@ Emacs = "emacsclient -c -a 'emacs' "  # The space at the end is IMPORTANT!
 home = str(Path.home())
 
 # colorscheme
-colors = colors.Dracula
+colors = colors.Catppuccin
 
 # Keybindings
 keys = [
@@ -293,7 +293,7 @@ screens = [
                     inactive=colors[3],
                     disable_drag=True,
                     highlight_method="line",
-                    highlight_color=colors[12],
+                    highlight_color=colors[1],
                     this_current_screen_border=colors[4],
                 ),
                 widget.Spacer(length=bar.STRETCH),
