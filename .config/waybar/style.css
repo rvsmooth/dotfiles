@@ -1,36 +1,38 @@
 * {
-    all: initial;
-    font-family: Roboto, JetbrainsMono NF;
-    font-size: 13px;
-    font-weight: 500;
-    min-height: 0;
+  all: initial;
+  font-family:
+    Roboto,
+    JetbrainsMono NF;
+  font-size: 13px;
+  font-weight: 500;
+  min-height: 0;
 }
 
-@import 'themes/catppuccin.css';
+@import "themes/catppuccin.css";
 
 window#waybar {
-    background-color: @base;
-    transition-property: background-color;
-    transition-duration: .5s;
-    border-radius: 0;
+  background-color: @base;
+  transition-property: background-color;
+  transition-duration: 0.5s;
+  border-radius: 0;
 }
 
 window#waybar.hidden {
-    opacity: 0.2;
+  opacity: 0.2;
 }
 
 button {
-    box-shadow: inset 0 -3px transparent;
-    border: none;
+  box-shadow: inset 0 -3px transparent;
+  border: none;
 }
 
 button:hover {
-    background: inherit;
-    box-shadow: inset 0 -3px #f8f8f2;
+  background: inherit;
+  box-shadow: inset 0 -3px #f8f8f2;
 }
 
 #pulseaudio:hover {
-    background-color: #ff79c6;
+  background-color: #ff79c6;
 }
 
 #workspaces button {
@@ -41,25 +43,25 @@ button:hover {
   padding: 0px 14px 0px 14px;
 }
 
-#workspaces button.empty label{
+#workspaces button.empty label {
   color: @gray;
 }
 
-#workspaces button.active{
+#workspaces button.active {
   border-bottom: 3px solid @purple;
 }
 
 .modules-left > widget:first-child > #workspaces {
-    margin-left: 0;
+  margin-left: 0;
 }
 
 .modules-right > widget:last-child > #workspaces {
-    margin-right: 0;
+  margin-right: 0;
 }
 
 #mode {
-    background-color: #44475a;
-    box-shadow: inset 0 -3px #f8f8f2;
+  background-color: #44475a;
+  box-shadow: inset 0 -3px #f8f8f2;
 }
 
 #clock,
@@ -71,81 +73,80 @@ button:hover {
 #network,
 #pulseaudio,
 #tray {
-    padding: 0 5px 0 5px;
+  padding: 0 5px 0 5px;
 }
 
 #clock {
-    color: @text;
-    border-bottom: 2px solid @yellow;
+  color: @text;
+  border-bottom: 2px solid @yellow;
 }
 
 @keyframes blink {
-    to {
-        background-color: #f8f8f2;
-        color: #282a36;
-    }
+  to {
+    background-color: #f8f8f2;
+    color: #282a36;
+  }
 }
 
 label:focus {
-    background-color: #282a36;
+  background-color: #282a36;
 }
 
 #cpu {
-    color: @text;
-    border-bottom: 2px solid @green;
+  color: @text;
+  border-bottom: 2px solid @green;
 }
 
 #memory {
-    color: @text;
-    border-bottom: 2px solid @blue;
+  color: @text;
+  border-bottom: 2px solid @blue;
 }
 
 #disk {
-    color: @text;
-    border-bottom: 2px solid @yellow;
+  color: @text;
+  border-bottom: 2px solid @yellow;
 }
 
-#bluetooth{
-    color: @text;
-    border-bottom: 2px solid @gray;
+#bluetooth {
+  color: @text;
+  border-bottom: 2px solid @gray;
 }
 #network {
-    color: @text;
-    border-bottom: 2px solid @pink;
+  color: @text;
+  border-bottom: 2px solid @pink;
 }
 
 #network.disconnected {
-    color: @text;
+  color: @text;
 }
 
 #pulseaudio {
-    color: @text;
-    border-bottom: 2px solid @orange;
+  color: @text;
+  border-bottom: 2px solid @orange;
 }
 
 #pulseaudio.muted {
-    color: @text;
+  color: @text;
 }
 
 #wireplumber {
-    color: @text;
+  color: @text;
 }
 
 #wireplumber.muted {
-    color: @text;
+  color: @text;
 }
 
 #tray {
-    color: @text;
-    border-bottom: 2px solid transparent;
+  color: @text;
+  border-bottom: 2px solid transparent;
 }
 
 #tray > .passive {
-    -gtk-icon-effect: dim;
+  -gtk-icon-effect: dim;
 }
 
 #tray > .needs-attention {
-    -gtk-icon-effect: highlight;
-    background-color: #ff5555;
+  -gtk-icon-effect: highlight;
+  background-color: #ff5555;
 }
-
