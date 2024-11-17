@@ -33,14 +33,20 @@ button:hover {
     background-color: #ff79c6;
 }
 
-#workspaces {
-    color: #f8f8f2;
-}
-
-#workspaces label {
+#workspaces button {
+  border-bottom: 3px solid transparent;
+  border-radius: 0;
   font-size: 12px;
   font-weight: bold;
   padding: 0px 14px 0px 14px;
+}
+
+#workspaces button.empty label{
+  color: @gray;
+}
+
+#workspaces button.active{
+  border-bottom: 3px solid @purple;
 }
 
 .modules-left > widget:first-child > #workspaces {
@@ -49,25 +55,6 @@ button:hover {
 
 .modules-right > widget:last-child > #workspaces {
     margin-right: 0;
-}
-
-#workspaces button {
-    color: @text;
-    border-bottom: 3px solid transparent;
-    border-radius: 0;
-}
-
-#workspaces button.active {
-    color: @text;
-    border-bottom: 3px solid @purple;
-}
-
-#workspaces button:hover {
-    background-color: @background;
-}
-
-#workspaces button.empty {
- color: @gray;
 }
 
 #mode {
