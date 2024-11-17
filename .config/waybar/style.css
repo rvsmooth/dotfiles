@@ -1,8 +1,9 @@
 * {
+    all: initial;
     font-family: Roboto, JetbrainsMono NF;
-    font-size: 12px;
-    min-height: 0;
+    font-size: 13px;
     font-weight: 500;
+    min-height: 0;
 }
 
 @import 'themes/catppuccin.css';
@@ -37,8 +38,9 @@ button:hover {
 }
 
 #workspaces label {
-  font-size: 13px;
+  font-size: 12px;
   font-weight: bold;
+  padding: 0px 14px 0px 14px;
 }
 
 .modules-left > widget:first-child > #workspaces {
