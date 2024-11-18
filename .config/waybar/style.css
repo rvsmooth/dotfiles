@@ -27,6 +27,7 @@ button {
 }
 
 #pulseaudio:hover {
+  color: @base;
   background-color: @pink;
   opacity: 0.8;
 }
@@ -51,6 +52,11 @@ button {
   background-color: @pink;
   opacity: 0.8;
 }
+
+#workspaces button:hover label {
+  color: @base;
+}
+
 .modules-left > widget:first-child > #workspaces {
   margin-left: 0;
 }
@@ -157,4 +163,3 @@ tooltip {
   text-shadow: none;
   border: 1px solid @pink;
 }
-
