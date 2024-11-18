@@ -155,9 +155,6 @@ tooltip {
   color: @text;
   background-color: @background;
   text-shadow: none;
+  border: 1px solid @pink;
 }
 
-tooltip * {
-  color: @text;
-  text-shadow: none;
-}
