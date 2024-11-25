@@ -17,8 +17,6 @@
 - [[#drag-stuff][DRAG-STUFF]]
 - [[#ediff][EDIFF]]
 - [[#elfeed][ELFEED]]
-- [[#ellama][ELLAMA]]
-- [[#eradio][ERADIO]]
 - [[#evil][EVIL]]
 - [[#flycheck][FLYCHECK]]
 - [[#fonts][FONTS]]
@@ -27,7 +25,6 @@
 - [[#general-keybindings][GENERAL KEYBINDINGS]]
 - [[#git-programs][GIT PROGRAMS]]
   - [[#git-time-machine][Git Time Machine]]
-  - [[#magit][Magit]]
 - [[#highlight-todo][HIGHLIGHT TODO]]
 - [[#ivy-counsel][IVY (COUNSEL)]]
 - [[#language-support][LANGUAGE SUPPORT]]
@@ -57,7 +54,6 @@
 - [[#tldr][TLDR]]
 - [[#transparency][TRANSPARENCY]]
 - [[#which-key][WHICH-KEY]]
-- [[#test][TEST]]
 
 * IMPORTANT PROGRAMS TO LOAD FIRST
 To keep this =config.org= a reasonable length, I have moved a lot of code to individual scripts that will be sourced by this config.  These scripts are found in "~/.config/emacs/scripts" and do not contain any code that most people are likely to need to edit.
@@ -234,74 +230,6 @@ An RSS newsfeed reader for Emacs.  Move through the articles with 'j/k'.  Move t
 
 #+end_src
 
-* ELLAMA
-[[https://github.com/s-kostyaev/ellama][Ellama]] is a tool for interacting with large language models from Emacs.  You need to have 'ollama' installed on your computer to use 'ellama' in Emacs.  You need to pull in any LLMs that you want to have available for use.  For example, if you want to be able to use Llama 3.1, then you need to run 'ollama pull llama3.1'.
-
-#+begin_src emacs-lisp
-(use-package ellama
-  :init
-  (setopt ellama-keymap-prefix "C-c e")  ;; keymap for all ellama functions
-  (setopt ellama-language "English")     ;; language ellama should translate to
-  (require 'llm-ollama)
-  (setopt ellama-provider
-	  (make-llm-ollama
-	   ;; this model should be pulled to use it
-	   ;; value should be the same as you print in terminal during pull
-	   :chat-model "llama3.1"
-	   :embedding-model "nomic-embed-text"
-	   :default-chat-non-standard-params '(("num_ctx" . 8192))))
-  ;; Predefined llm providers for interactive switching.
-  (setopt ellama-providers
-		    '(("zephyr" . (make-llm-ollama
-				   :chat-model "zephyr"
-				   :embedding-model "zephyr"))
-
-		      ("llama3.1" . (make-llm-ollama
-				   :chat-model "llama3.1"
-				   :embedding-model "llama3.1"))
-		      ("mixtral" . (make-llm-ollama
-				    :chat-model "mixtral"
-				    :embedding-model "mixtral"))))
-  (setopt ellama-naming-scheme 'ellama-generate-name-by-llm)
-  ;; Translation llm provider
-  (setopt ellama-translation-provider (make-llm-ollama
-				       :chat-model "mixtral"
-				       :embedding-model "nomic-embed-text"))
-  :config
-  (setq ellama-sessions-directory "~/.config/emacs/ellama-sessions/"
-        ellama-sessions-auto-save t))
-
-#+end_src
-
-* ERADIO
-[[https://github.com/olavfosse/eradio][eradio]] is a simple Internet radio player for Emacs.  It uses 'vlc as its backend by default, but you can change the =eradio-player= variable to use another multimedia player.  I have set eradio to use 'mpv' instead of 'vlc' because it supports more types of Internet radio streams.
-
-#+begin_src emacs-lisp
-(use-package eradio
-  :init
-  (setq eradio-player '("mpv" "--no-video" "--no-terminal"))
-  :config
-  (setq eradio-channels '(("Totally 80s FM" . "https://zeno.fm/radio/totally-80s-fm/")
-                          ("Oldies Radio 50s-60s" . "https://zeno.fm/radio/oldies-radio-50s-60s/")
-                          ("Oldies Radio 70s" . "https://zeno.fm/radio/oldies-radio-70s/")
-                          ("Unlimited 80s" . "https://zeno.fm/radio/unlimited80s/")
-                          ("80s Hits" . "https://zeno.fm/radio/80shits/")
-                          ("90s Hits" . "https://zeno.fm/radio/90s_HITS/")
-                          ("2000s Pop" . "https://zeno.fm/radio/2000s-pop/")
-                          ("The 2000s" . "https://zeno.fm/radio/the-2000s/")
-                          ("Hits 2010s" . "https://zeno.fm/radio/helia-hits-2010/")
-                          ("Classical Radio" . "https://zeno.fm/radio/classical-radio/")
-                          ("Classical Relaxation" . "https://zeno.fm/radio/radio-christmas-non-stop-classical/")
-                          ("Classic Rock" . "https://zeno.fm/radio/classic-rockdnb2sav8qs8uv/")
-                          ("Gangsta49" . "https://zeno.fm/radio/gangsta49/")
-                          ("HipHop49" . "https://zeno.fm/radio/hiphop49/")
-                          ("Madhouse Country Radio" . "https://zeno.fm/radio/madhouse-country-radio/")
-                          ("PopMusic" . "https://zeno.fm/radio/popmusic74vyurvmug0uv/")
-                          ("PopStars" . "https://zeno.fm/radio/popstars/")
-                          ("RadioMetal" . "https://zeno.fm/radio/radio-metal/")
-                          ("RocknRoll Radio" . "https://zeno.fm/radio/rocknroll-radio994c7517qs8uv/"))))
-#+end_src
-
 * EVIL
 [[https://github.com/emacs-evil/evil][Evil]] is an extensible vi/vim layer for Emacs.  Because...let's face it.  The Vim keybindings are just plain better.
 
@@ -357,7 +285,7 @@ Defining the various fonts that Emacs will use.
 ** Setting the Font Face
 #+begin_src emacs-lisp
 (set-face-attribute 'default nil
-  :font "JetBrains Mono"
+  :font "JetBrainsMono NF"
   :height 110
   :weight 'medium)
 (set-face-attribute 'variable-pitch nil
@@ -365,7 +293,7 @@ Defining the various fonts that Emacs will use.
   :height 120
   :weight 'medium)
 (set-face-attribute 'fixed-pitch nil
-  :font "JetBrains Mono"
+  :font "JetBrainsMono NF"
   :height 110
   :weight 'medium)
 ;; Makes commented text and keywords italics.
@@ -643,13 +571,6 @@ You can use the bindings CTRL plus =/- for zooming in/out.  You can also use CTR
 )
 #+end_src
 
-** Magit
-[[https://magit.vc/manual/][Magit]] is a full-featured git client for Emacs.
-
-#+begin_src emacs-lisp
-(use-package magit)
-
-#+end_src
 
 * HIGHLIGHT TODO
 Adding highlights to TODO and related words.
@@ -1101,49 +1022,3 @@ With Emacs version 29, true transparency has been added.  I have turned transpar
 	  which-key-separator " → " ))
 #+end_src
 
-* TEST
-#+begin_src emacs-lisp
-(defun reader ()
-  (interactive)
-  (let ((choices '(("First"  . "Hi!")
-                   ("Second" . 'second-choice)
-                   ("Third"  . 'third-choice))))
-    (alist-get
-     (completing-read "Choose: " choices)
-     choices nil nil 'message)))
-
-(defun github-code-search ()
-  "Search code on github for a given language."
-  (interactive)
-  (let ((language (completing-read
-                   "Language: "
-                   '("Emacs Lisp" "Python"  "Clojure" "R")))
-        (code (read-string "Code: ")))
-    (browse-url
-     (concat "https://github.com/search?l=" language
-             "&type=code&q=" code))))
-  
-(defun dm-search ()
-  "Search various search engines."
-  (interactive)
-  (let ((engine (completing-read
-                 "Search Engine: "
-                 '("Arch Wiki" 
-                   "Bing"
-                   "Google"
-                   "Wikipedia")))
-        (query (read-string "Query: ")))
-    (if (equal engine "Google")
-      (browse-url
-       (concat "https://www.google.com/search?q=" query)))))
-
-(defun dt/key-value-completing (choice)                                     
-  (interactive
-   (list
-    (let ((completions '(("1" "One") 
-                         ("2" "Two")
-                         ("3" "Three"))))              
-      (cadr (assoc (completing-read "Choose: " completions) completions)))))
-  (message "You choose `%s'" choice))
-
-#+end_src

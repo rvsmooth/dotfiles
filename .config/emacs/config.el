@@ -115,63 +115,6 @@
   :config
   (setq elfeed-goodies/entry-pane-size 0.5))
 
-(use-package ellama
-  :init
-  (setopt ellama-keymap-prefix "C-c e")  ;; keymap for all ellama functions
-  (setopt ellama-language "English")     ;; language ellama should translate to
-  (require 'llm-ollama)
-  (setopt ellama-provider
-	  (make-llm-ollama
-	   ;; this model should be pulled to use it
-	   ;; value should be the same as you print in terminal during pull
-	   :chat-model "llama3.1"
-	   :embedding-model "nomic-embed-text"
-	   :default-chat-non-standard-params '(("num_ctx" . 8192))))
-  ;; Predefined llm providers for interactive switching.
-  (setopt ellama-providers
-		    '(("zephyr" . (make-llm-ollama
-				   :chat-model "zephyr"
-				   :embedding-model "zephyr"))
-
-		      ("llama3.1" . (make-llm-ollama
-				   :chat-model "llama3.1"
-				   :embedding-model "llama3.1"))
-		      ("mixtral" . (make-llm-ollama
-				    :chat-model "mixtral"
-				    :embedding-model "mixtral"))))
-  (setopt ellama-naming-scheme 'ellama-generate-name-by-llm)
-  ;; Translation llm provider
-  (setopt ellama-translation-provider (make-llm-ollama
-				       :chat-model "mixtral"
-				       :embedding-model "nomic-embed-text"))
-  :config
-  (setq ellama-sessions-directory "~/.config/emacs/ellama-sessions/"
-        ellama-sessions-auto-save t))
-
-(use-package eradio
-  :init
-  (setq eradio-player '("mpv" "--no-video" "--no-terminal"))
-  :config
-  (setq eradio-channels '(("Totally 80s FM" . "https://zeno.fm/radio/totally-80s-fm/")
-                          ("Oldies Radio 50s-60s" . "https://zeno.fm/radio/oldies-radio-50s-60s/")
-                          ("Oldies Radio 70s" . "https://zeno.fm/radio/oldies-radio-70s/")
-                          ("Unlimited 80s" . "https://zeno.fm/radio/unlimited80s/")
-                          ("80s Hits" . "https://zeno.fm/radio/80shits/")
-                          ("90s Hits" . "https://zeno.fm/radio/90s_HITS/")
-                          ("2000s Pop" . "https://zeno.fm/radio/2000s-pop/")
-                          ("The 2000s" . "https://zeno.fm/radio/the-2000s/")
-                          ("Hits 2010s" . "https://zeno.fm/radio/helia-hits-2010/")
-                          ("Classical Radio" . "https://zeno.fm/radio/classical-radio/")
-                          ("Classical Relaxation" . "https://zeno.fm/radio/radio-christmas-non-stop-classical/")
-                          ("Classic Rock" . "https://zeno.fm/radio/classic-rockdnb2sav8qs8uv/")
-                          ("Gangsta49" . "https://zeno.fm/radio/gangsta49/")
-                          ("HipHop49" . "https://zeno.fm/radio/hiphop49/")
-                          ("Madhouse Country Radio" . "https://zeno.fm/radio/madhouse-country-radio/")
-                          ("PopMusic" . "https://zeno.fm/radio/popmusic74vyurvmug0uv/")
-                          ("PopStars" . "https://zeno.fm/radio/popstars/")
-                          ("RadioMetal" . "https://zeno.fm/radio/radio-metal/")
-                          ("RocknRoll Radio" . "https://zeno.fm/radio/rocknroll-radio994c7517qs8uv/"))))
-
 ;; Expands to: (elpaca evil (use-package evil :demand t))
 (use-package evil
     :init      ;; tweak evil's configuration before loading it
@@ -210,7 +153,7 @@
   :init (global-flycheck-mode))
 
 (set-face-attribute 'default nil
-  :font "JetBrains Mono"
+  :font "JetBrainsMono NF"
   :height 110
   :weight 'medium)
 (set-face-attribute 'variable-pitch nil
@@ -218,7 +161,7 @@
   :height 120
   :weight 'medium)
 (set-face-attribute 'fixed-pitch nil
-  :font "JetBrains Mono"
+  :font "JetBrainsMono NF"
   :height 110
   :weight 'medium)
 ;; Makes commented text and keywords italics.
@@ -478,8 +421,6 @@
     (evil-define-key 'normal git-timemachine-mode-map (kbd "C-k") 'git-timemachine-show-next-revision)
 )
 
-(use-package magit)
-
 (use-package hl-todo
   :hook ((org-mode . hl-todo-mode)
          (prog-mode . hl-todo-mode))
@@ -570,14 +511,14 @@
 
 (eval-after-load 'org-indent '(diminish 'org-indent-mode))
 
-  (custom-set-faces
-   '(org-level-1 ((t (:inherit outline-1 :height 1.7))))
-   '(org-level-2 ((t (:inherit outline-2 :height 1.6))))
-   '(org-level-3 ((t (:inherit outline-3 :height 1.5))))
-   '(org-level-4 ((t (:inherit outline-4 :height 1.4))))
-   '(org-level-5 ((t (:inherit outline-5 :height 1.3))))
-   '(org-level-6 ((t (:inherit outline-5 :height 1.2))))
-   '(org-level-7 ((t (:inherit outline-5 :height 1.1)))))
+(custom-set-faces
+ '(org-level-1 ((t (:inherit outline-1 :height 1.7))))
+ '(org-level-2 ((t (:inherit outline-2 :height 1.6))))
+ '(org-level-3 ((t (:inherit outline-3 :height 1.5))))
+ '(org-level-4 ((t (:inherit outline-4 :height 1.4))))
+ '(org-level-5 ((t (:inherit outline-5 :height 1.3))))
+ '(org-level-6 ((t (:inherit outline-5 :height 1.2))))
+ '(org-level-7 ((t (:inherit outline-5 :height 1.1)))))
 
 (require 'org-tempo)
 
@@ -768,46 +709,3 @@
 	  which-key-max-description-length 25
 	  which-key-allow-imprecise-window-fit nil
 	  which-key-separator " → " ))
-
-(defun reader ()
-  (interactive)
-  (let ((choices '(("First"  . "Hi!")
-                   ("Second" . 'second-choice)
-                   ("Third"  . 'third-choice))))
-    (alist-get
-     (completing-read "Choose: " choices)
-     choices nil nil 'message)))
-
-(defun github-code-search ()
-  "Search code on github for a given language."
-  (interactive)
-  (let ((language (completing-read
-                   "Language: "
-                   '("Emacs Lisp" "Python"  "Clojure" "R")))
-        (code (read-string "Code: ")))
-    (browse-url
-     (concat "https://github.com/search?l=" language
-             "&type=code&q=" code))))
-  
-(defun dm-search ()
-  "Search various search engines."
-  (interactive)
-  (let ((engine (completing-read
-                 "Search Engine: "
-                 '("Arch Wiki" 
-                   "Bing"
-                   "Google"
-                   "Wikipedia")))
-        (query (read-string "Query: ")))
-    (if (equal engine "Google")
-      (browse-url
-       (concat "https://www.google.com/search?q=" query)))))
-
-(defun dt/key-value-completing (choice)                                     
-  (interactive
-   (list
-    (let ((completions '(("1" "One") 
-                         ("2" "Two")
-                         ("3" "Three"))))              
-      (cadr (assoc (completing-read "Choose: " completions) completions)))))
-  (message "You choose `%s'" choice))
