@@ -13,7 +13,7 @@ bind-key g home
 bind-key h quit
 
 
-browser "brave %u"
+browser "one.ablaze.floorp %u"
 
 highlight all "---.*---" yellow
 highlight feedlist ".*(0/0))" black
