@@ -40,7 +40,7 @@ mod = "mod4"
 terminal = "kitty"
 fileman = "pcmanfm"
 rofi = "rofi -show drun"
-Emacs = "emacsclient -c -a 'emacs' "  # The space at the end is IMPORTANT!
+emacs = "emacsclient -c -a 'emacs' "  # The space at the end is IMPORTANT!eemail = "thunderbird"
 home = str(Path.home())
 
 # colorscheme
@@ -133,7 +133,8 @@ keys = [
         lazy.spawn(home + "/.config/rofi/scripts/rofi-utils"),
         desc="Launch rofi utilities script",
     ),
-    Key([mod], "e", lazy.spawn(Emacs), desc="Emacs Dashboard"),
+    Key([mod], "e", lazy.spawn(emacs), desc="Emacs Dashboard"),
+    Key([mod], "m", lazy.spawn(email), desc="Emacs Dashboard"),
     # Volume Management
     Key(
         [mod],
