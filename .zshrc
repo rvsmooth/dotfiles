@@ -18,7 +18,10 @@ zstyle ':completion:*' menu select
 zmodload zsh/complist
 _comp_options+=(globdots)
 compinit -d $XDG_CACHE_HOME/zsh/zcompdump-$ZSH_VERSION
-zstyle ':completion:*' matcher-list 'm:{a-z}={A-Za-z}'
+zstyle ':completion:*' matcher-list 'm:{a-z}={A-Za-z}' 
+zstyle ':completion:*' matcher-list 'm:{[:lower:]}={[:upper:]}' 'm:{[:upper:]}={[:lower:]}'
+zstyle ':completion:*' list-colors '=(#b)blue'
+zstyle ':completion:*' matcher-list 'm:{a-z}={A-Z}' 'r:|[._-]=* r:|=*' 'l:|=* r:|=*'
 
 # history
 export HISTSIZE=100000
@@ -42,8 +45,7 @@ setopt share_history        # share history between terminals
 source ~/.config/zsh/plugins/auto-notify.plugin.zsh
 source ~/.config/zsh/plugins/you-should-use.plugin.zsh
 source ~/.config/zsh/plugins/zsh-autosuggestions.zsh
-source ~/.config/zsh/plugins/zsh-history-substring-search.zsh
-source ~/.config/zsh/plugins/zsh-syntax-highlighting.plugin.zsh
+source ~/.config/zsh/plugins/history-substring-search.zsh
 source ~/.config/scripts-common/aliases.sh
 #                            _       
 #                           | |      
@@ -103,6 +105,13 @@ mv "$1" $(echo -e $(ls "$1" | tr ' ' '_'))
 export PATH="$HOME/.local/bin:$PATH"
 
 
+flatpak_theme() {
+	for package in $(ls "$HOME/.var/app/"); do
+		[ -d "$HOME/.var/app/$package/config/gtk-3.0" ] ||
+		/usr/bin/ln -s "$HOME/.config/gtk-3.0" "$HOME/.var/app/$package/config/"
+	done
+}
+
 #                                 _   
 # _ __  _ __ ___  _ __ ___  _ __ | |_ 
 #| '_ \| '__/ _ \| '_ ` _ \| '_ \| __|
@@ -111,3 +120,5 @@ export PATH="$HOME/.local/bin:$PATH"
 #|_|                       |_|        
 
 eval "$(starship init zsh)"
+source ~/.config/zsh/plugins/zsh-syntax-highlighting.zsh
+source ~/.config/zsh/plugins/catppuccin_mocha-zsh-syntax-highlighting.zsh
