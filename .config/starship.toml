@@ -47,7 +47,7 @@ color_fg1 = '#2a273f'
 color_bg1 = '#3e8fb0'
 color_bg3 = '#9ccfd8'
 color_blue = '#56949f'
-color_aqua = '#d7827e'
+color_aqua = '#3e8fb0'
 color_green = '#c4a7e7'
 color_orange = '#ebbcba'
 color_purple = '#C6A0F6'
@@ -109,7 +109,7 @@ format = '[[ $symbol $branch ](fg:color_fg1 bg:color_red)]($style)'
 
 [git_status]
 style = "bg:color_aqua"
-format = '[[($all_status$ahead_behind )](fg:color_fg1 bg:color_aqua)]($style)'
+format = '[[($all_status$ahead_behind )](fg:color_fg1 bg:color_red)]($style)'
 
 [nodejs]
 symbol = ""
