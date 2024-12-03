@@ -40,7 +40,8 @@ mod = "mod4"
 terminal = "kitty"
 fileman = "pcmanfm"
 rofi = "rofi -show drun"
-emacs = "emacsclient -c -a 'emacs' "  # The space at the end is IMPORTANT!eemail = "thunderbird"
+emacs = "emacsclient -c -a 'emacs' "  # The space at the end is IMPORTANT!
+email = "thunderbird"
 home = str(Path.home())
 
 # colorscheme
