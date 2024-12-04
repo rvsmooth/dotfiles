@@ -198,7 +198,7 @@ groups = [
 
 layout_theme = {
     "border_width": 2,
-    "margin": 1,
+    "margin": 13,
     "border_focus": colors[4],
     "border_normal": colors[3],
 }
