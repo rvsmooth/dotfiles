@@ -276,7 +276,7 @@ decoration_group = {
     "padding": 10,
 }
 widget_defaults = dict(
-    font="Roboto, JetBrainsMono NF",
+    font="Roboto, JetBrainsMono NF Medium",
     fontsize=12,
 )
 extension_defaults = widget_defaults.copy()
@@ -289,9 +289,8 @@ screens = [
                 # Widget Configurations #
                 #########################
                 widget.GroupBox(
-                    font="Roboto",
                     padding=8,
-                    active=colors[2],
+                    active=colors[11],
                     inactive=colors[3],
                     disable_drag=True,
                     highlight_method="line",
@@ -330,6 +329,7 @@ screens = [
                     format="   {essid}",
                     disconnected_message="",
                     update_interval=6,
+                    **decoration_group,
                     decorations=[
                         BorderDecoration(
                             colour=colors[9],
