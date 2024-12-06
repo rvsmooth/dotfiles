@@ -27,22 +27,23 @@ import os
 import subprocess
 from pathlib import Path
 
+import colors
 from libqtile import bar, hook, layout, qtile
 from libqtile.config import Click, Drag, DropDown, Group, Key, Match, ScratchPad, Screen
 from libqtile.lazy import lazy
 from qtile_extras import widget
 from qtile_extras.widget.decorations import BorderDecoration
 
-import colors
-
-# Strings
+# Variables
 mod = "mod4"
 terminal = "kitty"
 fileman = "pcmanfm"
 rofi = "rofi -show drun"
 emacs = "emacsclient -c -a 'emacs' "  # The space at the end is IMPORTANT!
-email = "thunderbird"
 home = str(Path.home())
+defaults = home + "/.config/scripts-common/defaults.sh"
+volume = home + "/.config/scripts-common/volume.sh"
+rofi_utils = home + "/.config/rofi/scripts/rofi-utils"
 
 # colorscheme
 colors = colors.Catppuccin
@@ -64,15 +65,8 @@ keys = [
     ),
     # Move windows between left/right columns or move up/down in current stack.
     # Moving out of range in Columns layout will create new column.
-    Key(
-        [mod, "shift"], "h", lazy.layout.shuffle_left(), desc="Move window to the left"
-    ),
-    Key(
-        [mod, "shift"],
-        "l",
-        lazy.layout.shuffle_right(),
-        desc="Move window to the right",
-    ),
+    Key([mod, "shift"], "h", lazy.layout.shuffle_left(), desc="Move window to left"),
+    Key([mod, "shift"], "l", lazy.layout.shuffle_right(), desc="Move window to right"),
     Key([mod, "shift"], "j", lazy.layout.shuffle_down(), desc="Move window down"),
     Key([mod, "shift"], "k", lazy.layout.shuffle_up(), desc="Move window up"),
     # Grow windows. If current window is on the edge of screen and direction
@@ -105,73 +99,48 @@ keys = [
     ),
     # Toggle between different layouts as defined below
     Key([mod], "Tab", lazy.next_layout(), desc="Toggle between layouts"),
-    Key(
-        [mod],
-        "space",
-        lazy.window.toggle_fullscreen(),
-        desc="Toggle fullscreen on the focused window",
-    ),
-    Key(
-        [mod],
-        "t",
-        lazy.window.toggle_floating(),
-        desc="Toggle floating on the focused window",
-    ),
+    Key([mod], "space", lazy.window.toggle_fullscreen(), desc="Toggle fullscreen"),
+    Key([mod], "t", lazy.window.toggle_floating(), desc="Toggle floating"),
     Key([mod, "shift"], "c", lazy.window.kill(), desc="Kill focused window"),
-    # Basic utils
+    #########################
+    #   QTile Operations   #
+    ########################
     Key([mod, "shift"], "r", lazy.reload_config(), desc="Reload the config"),
     Key([mod, "control"], "q", lazy.shutdown(), desc="Shutdown Qtile"),
     Key([mod], "r", lazy.spawncmd(), desc="Spawn a command using a prompt widget"),
-    # Application Binds
+    #########################
+    # Application Launchers #
+    ########################
     Key([mod], "Return", lazy.spawn(terminal), desc="Launch terminal"),
     Key([mod], "p", lazy.spawn(rofi), desc="Launch Rofi run launcher"),
-    Key([mod], "b", lazy.spawn(home + "/.config/scripts-common/browser.sh -b1"), desc="Launch browser"),
-    Key([mod, "shift"], "b", lazy.spawn(home + "/.config/scripts-common/browser.sh -b2"), desc="Launch browser"),
+    Key([mod], "b", lazy.spawn(f"{defaults} -b1"), desc="1st browser"),
+    Key([mod], "m", lazy.spawn(f"{defaults} -e"), desc="Email client"),
+    Key([mod, "shift"], "b", lazy.spawn(f"{defaults} -b2"), desc="2nd browser"),
     Key([mod, "shift"], "f", lazy.spawn(fileman), desc="Launch file-manager"),
-    Key(
-        [mod],
-        "u",
-        lazy.spawn(home + "/.config/rofi/scripts/rofi-utils"),
-        desc="Launch rofi utilities script",
-    ),
+    Key([mod], "u", lazy.spawn(rofi_utils), desc="Launch rofi-utils"),
     Key([mod], "e", lazy.spawn(emacs), desc="Emacs Dashboard"),
-    Key([mod], "m", lazy.spawn(email), desc="Emacs Dashboard"),
     # Volume Management
     Key(
         [mod],
         "F3",
-        lazy.spawn(home + "/.config/scripts-common/volume.sh --pw-incvol"),
+        lazy.spawn(f"{volume} --pw-incvol"),
         desc="Increase Volume(Pipewire)",
     ),
     Key(
         [mod],
         "F1",
-        lazy.spawn(home + "/.config/scripts-common/volume.sh --pw-decvol"),
+        lazy.spawn(f"{volume} --pw-decvol"),
         desc="Decrease Volume(Pipewire)",
     ),
     Key(
         [mod],
         "F2",
-        lazy.spawn(home + "/.config/scripts-common/volume.sh --pw-mute"),
+        lazy.spawn(f"{volume} --pw-mute"),
         desc="Mute Volume(Pipewire)",
     ),
     # Screenshots
     Key([], "Print", lazy.spawn("flameshot screen"), desc="Take a full screenshot"),
     Key([mod], "Print", lazy.spawn("flameshot gui"), desc="Take a partial screenshot"),
-    # variety keybindings
-    #    KeyChord(
-    #        [mod],
-    #        "v",
-    #        [
-    #            Key([], "n", lazy.spawn("variety --next"),
-    #                desc="Listen to online radio"),
-    #            Key(
-    #                [], "p", lazy.spawn("variety --previous"), desc="Search various engines"
-    #            ),
-    #            Key([], "t", lazy.spawn("variety --trash"), desc="Translate text"),
-    #            Key([], "f", lazy.spawn("variety --favorite"), desc="Translate text"),
-    #        ],
-    #    ),
 ]
 # Add key bindings to switch VTs in Wayland.
 # We can't check qtile.core.name in default config as it is loaded before qtile is started

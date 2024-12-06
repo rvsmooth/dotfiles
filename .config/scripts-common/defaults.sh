@@ -1,10 +1,12 @@
 #!/bin/bash
 
 # Function to display usage
-browser1="floorp"
-browser2="brave"
+browser1="vivaldi"
+browser2="firefox"
+email="betterbird"
+
 usage() {
-  echo "Usage: $0 [-b1|--browser1] for "$browser1"  or [-b2|--browser2] for "$browser2""
+  echo 'Usage: $0 [-b1|--browser1] for "$browser1"  or [-b2|--browser2] for "$browser2" or [-e|--email] for "$email"'
   exit 1
 }
 
@@ -20,6 +22,9 @@ case "$1" in
     ;;
   -b2|--browser2)
     $browser2 &  
+    ;;
+  -e|--email)
+    $email &  
     ;;
   *)
     usage
