@@ -2,7 +2,7 @@
 
 # Function to display usage
 browser1="floorp"
-browser2="brave"
+browser2="chromium"
 email="betterbird"
 
 usage() {
