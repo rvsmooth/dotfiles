@@ -1,8 +1,8 @@
 #!/bin/bash
 
 # Function to display usage
-browser1="vivaldi"
-browser2="firefox"
+browser1="floorp"
+browser2="brave"
 email="betterbird"
 
 usage() {
