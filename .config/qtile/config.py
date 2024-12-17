@@ -282,7 +282,6 @@ screens = [
                 widget.Bluetooth(
                     default_text="{connected_devices}",
                     fmt="󰂯 {}",
-                    **decoration_group,
                     decorations=[
                         BorderDecoration(
                             colour=colors[3],
@@ -290,6 +289,7 @@ screens = [
                             padding_y=-1,
                         )
                     ],
+                    **decoration_group,
                 ),
                 widget.Spacer(length=6),
                 widget.Wlan(
@@ -308,9 +308,8 @@ screens = [
                     ],
                 ),
                 widget.Spacer(length=6),
-                widget.Volume(
+                widget.PulseVolume(
                     fmt="󰕾  {}",
-                    volume_app="wpctl",
                     **decoration_group,
                     decorations=[
                         BorderDecoration(
