@@ -308,7 +308,7 @@ screens = [
                     ],
                 ),
                 widget.Spacer(length=6),
-                widget.PulseVolume(
+                widget.Volume(
                     fmt="󰕾  {}",
                     **decoration_group,
                     decorations=[
