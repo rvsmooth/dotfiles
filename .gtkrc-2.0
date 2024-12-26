@@ -1,10 +1,10 @@
 # DO NOT EDIT! This file will be overwritten by nwg-look.
 # Any customization should be done in ~/.gtkrc-2.0.mine instead.
 
-include "/home/rvsmooth/.gtkrc-2.0.mine"
-gtk-theme-name="catppuccin-mocha-pink-standard+default"
-gtk-icon-theme-name="Papirus"
-gtk-font-name="Roboto 11"
+include "/home/subh/.gtkrc-2.0.mine"
+gtk-theme-name="Tokyonight-Dark"
+gtk-icon-theme-name="Qogir-Dark"
+gtk-font-name="Cantarell 11"
 gtk-cursor-theme-name="Bibata-Modern-Ice"
 gtk-cursor-theme-size=24
 gtk-toolbar-style=GTK_TOOLBAR_ICONS
