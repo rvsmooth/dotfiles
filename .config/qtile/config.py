@@ -46,7 +46,7 @@ volume = home + "/.config/scripts-common/volume.sh"
 rofi_utils = home + "/.config/rofi/scripts/rofi-utils"
 
 # colorscheme
-colors = colors.Catppuccin
+colors = colors.Tokyonight
 
 # Keybindings
 keys = [

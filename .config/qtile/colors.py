@@ -27,15 +27,19 @@ Catppuccin = [
     ["#89B4FA", "#89B4FA"],  # c10-blue
     ["#CDD6F4", "CDD6F4"],   # c11-text
 ]
-# EverforestDarkHard = [
-#    ["#1E2326", "#1E2326"],
-#    ["#D3C6AA", "#D3C6AA"],
-#    ["#2E383C", "#2E383C"],
-#    ["#E67E80", "#E67E80"],
-#    ["#A7C080", "#A7C080"],
-#    ["#E69875", "#E69875"],
-#    ["#3A94C5", "#3A94C5"],
-#    ["#D699B6", "#D699B6"],
-#    ["#7FBBB3", "#7FBBB3"],
-#    ["#FFFBEF", "#FFFBEF"],
-# ]
+
+
+Tokyonight = [
+    ["#1A1B26", "#1A1B26"],  # c0-crust
+    ["#16161E", "#16161E"],  # c1-background
+    ["#C0CAF5", "#C0CAF5"],  # c2-foreground
+    ["#565F89", "#565F89"],  # c3-grey
+    ["#9D7CD8", "#9D7CD8"],  # c4-accent
+    ["#F7768E", "#F7768E"],  # c5-red
+    ["#9ECE6A", "#9ECE6A"],  # c6-green
+    ["#E0AF68", "#E0AF68"],  # c7-yellow
+    ["#FF9E64", "#FF9E64"],  # c8-orange
+    ["#FCA7EA", "#FCA7EA"],  # c9-pink
+    ["#82AAFF", "#82AAFF"],  # c10-blue
+    ["#C0CAF5", "#C0CAF5"],   # c11-text
+]
