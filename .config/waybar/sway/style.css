@@ -1,0 +1,157 @@
+* {
+  all: initial;
+  font-family:
+    Roboto,
+    JetbrainsMono NF;
+  font-size: 13px;
+  font-weight: 500;
+  min-height: 0;
+}
+
+@import "../themes/catppuccin.css";
+
+window#waybar {
+  background-color: transparent;
+  transition-property: background-color;
+  transition-duration: 0.5s;
+  border-radius: 0;
+}
+
+window#waybar.hidden {
+  opacity: 0.2;
+}
+
+button {
+  box-shadow: inset 0 -3px transparent;
+  border: none;
+}
+
+#pulseaudio:hover {
+  color: @base;
+  background-color: @pink;
+  opacity: 0.8;
+}
+
+#workspaces button {
+  border-radius: 0;
+  font-size: 12px;
+  font-weight: bold;
+  padding: 0px 14px 0px 14px;
+}
+
+#workspaces button.focused {
+	background-color: @background;
+}
+
+#workspaces button:hover {
+  background-color: @pink;
+  opacity: 0.8;
+}
+
+#workspaces button:hover label {
+  color: @base;
+}
+
+.modules-left > widget:first-child > #workspaces {
+  margin-left: 0;
+}
+
+.modules-right > widget:last-child > #workspaces {
+  margin-right: 0;
+}
+
+#mode {
+  background-color: @gray;
+  box-shadow: inset 0 -3px @white;
+}
+
+#clock,
+#battery,
+#cpu,
+#memory,
+#disk,
+#temperature,
+#network,
+#pulseaudio,
+#tray {
+  padding: 0 5px 0 5px;
+}
+
+#clock {
+  color: @text;
+}
+
+@keyframes blink {
+  to {
+    background-color: @white;
+    color: @background;
+  }
+}
+
+label:focus {
+  background-color: @background;
+}
+
+#cpu {
+  color: @text;
+}
+
+#memory {
+  color: @text;
+}
+
+#disk {
+  color: @text;
+  
+}
+
+#bluetooth {
+  color: @text;
+  
+}
+#network {
+  color: @text;
+  
+}
+
+#network.disconnected {
+  color: @text;
+}
+
+#pulseaudio {
+  color: @text;
+  
+}
+
+#pulseaudio.muted {
+  color: @text;
+}
+
+#wireplumber {
+  color: @text;
+}
+
+#wireplumber.muted {
+  color: @text;
+}
+
+#tray {
+  color: @text;
+  
+}
+
+#tray > .passive {
+  -gtk-icon-effect: dim;
+}
+
+#tray > .needs-attention {
+  -gtk-icon-effect: highlight;
+  background-color: @red;
+}
+
+tooltip {
+  color: @text;
+  background-color: @background;
+  text-shadow: none;
+  border: 1px solid @pink;
+}

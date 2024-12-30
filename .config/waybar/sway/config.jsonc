@@ -1,0 +1,101 @@
+{
+        "layer": "top", // Waybar at top layer
+	"position": "top", // Waybar position (top|bottom|left|right)
+	"height": 29, // Waybar height (to be removed for auto height)
+	// "width": 1280, // Waybar width
+	"spacing": 8, // Gaps between modules (4px)
+	"margin-bottom": 10,
+	// Choose the order of the modules
+	"modules-left": [
+		"sway/workspaces"
+	],
+	"modules-center": [
+		"clock"
+	],
+	"modules-right": [
+		"bluetooth",
+		"network",
+		"pulseaudio",
+		"cpu",
+		"memory",
+		"tray",
+		"custom/power"
+	],
+	"hyprland/workspaces": {
+		"disable-scroll": true,
+		"all-outputs": true,
+		"warp-on-scroll": false,
+		//"format": "{name}:{icon}",
+		"format": "{}",
+		"format-icons": {
+			"urgent": "",
+			"focused": "",
+			"default": ""
+		},
+		"persistent-workspaces": {
+			"*": 6
+		}
+	},
+	"tray": {
+		// "icon-size": 21,
+		"spacing": 10
+	},
+	"clock": {
+		"format": "{:%b %d  %I:%M %p}",
+		"tooltip-format": "<tt><small>{calendar}</small></tt>",
+		"format-alt": "{:%Y-%m-%d}",
+		"calendar": {
+			"mode"          : "month",
+			"mode-mon-col"  : 3,
+			"weeks-pos"     : "right",
+			"on-scroll"     : 1,
+			"on-click-right": "mode",
+			"format": {
+				"months":     "<span color='#ffead3'><b>{}</b></span>",
+				"days":       "<span color='#ecc6d9'><b>{}</b></span>",
+				"weeks":      "<span color='#99ffdd'><b>W{}</b></span>",
+				"weekdays":   "<span color='#ffcc66'><b>{}</b></span>",
+				"today":      "<span color='#ff6699'><b><u>{}</u></b></span>"
+			}
+	}
+	},
+	"cpu": {
+		"format": "   {usage}%",
+		"tooltip": false
+	},
+	"memory": {
+		"format": "  {}%"
+	},
+	"network": {
+		// "interface": "wlp2*", // (Optional) To force the use of this interface
+		"format-wifi": "    {essid}",
+		"format-ethernet": "{ipaddr}/{cidr} 󰈀 ",
+		"tooltip-format": "{ifname} via {gwaddr}  󰄡 ",
+		"format-linked": "{ifname} (No IP)  ",
+		"format-disconnected": "Disconnected ⚠",
+		"format-alt": "{ifname}: {ipaddr}/{cidr}"
+	},
+	"pulseaudio": {
+		// "scroll-step": 1, // %, can be a float
+		"format": "{icon}   {volume}%",
+		"format-muted": "󰖁    Muted",
+		"format-icons": {
+			"default": [
+				"",
+				"",
+				""
+			]
+		},
+		"on-click": "pavucontrol"
+	},
+	"bluetooth": {
+        "format": "󰂯 {status}",
+	"format-connected": "󰂯 {device_alias}",
+	"format-connected-battery": "󰂯 {device_alias}",
+	// "format-device-preference": [ "device1", "device2" ], // preference list deciding the displayed device
+	"tooltip-format": "{controller_alias}\t{controller_address}\n\n{num_connections} connected",
+	"tooltip-format-connected": "{controller_alias}\t{controller_address}\n\n{num_connections} connected\n\n{device_enumerate}",
+	"tooltip-format-enumerate-connected": "{device_alias}\t{device_address}",
+	"tooltip-format-enumerate-connected-battery": "{device_alias}\t{device_address}\t{device_battery_percentage}%"
+}
+}
