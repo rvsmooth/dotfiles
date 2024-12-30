@@ -48,7 +48,7 @@ gaps inner 8
 # | WALLPAPER |
 # +-------------+
 
-output * bg $HOME/Pictures/wallpapers/black.jpg fill
+output * bg $HOME/Pictures/wallpapers/war.jpg fill
 
 # +-------------+
 # | AUTOSTART |
