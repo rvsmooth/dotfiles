@@ -6,6 +6,7 @@
   font-size: 13px;
   font-weight: 500;
   min-height: 0;
+  padding: 2px 0 2px 0;
 }
 
 @import "../themes/catppuccin.css";
@@ -15,6 +16,7 @@ window#waybar {
   transition-property: background-color;
   transition-duration: 0.5s;
   border-radius: 0;
+  border-bottom: 1px solid @gray;
 }
 
 window#waybar.hidden {
