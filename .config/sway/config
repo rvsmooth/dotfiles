@@ -61,7 +61,7 @@ exec swayidle -w \
 exec_always autotiling
 exec_always 'killall waybar; waybar -c $bar/config.jsonc -s $bar/style.css'
 exec /usr/bin/lxpolkit
-
+exec dunst
 # +---------------+
 # | KEYBINDINGS |
 # +---------------+
