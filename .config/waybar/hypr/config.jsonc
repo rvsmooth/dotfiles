@@ -9,16 +9,12 @@
 		"hyprland/workspaces"
 	],
 	"modules-center": [
-		"clock"
 	],
 	"modules-right": [
-		"bluetooth",
 		"network",
 		"pulseaudio",
-		"cpu",
-		"memory",
-		"tray",
-		"custom/power"
+		"clock",
+		"tray"
 	],
 	"hyprland/workspaces": {
 		"disable-scroll": true,

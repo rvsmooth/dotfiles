@@ -267,31 +267,6 @@ screens = [
                     this_current_screen_border=colors[4],
                 ),
                 widget.Spacer(length=bar.STRETCH),
-                widget.Clock(
-                    format="%b %d %I:%M %p",
-                    **decoration_group,
-                    decorations=[
-                        BorderDecoration(
-                            colour=colors[7],
-                            border_width=[0, 0, 3, 0],
-                            padding_y=-1,
-                        )
-                    ],
-                ),
-                widget.Spacer(length=bar.STRETCH),
-                widget.Bluetooth(
-                    default_text="{connected_devices}",
-                    fmt="󰂯 {}",
-                    decorations=[
-                        BorderDecoration(
-                            colour=colors[3],
-                            border_width=[0, 0, 3, 0],
-                            padding_y=-1,
-                        )
-                    ],
-                    **decoration_group,
-                ),
-                widget.Spacer(length=6),
                 widget.Wlan(
                     ethernet_interface="enp0s29u1u2",
                     interface="wlp0s29u1u6",
@@ -320,29 +295,17 @@ screens = [
                     ],
                 ),
                 widget.Spacer(length=6),
-                widget.CPU(
-                    format="   {load_percent}%",
+                widget.Clock(
+                    format="%b %d %I:%M %p",
                     **decoration_group,
                     decorations=[
                         BorderDecoration(
-                            colour=colors[6],
+                            colour=colors[7],
                             border_width=[0, 0, 3, 0],
                             padding_y=-1,
-                        )
-                    ],
-                ),
-                widget.Spacer(length=6),
-                widget.HDD(
-                    format="  {HDDPercent}%",
-                    **decoration_group,
-                    decorations=[
-                        BorderDecoration(
-                            colour=colors[10],
-                            border_width=[0, 0, 3, 0],
-                            padding_y=-1,
-                        )
-                    ],
-                ),
+                            )
+                        ],
+                    ),
                 widget.Systray(
                     icon_size=20,
                     fmt="{}",
