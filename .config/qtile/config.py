@@ -53,10 +53,10 @@ keys = [
     # A list of available commands that can be bound to keys can be found
     # at https://docs.qtile.org/en/latest/manual/config/lazy.html
     # Switch between windows
-    Key([mod], "left", lazy.layout.left(), desc="Move focus to left"),
-    Key([mod], "right", lazy.layout.right(), desc="Move focus to right"),
-    Key([mod], "down", lazy.layout.down(), desc="Move focus down"),
-    Key([mod], "up", lazy.layout.up(), desc="Move focus up"),
+    Key([mod], "H", lazy.layout.left(), desc="Move focus to left"),
+    Key([mod], "L", lazy.layout.right(), desc="Move focus to right"),
+    Key([mod], "J", lazy.layout.down(), desc="Move focus down"),
+    Key([mod], "K", lazy.layout.up(), desc="Move focus up"),
     Key(
         [mod, "shift"],
         "tab",
