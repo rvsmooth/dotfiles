@@ -32,7 +32,6 @@ set $bar $HOME/.config/waybar/sway
 # +----------+ 
 # set border
 default_border pixel 
-smart_borders on
 # colors
 # Tokyo Night Moon Border Colors
 client.focused          #89B4FA #89B4FA #1E1E2E #89B4FA #a5adcb
@@ -60,6 +59,9 @@ exec swayidle -w \
 
 exec_always autotiling
 exec_always 'killall waybar; waybar -c $bar/config.jsonc -s $bar/style.css'
+exec systemctl --user import-environment WAYLAND_DISPLAY XDG_CURRENT_DESKTOP
+exec dbus-update-activation-environment --systemd WAYLAND_DISPLAY XDG_CURRENT_DESKTOP=sway
+exec_always -s 'QT_QPA_PLATFORM=wayland XDG_CURRENT_DESKTOP=sway XDG_SESSION_DESKTOP=sway MOZ_ENABLE_WAYLAND=1'
 exec /usr/bin/lxpolkit
 exec dunst
 # +---------------+

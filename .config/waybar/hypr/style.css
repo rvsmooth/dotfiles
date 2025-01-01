@@ -8,7 +8,7 @@
   min-height: 0;
 }
 
-@import "themes/catppuccin.css";
+@import "../themes/tokyonight.css";
 
 window#waybar {
   background-color: @base;
