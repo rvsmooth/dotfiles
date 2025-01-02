@@ -9,10 +9,10 @@
   padding: 0 0 2px 0;
 }
 
-@import "../themes/catppuccin.css";
+@import "../themes/nord.css";
 
 window#waybar {
-  background-color: rgba(0,0,0,0.7);
+  background-color: @bar;
   transition-property: background-color;
   transition-duration: 0.5s;
   border-radius: 0;
@@ -39,20 +39,22 @@ button {
   font-size: 12px;
   font-weight: bold;
   padding: 0px 14px 0px 14px;
+  margin: 0 2px 0 2px;
 }
 
 #workspaces button.focused {
-background-color: rgba(64, 64, 64, 0.5);
-border-radius: 2px;
+background-color: @pblack;
+border-radius: 5px;
+border: 1px solid @text;
 }
 
 #workspaces button:hover {
-  background-color: @pink;
-  opacity: 0.8;
+border-radius: 5px;
+border: 1px solid @pink;
 }
 
 #workspaces button:hover label {
-  color: @base;
+  color: white;
 }
 
 .modules-left > widget:first-child > #workspaces {

@@ -11,7 +11,7 @@
 @import "../themes/tokyonight.css";
 
 window#waybar {
-  background-color: @base;
+  background-color: @bar;
   transition-property: background-color;
   transition-duration: 0.5s;
   border-radius: 0;
