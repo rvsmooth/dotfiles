@@ -31,12 +31,14 @@ set $bar $HOME/.config/waybar/sway
 # | BORDER |
 # +----------+ 
 # set border
-default_border pixel 
+default_border pixel 2
+
 # colors
+# client.<class> <border> <background> <text> [<indicator> [<child_border>]]
 # Tokyo Night Moon Border Colors
-client.focused          #89B4FA #89B4FA #1E1E2E #89B4FA #a5adcb
-client.unfocused        #45475A #45475A #CDD6F4 #45475A #45475A
-client.urgent           #F38BA8 #F38BA8 #1E1E2E #F38BA8 #F38BA8
+client.focused          #88C0D0 #88C0D0 #2E3440 #88C0D0 #88C0D0
+client.unfocused        #434C5E #434C5E #E5E9F0 #434C5E #434C5E
+client.urgent           #BF616A #BF616A #2E3440 #BF616A #BF616A
 
 # +--------+
 # | GAPS |
@@ -45,7 +47,7 @@ client.urgent           #F38BA8 #F38BA8 #1E1E2E #F38BA8 #F38BA8
 # | WALLPAPER |
 # +-------------+
 
-output * bg $HOME/Pictures/wallpapers/war.jpg fill
+output * bg $HOME/Pictures/wallpapers/space.jpg fill
 
 # +-------------+
 # | AUTOSTART |
@@ -108,7 +110,6 @@ exec dunst
     bindsym $mod+Down focus down
     bindsym $mod+Up focus up
     bindsym $mod+Right focus right
-
     # Move the focused window with the same, but add Shift
     bindsym $mod+Shift+$left move left
     bindsym $mod+Shift+$down move down
