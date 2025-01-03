@@ -26,10 +26,11 @@ set $screenshot  $hyprscripts/screenshot.sh
 set $volume  $scriptscommon/volume.sh
 set $defaults  '$scriptscommon/defaults.sh'
 set $bar $HOME/.config/waybar/sway
-
 ## +----------+
-# | BORDER |
+# | LOOKS |
 # +----------+ 
+# font
+font pango:Roboto Regular 10
 # set border
 default_border pixel 2
 
