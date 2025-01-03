@@ -1,10 +1,15 @@
-# +------------------+
-# | My Sway Config |
-# +------------------+
+################################################################################
+#                                                                              #
+#  RV's Sway Config                                                            #
+#  author: https://gitlab.com/rvsmooth                                         #
+#                                                                              #
+################################################################################
 
-# +-------------+
-# | VARIABLES |
-# +-------------+
+
+
+################################################################################
+#                                  Variables                                   #
+################################################################################
 
 # Logo 
 set $mod Mod4
@@ -26,38 +31,34 @@ set $screenshot  $hyprscripts/screenshot.sh
 set $volume  $scriptscommon/volume.sh
 set $defaults  '$scriptscommon/defaults.sh'
 set $bar $HOME/.config/waybar/sway
-## +----------+
-# | LOOKS |
-# +----------+ 
+
+################################################################################
+#                                Look and feel                                 #
+################################################################################
+
 # font
 font pango:Roboto Regular 10
-# set border
+
+# border
 default_border pixel 2
 
 # colors
 # client.<class> <border> <background> <text> [<indicator> [<child_border>]]
-# Tokyo Night Moon Border Colors
 client.focused          #88C0D0 #88C0D0 #2E3440 #88C0D0 #88C0D0
 client.unfocused        #434C5E #434C5E #E5E9F0 #434C5E #434C5E
 client.urgent           #BF616A #BF616A #2E3440 #BF616A #BF616A
 
-# +--------+
-# | GAPS |
-# +--------+
-# +-------------+
-# | WALLPAPER |
-# +-------------+
-
+# wallpaper
 output * bg $HOME/Pictures/wallpapers/space.jpg fill
 
-# +-------------+
-# | AUTOSTART |
-# +-------------+
+################################################################################
+#                            autostart applications                            #
+################################################################################
+
 exec swayidle -w \
      timeout 300 'swaylock -f -c 000000' \
      timeout 600 'swaymsg "output * power off"' resume 'swaymsg "output * power on"' \
      before-sleep 'swaylock -f -c 000000'
-
 exec_always autotiling
 exec_always 'killall waybar; waybar -c $bar/config.jsonc -s $bar/style.css'
 exec systemctl --user import-environment WAYLAND_DISPLAY XDG_CURRENT_DESKTOP
@@ -65,32 +66,34 @@ exec dbus-update-activation-environment --systemd WAYLAND_DISPLAY XDG_CURRENT_DE
 exec_always -s 'QT_QPA_PLATFORM=wayland XDG_CURRENT_DESKTOP=sway XDG_SESSION_DESKTOP=sway MOZ_ENABLE_WAYLAND=1'
 exec /usr/bin/lxpolkit
 exec dunst
-# +---------------+
-# | KEYBINDINGS |
-# +---------------+
-#LAUNCHERS
+
+################################################################################
+#                                 Keybindings                                  #
+################################################################################
+
+# app launchers
+    bindsym $mod+p exec $menu
     bindsym $mod+Return exec $term
+    bindsym $mod+u exec $utilsmenu
     bindsym $mod+m exec '$defaults -e'
     bindsym $mod+b exec '$defaults -b1'
     bindsym $mod+Shift+b exec '$defaults -b2'
+    bindsym $mod+shift+f exec $filemanager
+
+# volume management
     bindsym $mod+F1 exec '$volume --pw-decvol'
     bindsym $mod+F2 exec '$volume --pw-mute'
     bindsym $mod+F3 exec '$volume --pw-incvol'
+
+# screenshot
     bindsym Print exec '$screenshot -f'
     bindsym $mod+Print exec '$screenshot -s'
     bindsym $mod+Control+Print exec '$screenshot -s5s'
-    bindsym $mod+shift+f exec $filemanager
-    bindsym $mod+u exec $utilsmenu
-    bindsym $mod+p exec $menu
 
+# window management
     # Kill focused window
     bindsym $mod+Shift+c kill
 
-    # Drag floating windows by holding down $mod and left mouse button.
-    # Resize them with right mouse button + $mod.
-    # Despite the name, also works for non-floating windows.
-    # Change normal to inverse to use left mouse button for resizing and right
-    # mouse button for dragging.
     floating_modifier $mod normal
 
     # Reload the configuration file
@@ -98,9 +101,8 @@ exec dunst
 
     # Exit sway (logs you out of your Wayland session)
     bindsym $mod+Shift+q exec swaynag -t warning -m 'You pressed the exit shortcut. Do you really want to exit sway? This will end your Wayland session.' -B 'Yes, exit sway' 'swaymsg exit'
-#
-# Moving around:
-#
+
+    # Moving around:
     # Move your focus around
     bindsym $mod+$left focus left
     bindsym $mod+$down focus down
@@ -121,9 +123,14 @@ exec dunst
     bindsym $mod+Shift+Down move down
     bindsym $mod+Shift+Up move up
     bindsym $mod+Shift+Right move right
-#
-# Workspaces:
-#
+
+    # Resize windows
+    bindsym $mod+Control+$left resize shrink width 10px
+    bindsym $mod+Control+$down resize grow height 10px
+    bindsym $mod+Control+$up resize shrink height 10px
+    bindsym $mod+Control+$right resize grow width 10px
+
+    # Workspaces:
     # Switch to workspace
     bindsym $mod+1 workspace number 1
     bindsym $mod+2 workspace number 2
@@ -148,15 +155,8 @@ exec dunst
     bindsym $mod+Shift+0 move container to workspace number 10
     # Note: workspaces can have any name you want, not just numbers.
     # We just use 1-10 as the default.
-#
-# Layout stuff:
-#
-    # You can "split" the current object of your focus with
-    # $mod+b or $mod+v, for horizontal and vertical splits
-    # respectively.
-    #bindsym $mod+b splith
-    #bindsym $mod+v splitv
 
+    # Layout stuff:
     # Switch the current container between different layout styles
     bindsym $mod+s layout stacking
     bindsym $mod+w layout tabbed
@@ -173,9 +173,10 @@ exec dunst
 
     # Move focus to the parent container
     bindsym $mod+a focus parent
-#
-# Scratchpad:
-#
+
+################################################################################
+#                                 scratchpads                                  #
+################################################################################
     # Sway has a "scratchpad", which is a bag of holding for windows.
     # You can send windows there and get them back later.
 
@@ -185,9 +186,8 @@ exec dunst
     # Show the next scratchpad window or hide the focused scratchpad window.
     # If there are multiple scratchpad windows, this command cycles through them.
     bindsym $mod+minus scratchpad show
-#
-# Resizing containers:
-#
+
+    # Resizing containers:
 mode "resize" {
     # left will shrink the containers width
     # right will grow the containers width
@@ -209,22 +209,5 @@ mode "resize" {
     bindsym Escape mode "default"
 }
 bindsym $mod+r mode "resize"
-#
-# Status Bar:
-#
-# Read `man 5 sway-bar` for more information about this section.
-#bar {
-#    position top
-#
-#    # When the status_command prints a new line to stdout, swaybar updates.
-#    # The default just shows the current date and time.
-#    status_command while date +'%Y-%m-%d %X'; do sleep 1; done
-#
-#    colors {
-#        statusline #ffffff
-#        background #323232
-#        inactive_workspace #32323200 #32323200 #5c5c5c
-#    }
-#}
 
 include /etc/sway/config.d/*
