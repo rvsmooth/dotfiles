@@ -5,22 +5,8 @@
 # if does not exist use pacman
 #
 
+ARGS='-Syyu --noconfirm'
 
-function update_paru(){
-	paru -Syyu
-}
-
-function update_yay(){
-	yay -Syyu
-}
-
-function update_pacman(){
-	sudo pacman -Syyu
-}
-
-function update_flatpak(){
-	flatpak update -y
-}
 if command -v paru &> /dev/null; then
 	export PARU=true
 	export MANAGER=paru
@@ -45,12 +31,12 @@ fi
 
 
 if [[ "$PARU" == "true" ]]; then
-	update_paru
-	update_flatpak
+	paru '$ARGS'
+	flatpak update -y
 elif [[ "$YAY" == "true" ]]; then
-	update_yay
-	update_flatpak
+	yay '$ARGS'
+	flatpak update -y
 else 
-	update_pacman
-	update_flatpak
+	sudo pacman '$ARGS'
+	flatpak update -y
 fi
