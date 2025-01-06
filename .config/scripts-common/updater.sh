@@ -5,7 +5,7 @@
 # if does not exist use pacman
 #
 
-ARGS='-Syyu --noconfirm'
+ARGS="-Syyu --noconfirm"
 
 if command -v paru &> /dev/null; then
 	export PARU=true
@@ -31,12 +31,12 @@ fi
 
 
 if [[ "$PARU" == "true" ]]; then
-	paru '$ARGS'
+	paru $ARGS
 	flatpak update -y
 elif [[ "$YAY" == "true" ]]; then
-	yay '$ARGS'
+	yay $ARGS
 	flatpak update -y
 else 
-	sudo pacman '$ARGS'
+	sudo pacman $ARGS
 	flatpak update -y
 fi
