@@ -1,15 +1,14 @@
 {
-        "layer": "top", // Waybar at top layer
+	"layer": "top", // Waybar at top layer
 	"position": "top", // Waybar position (top|bottom|left|right)
-	"height": 29, // Waybar height (to be removed for auto height)
+	"height": 30, // Waybar height (to be removed for auto height)
 	// "width": 1280, // Waybar width
 	"spacing": 8, // Gaps between modules (4px)
 	// Choose the order of the modules
 	"modules-left": [
 		"hyprland/workspaces"
 	],
-	"modules-center": [
-	],
+	"modules-center": [],
 	"modules-right": [
 		"network",
 		"pulseaudio",
@@ -20,15 +19,14 @@
 		"disable-scroll": true,
 		"all-outputs": true,
 		"warp-on-scroll": false,
-		//"format": "{name}:{icon}",
-		"format": "{}",
+		"format": "{name}:{icon}",
 		"format-icons": {
-			"urgent": "",
-			"focused": "",
-			"default": ""
-		},
-		"persistent-workspaces": {
-			"*": 6
+			"1": " Study",
+			"2": " Reading",
+			"3": " Meditation",
+			"4": " Editing",
+			"5": " System Administration",
+			"6": " Desktop Configuration"
 		}
 	},
 	"tray": {
@@ -40,13 +38,15 @@
 		"tooltip-format": "<tt><big><span size='8pt' font='JetBrainsMono NF Medium'>{calendar}</span></big></tt>",
 		"format-alt": "{:%Y-%m-%d}",
 		"calendar": {
-			"mode"          : "month",
-			"mode-mon-col"  : 3,
-			"weeks-pos"     : "right",
-			"on-scroll"     : 1,
+			"mode": "month",
+			"mode-mon-col": 3,
+			"weeks-pos": "right",
+			"on-scroll": 1,
 			"on-click-right": "mode",
-			"format": { "today": "<span color='#81a1c1'><b><u>{}</u></b></span>" }
-	}
+			"format": {
+				"today": "<span color='#81a1c1'><b><u>{}</u></b></span>"
+			}
+		}
 	},
 	"cpu": {
 		"format": "   {usage}%",
@@ -78,13 +78,13 @@
 		"on-click": "pavucontrol"
 	},
 	"bluetooth": {
-        "format": "󰂯 {status}",
-	"format-connected": "󰂯 {device_alias}",
-	"format-connected-battery": "󰂯 {device_alias}",
-	// "format-device-preference": [ "device1", "device2" ], // preference list deciding the displayed device
-	"tooltip-format": "{controller_alias}\t{controller_address}\n\n{num_connections} connected",
-	"tooltip-format-connected": "{controller_alias}\t{controller_address}\n\n{num_connections} connected\n\n{device_enumerate}",
-	"tooltip-format-enumerate-connected": "{device_alias}\t{device_address}",
-	"tooltip-format-enumerate-connected-battery": "{device_alias}\t{device_address}\t{device_battery_percentage}%"
-}
+		"format": "󰂯 {status}",
+		"format-connected": "󰂯 {device_alias}",
+		"format-connected-battery": "󰂯 {device_alias}",
+		// "format-device-preference": [ "device1", "device2" ], // preference list deciding the displayed device
+		"tooltip-format": "{controller_alias}\t{controller_address}\n\n{num_connections} connected",
+		"tooltip-format-connected": "{controller_alias}\t{controller_address}\n\n{num_connections} connected\n\n{device_enumerate}",
+		"tooltip-format-enumerate-connected": "{device_alias}\t{device_address}",
+		"tooltip-format-enumerate-connected-battery": "{device_alias}\t{device_address}\t{device_battery_percentage}%"
+	}
 }

@@ -8,13 +8,14 @@
   min-height: 0;
 }
 
-@import "../themes/tokyonight.css";
+@import "../themes/nord.css";
 
 window#waybar {
   background-color: @bar;
   transition-property: background-color;
   transition-duration: 0.5s;
   border-radius: 0;
+  border-bottom: 1px solid @gray;
 }
 
 window#waybar.hidden {
@@ -33,28 +34,26 @@ button {
 }
 
 #workspaces button {
-  border-bottom: 3px solid transparent;
   border-radius: 0;
   font-size: 12px;
   font-weight: bold;
-  padding: 0px 14px 0px 14px;
-}
-
-#workspaces button.empty label {
-  color: @gray;
+  padding: 1px 14px 1px 14px;
+  margin: 0 2px 0 2px;
 }
 
 #workspaces button.active {
-  border-bottom: 3px solid @purple;
+  background-color: @pblack;
+  border-radius: 5px;
+  border: 1px solid @text;
 }
 
 #workspaces button:hover {
-  background-color: @pink;
-  opacity: 0.8;
+  border-radius: 5px;
+  border: 1px solid @pink;
 }
 
 #workspaces button:hover label {
-  color: @base;
+  color: white;
 }
 
 .modules-left > widget:first-child > #workspaces {
@@ -84,7 +83,6 @@ button {
 
 #clock {
   color: @text;
-  border-bottom: 2px solid @yellow;
 }
 
 @keyframes blink {
@@ -100,26 +98,21 @@ label:focus {
 
 #cpu {
   color: @text;
-  border-bottom: 2px solid @green;
 }
 
 #memory {
   color: @text;
-  border-bottom: 2px solid @blue;
 }
 
 #disk {
   color: @text;
-  border-bottom: 2px solid @yellow;
 }
 
 #bluetooth {
   color: @text;
-  border-bottom: 2px solid @gray;
 }
 #network {
   color: @text;
-  border-bottom: 2px solid @pink;
 }
 
 #network.disconnected {
@@ -128,7 +121,6 @@ label:focus {
 
 #pulseaudio {
   color: @text;
-  border-bottom: 2px solid @orange;
 }
 
 #pulseaudio.muted {
@@ -145,7 +137,6 @@ label:focus {
 
 #tray {
   color: @text;
-  border-bottom: 2px solid transparent;
 }
 
 #tray > .passive {
