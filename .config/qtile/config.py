@@ -44,9 +44,10 @@ home = str(Path.home())
 defaults = home + "/.config/scripts-common/defaults.sh"
 volume = home + "/.config/scripts-common/volume.sh"
 rofi_utils = home + "/.config/rofi/scripts/rofi-utils"
+rofi_themer = home + "/.config/rofi/scripts/utils/Themer"
 
 # colorscheme
-colors = colors.Tokyonight
+colors = colors.default
 
 # Keybindings
 keys = [
@@ -65,8 +66,10 @@ keys = [
     ),
     # Move windows between left/right columns or move up/down in current stack.
     # Moving out of range in Columns layout will create new column.
-    Key([mod, "shift"], "h", lazy.layout.shuffle_left(), desc="Move window to left"),
-    Key([mod, "shift"], "l", lazy.layout.shuffle_right(), desc="Move window to right"),
+    Key([mod, "shift"], "h", lazy.layout.shuffle_left(),
+        desc="Move window to left"),
+    Key([mod, "shift"], "l", lazy.layout.shuffle_right(),
+        desc="Move window to right"),
     Key([mod, "shift"], "j", lazy.layout.shuffle_down(), desc="Move window down"),
     Key([mod, "shift"], "k", lazy.layout.shuffle_up(), desc="Move window up"),
     # Grow windows. If current window is on the edge of screen and direction
@@ -115,9 +118,12 @@ keys = [
     Key([mod], "p", lazy.spawn(rofi), desc="Launch Rofi run launcher"),
     Key([mod], "b", lazy.spawn(f"{defaults} -b1"), desc="1st browser"),
     Key([mod], "m", lazy.spawn(f"{defaults} -e"), desc="Email client"),
-    Key([mod, "shift"], "b", lazy.spawn(f"{defaults} -b2"), desc="2nd browser"),
+    Key([mod, "shift"], "b", lazy.spawn(
+        f"{defaults} -b2"), desc="2nd browser"),
     Key([mod, "shift"], "f", lazy.spawn(fileman), desc="Launch file-manager"),
     Key([mod], "u", lazy.spawn(rofi_utils), desc="Launch rofi-utils"),
+    Key([mod, "control"], "t", lazy.spawn(
+        rofi_themer), desc="Launch rofi-utils"),
     Key([mod], "e", lazy.spawn(emacs), desc="Emacs Dashboard"),
     # Volume Management
     Key(
@@ -139,8 +145,10 @@ keys = [
         desc="Mute Volume(Pipewire)",
     ),
     # Screenshots
-    Key([], "Print", lazy.spawn("flameshot screen"), desc="Take a full screenshot"),
-    Key([mod], "Print", lazy.spawn("flameshot gui"), desc="Take a partial screenshot"),
+    Key([], "Print", lazy.spawn("flameshot screen"),
+        desc="Take a full screenshot"),
+    Key([mod], "Print", lazy.spawn("flameshot gui"),
+        desc="Take a partial screenshot"),
 ]
 # Add key bindings to switch VTs in Wayland.
 # We can't check qtile.core.name in default config as it is loaded before qtile is started
@@ -150,7 +158,8 @@ for vt in range(1, 8):
         Key(
             ["control", "mod1"],
             f"f{vt}",
-            lazy.core.change_vt(vt).when(func=lambda: qtile.core.name == "wayland"),
+            lazy.core.change_vt(vt).when(
+                func=lambda: qtile.core.name == "wayland"),
             desc=f"Switch to VT{vt}",
         )
     )
@@ -197,7 +206,8 @@ for i in groups:
                 [mod, "shift"],
                 i.name,
                 lazy.window.togroup(i.name, switch_group=True),
-                desc="Switch to & move focused window to group {}".format(i.name),
+                desc="Switch to & move focused window to group {}".format(
+                    i.name),
             ),
             # Or, use below if you prefer not to switch to that group.
             # # mod + shift + group number = move focused window to group
@@ -303,9 +313,9 @@ screens = [
                             colour=colors[7],
                             border_width=[0, 0, 3, 0],
                             padding_y=-1,
-                            )
-                        ],
-                    ),
+                        )
+                    ],
+                ),
                 widget.Systray(
                     icon_size=20,
                     fmt="{}",

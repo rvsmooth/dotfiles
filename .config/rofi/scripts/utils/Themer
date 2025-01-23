@@ -1,0 +1,43 @@
+#!/usr/bin/env bash
+
+ROFI_THEMES_PATH="${HOME}/.config/rofi/themes/colors"
+QTILE_COLORS_PATH="${HOME}/.config/qtile/colors.py"
+QTILE_THEME_CURRENT="$(cat $QTILE_COLORS_PATH | awk -F '=' '/default/ {print $2}' | xargs)"
+KITTY_CONFIG_PATH="${HOME}/.config/kitty"
+
+THEMES=(
+	"Catppuccin"
+	"Dracula"
+	"GruvBox"
+	"Nord"
+	"SpringBlossom"
+	"Tokyonight"
+	)
+
+function apply_theme(){
+
+	FIND="default = $QTILE_THEME_CURRENT"
+	REPLACE="default = $THEME_CHOICE"
+
+	#rofi
+	cp "$ROFI_THEMES_PATH/$THEME_CHOICE".rasi "$ROFI_THEMES_PATH/default.rasi"
+	
+	#qtile
+	sed -i "s/$FIND/$REPLACE/g" "$QTILE_COLORS_PATH"
+	qtile cmd-obj -o cmd -f restart
+
+	#kitty
+	cp "$KITTY_CONFIG_PATH/$THEME_CHOICE".conf "$KITTY_CONFIG_PATH/default.conf" 
+
+}
+
+THEME_CHOICE=$(printf '%s\n' "${THEMES[@]}" | rofi -dmenu -p "Select a theme:")
+
+if [[ -n "$THEME_CHOICE" ]]; then
+    echo "You selected: $THEME_CHOICE"
+    echo "Applying theme..."
+    apply_theme
+    echo "Done"
+else
+    echo "No valid selection made."
+fi
