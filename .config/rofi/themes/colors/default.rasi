@@ -1,24 +1,23 @@
 * {
- background: #282828 ;
- foreground: #ebdbb2 ;
-  
- black: #1d2021;
- red: #cc241d;
- green: #98971a;
- yellow: #d79921;
- blue: #458588;
- purple: #b16286;
- aqua: #689d6a;
- white: #f9f5d7;
- comment: #7c6f64;
- orange: #d65d0e;
- identifier: #b8bb26;
- statement: #cc241d;
- type: #8ec07c;
- special: #d3869b ;
+  background: #16161E;           // c1-background (replacing #1E2326)
+  foreground: #C0CAF5;           // c11-text (replacing #D3C6AA)
 
- accent: @green;
- background-color: @background;
- border-radius: 5px;
+  black: #16161E;                // c1-background
+  red: #F7768E;                  // c5-red
+  green: #9ECE6A;                // c6-green
+  yellow: #E0AF68;               // c7-yellow
+  blue: #82AAFF;                 // c10-blue
+  purple: #9D7CD8;               // c4-accent
+  aqua: #9ECE6A;                 // c6-green (as a substitute)
+  white: #C0CAF5;                // c11-text
+  comment: #565F89;              // c3-grey
+  orange: #FF9E64;               // c8-orange
+  identifier: #E0AF68;           // c7-yellow
+  statement: #F7768E;            // c5-red
+  type: #9ECE6A;                 // c6-green
+  special: #FCA7EA;              // c9-pink
+  accent: #9D7CD8;               // c4-accent
+  background-color: #16161E;     // c1-background
+  border-radius: 5px;
 }
 

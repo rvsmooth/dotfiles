@@ -8,7 +8,7 @@
   min-height: 0;
 }
 
-@import "../themes/nord.css";
+@import "../themes/default.css";
 
 window#waybar {
   background-color: @bar;

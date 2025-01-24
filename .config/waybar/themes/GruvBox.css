@@ -1,0 +1,23 @@
+@define-color foreground #ebdbb2;
+@define-color background #282828;
+@define-color cursor #ebdbb2;
+
+@define-color base #282828;
+@define-color red #cc241d;
+@define-color green #98971a;
+@define-color yellow #d79921;
+@define-color purple #b16286;
+@define-color pink #d3869b;
+@define-color blue #458588;
+@define-color white #f9f5d7;
+@define-color gray #7c6f64;
+@define-color orange #d65d0e;
+@define-color text #ebdbb2;
+@define-color bar rgba(40, 40, 40, 0.7); 
+
+@define-color identifier #b8bb26;
+@define-color statement #cc241d;
+@define-color type #8ec07c;
+@define-color special #d3869b;
+@define-color accent #98971a;  
+
