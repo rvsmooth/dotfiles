@@ -43,8 +43,8 @@ function apply_theme(){
 	rsync -v "$WALLPAPER_DIR/$THEME_CHOICE".* "$WALLPAPER_DIR/default"
 
 	if [[ "$DESKTOP_SESSION" == "qtile" ]]; then
-		feh --bg-fill "$WALLPAPER_DIR/default" &
 		qtile cmd-obj -o cmd -f restart 
+		feh --bg-fill "$WALLPAPER_DIR/default" &
 	elif [[ "$DESKTOP_SESSION" == "sway" ]]; then
 		killall -9 swaybg
 		swaymsg output * bg "$WALLPAPER_DIR/default" fill &
