@@ -1,11 +1,11 @@
 @import "~/.config/rofi/themes/colors/default.rasi"
 
 window {
- width: 750;
+ width: 500;
  height: 400;
  padding: 10px;
  border: 2px;
- border-radius: 15px;
+ border-radius: 5px;
  border-color: @accent;
 }
 
