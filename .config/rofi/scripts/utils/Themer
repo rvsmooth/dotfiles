@@ -24,42 +24,37 @@ function apply_theme(){
 	REPLACE="default = $THEME_CHOICE"
 
 	#rofi
-	cp "$ROFI_THEMES_PATH/$THEME_CHOICE.rasi" "$ROFI_THEMES_PATH/default.rasi"
+	rsync "$ROFI_THEMES_PATH/$THEME_CHOICE.rasi" "$ROFI_THEMES_PATH/default.rasi"
 	
 	#qtile
 	sed -i "s/$FIND/$REPLACE/g" "$QTILE_COLORS_PATH"
 
 	#hypr and sway
-	cp "$WAYBAR_THEME_PATH/$THEME_CHOICE.css" "$WAYBAR_THEME_PATH/default.css"
+	rsync "$WAYBAR_THEME_PATH/$THEME_CHOICE.css" "$WAYBAR_THEME_PATH/default.css"
 
 	#kitty
-	cp "$KITTY_CONFIG_PATH/$THEME_CHOICE.conf" "$KITTY_CONFIG_PATH/default.conf" 
+	rsync "$KITTY_CONFIG_PATH/$THEME_CHOICE.conf" "$KITTY_CONFIG_PATH/default.conf" 
 
 	#dunst
-	cp "$DUNST_THEME_PATH/$THEME_CHOICE" "$DUNST_THEME_PATH/../dunstrc"
+	rsync "$DUNST_THEME_PATH/$THEME_CHOICE" "$DUNST_THEME_PATH/../dunstrc"
 	killall dunst && dunst
 
 	# wallpaper
-	cp "$WALLPAPER_DIR/$THEME_CHOICE".* "$WALLPAPER_DIR/default"
+	rsync -v "$WALLPAPER_DIR/$THEME_CHOICE".* "$WALLPAPER_DIR/default"
 
 	if [[ "$DESKTOP_SESSION" == "qtile" ]]; then
 		feh --bg-fill "$WALLPAPER_DIR/default" &
-	elif [[ "$DESKTOP_SESSION" == "sway" ]]; then
-		swaybg -i "$WALLPAPER_DIR/default" &
-	else 
-		echo "Failed to set wallpaper"
-	fi
-
-	if [[ "$DESKTOP_SESSION" == "qtile" ]]; then
 		qtile cmd-obj -o cmd -f restart 
 	elif [[ "$DESKTOP_SESSION" == "sway" ]]; then
-		swaymsg reload &
+		killall -9 swaybg
+		swaymsg output * bg "$WALLPAPER_DIR/default" fill &
 		killall waybar &
-		waybar -c "${HOME}/.config/waybar/sway/config.jsonc" -s "${HOME}/.config/waybar/sway/style.css" &
+		waybar -c "${HOME}/.config/waybar/sway/config.jsonc" -s "${HOME}/.config/waybar/sway/style.css" 
+		swaymsg reload &
 	elif [[ "$DESKTOP_SESSION" == "hyprland" ]]; then
 		hyprctl reload &
 		killall waybar &
-		waybar -c "${HOME}/.config/waybar/hypr/config.jsons" -s "${HOME}/.config/waybar/hypr/style.css" &
+		waybar -c "${HOME}/.config/waybar/hypr/config.jsons" -s "${HOME}/.config/waybar/hypr/style.css" 
 	else 
 		echo "Neither sway nor hyprland is installed."
 	fi
