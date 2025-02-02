@@ -3,7 +3,7 @@
 # Function to display usage
 browser1="floorp"
 browser2="brave"
-email="evolution"
+email="thunderbird"
 
 usage() {
   echo 'Usage: $0 [-b1|--browser1] for "$browser1"  or [-b2|--browser2] for "$browser2" or [-e|--email] for "$email"'
