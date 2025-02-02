@@ -64,7 +64,7 @@ exec_always 'killall waybar; waybar -c $bar/config.jsonc -s $bar/style.css'
 exec systemctl --user import-environment WAYLAND_DISPLAY XDG_CURRENT_DESKTOP
 exec dbus-update-activation-environment --systemd WAYLAND_DISPLAY XDG_CURRENT_DESKTOP=sway
 exec_always -s 'QT_QPA_PLATFORM=wayland XDG_CURRENT_DESKTOP=sway XDG_SESSION_DESKTOP=sway MOZ_ENABLE_WAYLAND=1'
-exec /usr/bin/lxpolkit
+exec /usr/lib/polkit-gnome/polkit-gnome-authentication-agent-1
 exec dunst
 
 ################################################################################
