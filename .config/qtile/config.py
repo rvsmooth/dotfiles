@@ -276,6 +276,10 @@ screens = [
                     highlight_color=colors[1],
                     this_current_screen_border=colors[4],
                 ),
+                widget.WindowName(
+                    foreground=colors[11], 
+                    padding=80
+                ),
                 widget.Spacer(length=bar.STRETCH),
                 widget.Wlan(
                     ethernet_interface="enp0s29u1u2",

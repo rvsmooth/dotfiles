@@ -1,7 +1,7 @@
 #!/bin/bash
 
 # Function to display usage
-browser1="firefox"
+browser1="floorp"
 browser2="brave"
 email="thunderbird"
 
