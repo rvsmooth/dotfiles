@@ -282,15 +282,6 @@ screens = [
                     font="JetBrainsMono NFM ExtraLight:style=ExtraLight Italic",
                     padding=80
                 ),
-                widget.Wlan(
-                    ethernet_interface="enp0s29u1u2",
-                    interface="wlp0s29u1u6",
-                    format="◆    {essid}",
-                    disconnected_message="",
-                    update_interval=6,
-                ),
-                widget.Spacer(length=6),
-                widget.TextBox(fmt='◆', foreground=colors[9]),
                 widget.CPU(
                     format='  Cpu: {load_percent}%',
                     foreground=colors[8],
