@@ -245,6 +245,12 @@ widget_defaults = dict(
     font="Roboto, JetBrainsMono NF Bold",
     fontsize=12,
 )
+
+separator = [
+    widget.Spacer(length=6),
+    widget.TextBox(fmt='◆', foreground=colors[9]),
+]
+
 extension_defaults = widget_defaults.copy()
 
 screens = [
@@ -254,6 +260,13 @@ screens = [
                 #########################
                 # Widget Configurations #
                 #########################
+                widget.Spacer(length=6),
+                widget.Image(
+                    filename="~/.config/qtile/icons/archlinux-icon.svg",
+                    scale="False",
+                    mouse_callbacks={
+                        'Button1': lambda: qtile.cmd_spawn(terminal)},
+                ),
                 widget.Spacer(length=6),
                 widget.GroupBox(
                     padding=8,
@@ -269,30 +282,34 @@ screens = [
                     font="JetBrainsMono NFM ExtraLight:style=ExtraLight Italic",
                     padding=80
                 ),
-                widget.Spacer(length=bar.STRETCH),
                 widget.Wlan(
                     ethernet_interface="enp0s29u1u2",
                     interface="wlp0s29u1u6",
-                    format="   {essid}",
+                    format="◆    {essid}",
                     disconnected_message="",
                     update_interval=6,
                 ),
                 widget.Spacer(length=6),
+                widget.TextBox(fmt='◆', foreground=colors[9]),
                 widget.CPU(
                     format='  Cpu: {load_percent}%',
-                    foreground=colors[4],
-                ),
-                widget.Memory(
                     foreground=colors[8],
+                ),
+                widget.Spacer(length=6),
+                widget.TextBox(fmt='◆', foreground=colors[9]),
+                widget.Memory(
+                    foreground=colors[4],
                     format='{MemUsed: .0f}{mm}',
                     fmt='󰍛  Mem: {} used',
                 ),
                 widget.Spacer(length=6),
+                widget.TextBox(fmt='◆', foreground=colors[9]),
                 widget.PulseVolume(
                     foreground=colors[7],
                     fmt="󰕾  {}",
                 ),
                 widget.Spacer(length=6),
+                widget.TextBox(fmt='◆', foreground=colors[9]),
                 widget.Clock(
                     foreground=colors[6],
                     format="☘  %b %d %I:%M %p",
