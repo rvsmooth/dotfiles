@@ -105,4 +105,4 @@ SpringBlossom = [
 
 ]
 
-default = GruvBox
+default = Tokyonight

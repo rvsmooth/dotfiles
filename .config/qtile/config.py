@@ -278,6 +278,16 @@ screens = [
                     update_interval=6,
                 ),
                 widget.Spacer(length=6),
+                widget.CPU(
+                    format='  Cpu: {load_percent}%',
+                    foreground=colors[4],
+                ),
+                widget.Memory(
+                    foreground=colors[8],
+                    format='{MemUsed: .0f}{mm}',
+                    fmt='󰍛  Mem: {} used',
+                ),
+                widget.Spacer(length=6),
                 widget.PulseVolume(
                     foreground=colors[7],
                     fmt="󰕾  {}",
