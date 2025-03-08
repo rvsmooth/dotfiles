@@ -28,11 +28,9 @@ import subprocess
 from pathlib import Path
 
 import colors
-from libqtile import bar, hook, layout, qtile
+from libqtile import bar, hook, layout, qtile, widget
 from libqtile.config import Click, Drag, DropDown, Group, Key, Match, ScratchPad, Screen
 from libqtile.lazy import lazy
-from qtile_extras import widget
-from qtile_extras.widget.decorations import BorderDecoration
 
 # Variables
 mod = "mod4"
@@ -169,26 +167,19 @@ groups = [
     Group("1", layout="monadtall", label="1"),
     Group("2", layout="monadtall", label="2"),
     Group("3", layout="monadtall", label="3"),
-    Group("4", layout="tile", label="4"),
-    Group("5", layout="tile", label="5"),
-    Group("6", layout="tile", label="6"),
+    Group("4", layout="monadtall", label="4"),
+    Group("5", layout="monadtall", label="5"),
+    Group("6", layout="monadtall", label="6"),
 ]
 
 layout_theme = {
     "border_width": 2,
-    "margin": 13,
+    "margin": 8,
     "border_focus": colors[4],
     "border_normal": colors[3],
 }
 layouts = [
     layout.MonadTall(**layout_theme),
-    layout.Tile(
-        border_width=0,
-        margin=0,
-        border_focus=colors[4],
-        border_normal=colors[3],
-        ratio=0.7,
-    ),
 ]
 
 for i in groups:
@@ -250,12 +241,8 @@ keys.extend(
 )
 
 
-decoration_group = {
-    "foreground": colors[11],
-    "padding": 10,
-}
 widget_defaults = dict(
-    font="Roboto, JetBrainsMono NF Medium",
+    font="Roboto, JetBrainsMono NF Bold",
     fontsize=12,
 )
 extension_defaults = widget_defaults.copy()
@@ -267,17 +254,19 @@ screens = [
                 #########################
                 # Widget Configurations #
                 #########################
+                widget.Spacer(length=6),
                 widget.GroupBox(
                     padding=8,
-                    active=colors[11],
+                    active=colors[10],
                     inactive=colors[3],
                     disable_drag=True,
                     highlight_method="line",
                     highlight_color=colors[1],
-                    this_current_screen_border=colors[4],
+                    this_current_screen_border=colors[8],
                 ),
                 widget.WindowName(
-                    foreground=colors[11], 
+                    foreground=colors[2],
+                    font="JetBrainsMono NFM ExtraLight:style=ExtraLight Italic",
                     padding=80
                 ),
                 widget.Spacer(length=bar.STRETCH),
@@ -287,49 +276,28 @@ screens = [
                     format="   {essid}",
                     disconnected_message="",
                     update_interval=6,
-                    **decoration_group,
-                    decorations=[
-                        BorderDecoration(
-                            colour=colors[9],
-                            border_width=[0, 0, 3, 0],
-                            padding_y=-1,
-                        )
-                    ],
                 ),
                 widget.Spacer(length=6),
-                widget.Volume(
+                widget.PulseVolume(
+                    foreground=colors[7],
                     fmt="󰕾  {}",
-                    **decoration_group,
-                    decorations=[
-                        BorderDecoration(
-                            colour=colors[8],
-                            border_width=[0, 0, 3, 0],
-                            padding_y=-1,
-                        )
-                    ],
                 ),
                 widget.Spacer(length=6),
                 widget.Clock(
-                    format="%b %d %I:%M %p",
-                    **decoration_group,
-                    decorations=[
-                        BorderDecoration(
-                            colour=colors[7],
-                            border_width=[0, 0, 3, 0],
-                            padding_y=-1,
-                        )
-                    ],
+                    foreground=colors[6],
+                    format="☘  %b %d %I:%M %p",
                 ),
                 widget.Systray(
                     icon_size=20,
                     fmt="{}",
                 ),
+                widget.Spacer(length=6),
             ],
             ######################
             # BAR CONFIGURATIONS #
             ######################
-            29,
-            margin=[0, 0, 0, 0],
+            27,
+            margin=[6, 6, 0, 6],
             border_width=0,
             background=colors[1],
         ),
