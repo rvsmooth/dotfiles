@@ -262,8 +262,8 @@ screens = [
                 #########################
                 widget.Spacer(length=6),
                 widget.Image(
-                    filename="~/.config/qtile/icons/archlinux-icon.svg",
-                    scale="False",
+                    filename="~/.config/qtile/icons/qtile.png",
+                    scale="True",
                     mouse_callbacks={
                         'Button1': lambda: qtile.cmd_spawn(terminal)},
                 ),
