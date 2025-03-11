@@ -2,7 +2,7 @@ set -g fish_greeting
 set -x TERM xterm-256color
 set PATH $PATH ~/.local/bin
 source $HOME/.config/scripts-common/aliases.sh
-set -g fish_theme "Catppuccin_Mocha"
+fish_config theme choose "TokyoNight_Night"
 
 #  __                  _   _                 
 # / _|                | | (_)                
