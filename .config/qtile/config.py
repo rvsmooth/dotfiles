@@ -295,7 +295,7 @@ screens = [
                 ),
                 widget.Spacer(length=6),
                 widget.TextBox(fmt='◆', foreground=colors[9]),
-                widget.PulseVolume(
+                widget.Volume(
                     foreground=colors[7],
                     fmt="󰕾  {}",
                 ),
@@ -303,7 +303,7 @@ screens = [
                 widget.TextBox(fmt='◆', foreground=colors[9]),
                 widget.Clock(
                     foreground=colors[6],
-                    format="☘  %b %d %I:%M %p",
+                    format=" %b %d %I:%M %p",
                 ),
                 widget.Systray(
                     icon_size=20,
