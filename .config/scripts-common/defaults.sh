@@ -1,7 +1,7 @@
 #!/bin/bash
 
 # Function to display usage
-browser1="brave"
+browser1="flatpak run one.ablaze.floorp"
 browser2="floorp"
 email="thunderbird"
 
