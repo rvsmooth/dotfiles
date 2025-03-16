@@ -25,7 +25,7 @@ UTILS=(
 ROFI_UTILS_CMD=$(printf '%s\n' "${UTILS[@]}" | rofi -dmenu -i -p "Utilities")
 if [ -n "$ROFI_UTILS_CMD" ]; then
 	bash $ROFI_SCRIPTS_DIR/$ROFI_UTILS_CMD
-	bash $ROFI_SCRIPTS_DIR/$ROFI_UTILS_CMD
+
 else
 	exit 1
 fi
