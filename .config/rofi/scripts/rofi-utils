@@ -11,11 +11,21 @@
 
 ROFI_DIR="$HOME/.config/rofi"
 ROFI_SCRIPTS_DIR="$ROFI_DIR/scripts"
-ROFI_UTILS_DIR="$ROFI_SCRIPTS_DIR/utils"
-ROFI_UTILS_CMD=$(ls $ROFI_UTILS_DIR | rofi -dmenu -i -p "Utilities")
+UTILS=(
+	"AppDrawer"
+	"Bluetooth"
+	"Brightness"
+	"ColorShift"
+	"Emojis"
+	"PowerMenu"
+	"Themer"
+	"WifiMenu"
+)
 
+ROFI_UTILS_CMD=$(printf '%s\n' "${UTILS[@]}" | rofi -dmenu -i -p "Utilities")
 if [ -n "$ROFI_UTILS_CMD" ]; then
-	bash $ROFI_UTILS_DIR/$ROFI_UTILS_CMD
+	bash $ROFI_SCRIPTS_DIR/$ROFI_UTILS_CMD
+	bash $ROFI_SCRIPTS_DIR/$ROFI_UTILS_CMD
 else
 	exit 1
 fi
