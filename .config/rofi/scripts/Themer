@@ -35,23 +35,24 @@ function apply_theme(){
 	REPLACE="default = $THEME_CHOICE"
 
 	#rofi
-	rsync "$ROFI_THEMES_PATH/$THEME_CHOICE.rasi" "$ROFI_THEMES_PATH/default.rasi"
+	cp -f "$ROFI_THEMES_PATH/$THEME_CHOICE.rasi" "$ROFI_THEMES_PATH/default.rasi"
 	
 	#qtile
 	sed -i "s/$FIND/$REPLACE/g" "$QTILE_COLORS_PATH"
 
 	#hypr and sway
-	rsync "$WAYBAR_THEME_PATH/$THEME_CHOICE.css" "$WAYBAR_THEME_PATH/default.css"
+	cp -f "$WAYBAR_THEME_PATH/$THEME_CHOICE.css" "$WAYBAR_THEME_PATH/default.css"
 
 	#kitty
-	rsync "$KITTY_CONFIG_PATH/$THEME_CHOICE.conf" "$KITTY_CONFIG_PATH/default.conf" 
+	cp -f "$KITTY_CONFIG_PATH/$THEME_CHOICE.conf" "$KITTY_CONFIG_PATH/default.conf" 
 
 	#dunst
-	rsync "$DUNST_THEME_PATH/$THEME_CHOICE" "$DUNST_THEME_PATH/../dunstrc"
-	killall dunst && dunst
+	cp -f "$DUNST_THEME_PATH/$THEME_CHOICE" "$DUNST_THEME_PATH/../dunstrc"
+	killall dunst
 
 	# wallpaper
-	rsync -v "$WALLPAPER_DIR/${themes[$THEME_CHOICE]}" "$WALLPAPER_DIR/default"
+	rm "$WALLPAPER_DIR/default"
+	cp -f -v "$WALLPAPER_DIR/${themes[$THEME_CHOICE]}" "$WALLPAPER_DIR/default"
 
 	if [[ "$DESKTOP_SESSION" == "qtile" ]]; then
 		qtile cmd-obj -o cmd -f restart 
