@@ -18,6 +18,17 @@ THEMES=(
 	"Tokyonight"
 	)
 
+declare -A themes 
+
+themes["Catppuccin"]="Catppuccin.png"
+themes["Dracula"]="Dracula.jpg"
+themes["EverforestDarkHard"]="EverforestDarkHard.jpg"
+themes["GruvBox"]="GruvBox.jpg"
+themes["Nord"]="Nord.png"
+themes["SpringBlossom"]="SpringBlossom.jpg"
+themes["Tokyonight"]="Tokyonight.png"
+
+
 function apply_theme(){
 
 	FIND="default = $QTILE_THEME_CURRENT"
@@ -40,7 +51,7 @@ function apply_theme(){
 	killall dunst && dunst
 
 	# wallpaper
-	rsync -v "$WALLPAPER_DIR/$THEME_CHOICE".* "$WALLPAPER_DIR/default"
+	rsync -v "$WALLPAPER_DIR/${themes[$THEME_CHOICE]}" "$WALLPAPER_DIR/default"
 
 	if [[ "$DESKTOP_SESSION" == "qtile" ]]; then
 		qtile cmd-obj -o cmd -f restart 
@@ -62,7 +73,7 @@ function apply_theme(){
 
 }
 
-THEME_CHOICE=$(printf '%s\n' "${THEMES[@]}" | rofi -dmenu -p "Select a theme:")
+THEME_CHOICE=$(printf '%s\n' "${!themes[@]}" | rofi -dmenu -p "Select a theme:")
 
 if [[ -n "$THEME_CHOICE" ]]; then
     echo "You selected: $THEME_CHOICE"
