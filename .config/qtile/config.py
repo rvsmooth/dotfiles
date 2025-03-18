@@ -282,28 +282,45 @@ screens = [
                     font="JetBrainsMono NFM ExtraLight:style=ExtraLight Italic",
                     padding=80
                 ),
+                widget.TextBox(
+                    fmt='',
+                    background=colors[4],
+                    foreground=colors[0]
+                ),
                 widget.CPU(
-                    format='  Cpu: {load_percent}%',
-                    foreground=colors[8],
-                ),
-                widget.Spacer(length=6),
-                widget.TextBox(fmt='◆', foreground=colors[9]),
-                widget.Memory(
+                    format='Cpu: {load_percent}%',
                     foreground=colors[4],
-                    format='{MemUsed: .0f}{mm}',
-                    fmt='󰍛  Mem: {} used',
                 ),
                 widget.Spacer(length=6),
-                widget.TextBox(fmt='◆', foreground=colors[9]),
+                widget.TextBox(
+                    fmt='󰑹',
+                    background=colors[9],
+                    foreground=colors[0]
+                ),
+                widget.Memory(
+                    foreground=colors[9],
+                    measure_mem='G',
+                    fmt='{}',
+                ),
+                widget.Spacer(length=6),
+                widget.TextBox(
+                    fmt='󰕾',
+                    background=colors[7],
+                    foreground=colors[0]
+                ),
                 widget.Volume(
                     foreground=colors[7],
-                    fmt="󰕾  {}",
+                    fmt=" {}",
                 ),
                 widget.Spacer(length=6),
-                widget.TextBox(fmt='◆', foreground=colors[9]),
+                widget.TextBox(
+                    fmt='',
+                    background=colors[6],
+                    foreground=colors[0]
+                ),
                 widget.Clock(
                     foreground=colors[6],
-                    format=" %b %d %I:%M %p",
+                    format="%b %d %I:%M %p",
                 ),
                 widget.Systray(
                     icon_size=20,
