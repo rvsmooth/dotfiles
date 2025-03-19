@@ -1,8 +1,8 @@
 #!/bin/bash
 
 # Function to display usage
-browser1="flatpak run one.ablaze.floorp"
-browser2="floorp"
+browser1="librewolf"
+browser2="chromium"
 email="thunderbird"
 
 usage() {
