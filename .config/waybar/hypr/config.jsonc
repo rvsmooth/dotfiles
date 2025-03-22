@@ -1,17 +1,28 @@
 {
 	"layer": "top", // Waybar at top layer
 	"position": "top", // Waybar position (top|bottom|left|right)
-	"height": 30, // Waybar height (to be removed for auto height)
+	"height": 28, // Waybar height (to be removed for auto height)
 	// "width": 1280, // Waybar width
 	"spacing": 8, // Gaps between modules (4px)
 	// Choose the order of the modules
+	"margin-top": 6,
+	"margin-right": 6,
+	"margin-bottom": 0,
+	"margin-left": 6,
 	"modules-left": [
 		"hyprland/workspaces"
 	],
 	"modules-center": [],
 	"modules-right": [
+		"custom/text_wlan",
 		"network",
+		"custom/text_cpu",
+		"cpu",
+		"custom/text_mem",
+		"memory",
+		"custom/text_pulseaudio",
 		"pulseaudio",
+		"custom/text_cal",
 		"clock",
 		"tray"
 	],
@@ -19,15 +30,7 @@
 		"disable-scroll": true,
 		"all-outputs": true,
 		"warp-on-scroll": false,
-		"format": "{name}:{icon}",
-		"format-icons": {
-			"1": " Study",
-			"2": " Reading",
-			"3": " Meditation",
-			"4": " Editing",
-			"5": " System Administration",
-			"6": " Desktop Configuration"
-		}
+		"format": "{name}"
 	},
 	"tray": {
 		// "icon-size": 21,
@@ -49,15 +52,15 @@
 		}
 	},
 	"cpu": {
-		"format": "   {usage}%",
+		"format": "{usage}%",
 		"tooltip": false
 	},
 	"memory": {
-		"format": "  {}%"
+		"format": "{}%"
 	},
 	"network": {
 		// "interface": "wlp2*", // (Optional) To force the use of this interface
-		"format-wifi": "    {essid}",
+		"format-wifi": "{essid}",
 		"format-ethernet": "{ipaddr}/{cidr} 󰈀 ",
 		"tooltip-format": "{ifname} via {gwaddr}  󰄡 ",
 		"format-linked": "{ifname} (No IP)  ",
@@ -66,7 +69,7 @@
 	},
 	"pulseaudio": {
 		// "scroll-step": 1, // %, can be a float
-		"format": "{icon}   {volume}%",
+		"format": "{volume}%",
 		"format-muted": "󰖁    Muted",
 		"format-icons": {
 			"default": [
@@ -86,5 +89,21 @@
 		"tooltip-format-connected": "{controller_alias}\t{controller_address}\n\n{num_connections} connected\n\n{device_enumerate}",
 		"tooltip-format-enumerate-connected": "{device_alias}\t{device_address}",
 		"tooltip-format-enumerate-connected-battery": "{device_alias}\t{device_address}\t{device_battery_percentage}%"
+	},
+	"custom/text_cpu": {
+		"format": ""
+	},
+	"custom/text_mem": {
+		"format": ""
+	},
+	"custom/text_cal": {
+		"format": ""
+	},
+	"custom/text_wlan": {
+		"format": " "
+	},
+	"custom/text_pulseaudio": {
+		// "scroll-step": 1, // %, can be a float
+		"format": "󰕾",
 	}
 }
