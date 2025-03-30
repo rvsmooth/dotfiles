@@ -9,16 +9,16 @@ DUNST_THEME_PATH="${HOME}/.config/dunst/themes"
 WALLPAPER_DIR="${HOME}/Pictures/wallpapers"
 
 THEMES=(
-	"Catppuccin"
-	"Dracula"
-	"EverforestDarkHard"
-	"GruvBox"
-	"Nord"
-	"SpringBlossom"
-	"Tokyonight"
-	)
+  "Catppuccin"
+  "Dracula"
+  "EverforestDarkHard"
+  "GruvBox"
+  "Nord"
+  "SpringBlossom"
+  "Tokyonight"
+)
 
-declare -A themes 
+declare -A themes
 
 themes["Catppuccin"]="Catppuccin.png"
 themes["Dracula"]="Dracula.jpg"
@@ -28,59 +28,60 @@ themes["Nord"]="Nord.png"
 themes["SpringBlossom"]="SpringBlossom.jpg"
 themes["Tokyonight"]="Tokyonight.png"
 
+function apply_theme() {
 
-function apply_theme(){
+  FIND="default = $QTILE_THEME_CURRENT"
+  REPLACE="default = $THEME_CHOICE"
 
-	FIND="default = $QTILE_THEME_CURRENT"
-	REPLACE="default = $THEME_CHOICE"
+  #rofi
+  cp -f "$ROFI_THEMES_PATH/$THEME_CHOICE.rasi" "$ROFI_THEMES_PATH/default.rasi"
 
-	#rofi
-	cp -f "$ROFI_THEMES_PATH/$THEME_CHOICE.rasi" "$ROFI_THEMES_PATH/default.rasi"
-	
-	#qtile
-	sed -i "s/$FIND/$REPLACE/g" "$QTILE_COLORS_PATH"
+  #qtile
+  sed -i "s/$FIND/$REPLACE/g" "$QTILE_COLORS_PATH"
 
-	#hypr and sway
-	cp -f "$WAYBAR_THEME_PATH/$THEME_CHOICE.css" "$WAYBAR_THEME_PATH/default.css"
+  #hypr and sway
+  cp -f "$WAYBAR_THEME_PATH/$THEME_CHOICE.css" "$WAYBAR_THEME_PATH/default.css"
 
-	#kitty
-	cp -f "$KITTY_CONFIG_PATH/$THEME_CHOICE.conf" "$KITTY_CONFIG_PATH/default.conf" 
+  #kitty
+  cp -f "$KITTY_CONFIG_PATH/$THEME_CHOICE.conf" "$KITTY_CONFIG_PATH/default.conf"
 
-	#dunst
-	cp -f "$DUNST_THEME_PATH/$THEME_CHOICE" "$DUNST_THEME_PATH/../dunstrc"
-	killall dunst
+  #dunst
+  cp -f "$DUNST_THEME_PATH/$THEME_CHOICE" "$DUNST_THEME_PATH/../dunstrc"
+  killall dunst
 
-	# wallpaper
-	rm "$WALLPAPER_DIR/default"
-	cp -f -v "$WALLPAPER_DIR/${themes[$THEME_CHOICE]}" "$WALLPAPER_DIR/default"
+  # wallpaper
+  rm "$WALLPAPER_DIR/default"
+  cp -f -v "$WALLPAPER_DIR/${themes[$THEME_CHOICE]}" "$WALLPAPER_DIR/default"
 
-	if [[ "$DESKTOP_SESSION" == "qtile" ]]; then
-		qtile cmd-obj -o cmd -f restart 
-		feh --bg-fill "$WALLPAPER_DIR/default" &
-	elif [[ "$DESKTOP_SESSION" == "sway" ]]; then
-		killall -9 swaybg
-		swaymsg output * bg "$WALLPAPER_DIR/default" fill &
-		killall waybar &
-		waybar -c "${HOME}/.config/waybar/sway/config.jsonc" -s "${HOME}/.config/waybar/sway/style.css" 
-		swaymsg reload &
-	elif [[ "$DESKTOP_SESSION" == "hyprland" ]]; then
-		hyprctl reload &
-		killall waybar &
-		waybar -c "${HOME}/.config/waybar/hypr/config.jsons" -s "${HOME}/.config/waybar/hypr/style.css" 
-	else 
-		echo "Neither sway nor hyprland is installed."
-	fi
+  if [[ "$DESKTOP_SESSION" == "qtile" ]]; then
+    qtile cmd-obj -o cmd -f restart
+    feh --bg-fill "$WALLPAPER_DIR/default" &
+  elif [[ "$DESKTOP_SESSION" == "sway" ]]; then
+    killall -9 swaybg
+    swaymsg output * bg "$WALLPAPER_DIR/default" fill &
+    killall waybar &
+    waybar -c "${HOME}/.config/waybar/sway/config.jsonc" -s "${HOME}/.config/waybar/sway/style.css"
+    swaymsg reload &
+  elif [[ "$DESKTOP_SESSION" == "hyprland" ]]; then
+    killall waybar
+    waybar -c "${HOME}/.config/waybar/hypr/config.jsonc" -s "${HOME}/.config/waybar/hypr/style.css"
+    hyprctl reload
+    killall hyprpaper
+    hyprpaper
 
+  else
+    echo "Neither sway nor hyprland is installed."
+  fi
 
 }
 
 THEME_CHOICE=$(printf '%s\n' "${!themes[@]}" | rofi -dmenu -p "Select a theme:")
 
 if [[ -n "$THEME_CHOICE" ]]; then
-    echo "You selected: $THEME_CHOICE"
-    echo "Applying theme..."
-    apply_theme
-    echo "Done"
+  echo "You selected: $THEME_CHOICE"
+  echo "Applying theme..."
+  apply_theme
+  echo "Done"
 else
-    echo "No valid selection made."
+  echo "No valid selection made."
 fi
