@@ -103,6 +103,7 @@ mv "$1" $(echo -e $(ls "$1" | tr ' ' '_'))
 #|_|                        
 
 export PATH="$HOME/.local/bin:$PATH"
+export LIBVA_DRIVER_NAME=i965
 
 
 flatpak_theme() {
