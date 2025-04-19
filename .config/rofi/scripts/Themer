@@ -65,9 +65,9 @@ function apply_theme() {
   elif [[ "$DESKTOP_SESSION" == "hyprland" ]]; then
     killall waybar
     waybar -c "${HOME}/.config/waybar/hypr/config.jsonc" -s "${HOME}/.config/waybar/hypr/style.css"
-    hyprctl reload
     killall hyprpaper
     hyprpaper
+    hyprctl reload
 
   else
     echo "Neither sway nor hyprland is installed."

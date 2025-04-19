@@ -42,7 +42,7 @@ home = str(Path.home())
 defaults = home + "/.config/scripts-common/defaults.sh"
 volume = home + "/.config/scripts-common/volume.sh"
 rofi_utils = home + "/.config/rofi/scripts/rofi-utils"
-rofi_themer = home + "/.config/rofi/scripts/utils/Themer"
+rofi_themer = home + "/.config/rofi/scripts/Themer"
 
 # colorscheme
 colors = colors.default
