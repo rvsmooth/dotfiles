@@ -1,109 +1,109 @@
 {
-	"layer": "top", // Waybar at top layer
-	"position": "top", // Waybar position (top|bottom|left|right)
-	"height": 28, // Waybar height (to be removed for auto height)
-	// "width": 1280, // Waybar width
-	"spacing": 8, // Gaps between modules (4px)
-	// Choose the order of the modules
-	"margin-top": 6,
-	"margin-right": 6,
-	"margin-bottom": 0,
-	"margin-left": 6,
-	"modules-left": [
-		"hyprland/workspaces"
-	],
-	"modules-center": [],
-	"modules-right": [
-		"custom/text_wlan",
-		"network",
-		"custom/text_cpu",
-		"cpu",
-		"custom/text_mem",
-		"memory",
-		"custom/text_pulseaudio",
-		"pulseaudio",
-		"custom/text_cal",
-		"clock",
-		"tray"
-	],
-	"hyprland/workspaces": {
-		"disable-scroll": true,
-		"all-outputs": true,
-		"warp-on-scroll": false,
-		"format": "{name}"
-	},
-	"tray": {
-		// "icon-size": 21,
-		"spacing": 10
-	},
-	"clock": {
-		"format": "{:%I:%M %p}",
-		"tooltip-format": "<tt><big><span size='8pt' font='JetBrainsMono NF Medium'>{calendar}</span></big></tt>",
-		"format-alt": "{:%Y-%m-%d}",
-		"calendar": {
-			"mode": "month",
-			"mode-mon-col": 3,
-			"weeks-pos": "right",
-			"on-scroll": 1,
-			"on-click-right": "mode",
-			"format": {
-				"today": "<span color='#81a1c1'><b><u>{}</u></b></span>"
-			}
-		}
-	},
-	"cpu": {
-		"format": "{usage}%",
-		"tooltip": false
-	},
-	"memory": {
-		"format": "{}%"
-	},
-	"network": {
-		// "interface": "wlp2*", // (Optional) To force the use of this interface
-		"format-wifi": "{essid}",
-		"format-ethernet": "{ipaddr}/{cidr} 󰈀 ",
-		"tooltip-format": "{ifname} via {gwaddr}  󰄡 ",
-		"format-linked": "{ifname} (No IP)  ",
-		"format-disconnected": "Disconnected ⚠",
-		"format-alt": "{ifname}: {ipaddr}/{cidr}"
-	},
-	"pulseaudio": {
-		// "scroll-step": 1, // %, can be a float
-		"format": "{volume}%",
-		"format-muted": "󰖁    Muted",
-		"format-icons": {
-			"default": [
-				"",
-				"",
-				""
-			]
-		},
-		"on-click": "pavucontrol"
-	},
-	"bluetooth": {
-		"format": "󰂯 {status}",
-		"format-connected": "󰂯 {device_alias}",
-		"format-connected-battery": "󰂯 {device_alias}",
-		// "format-device-preference": [ "device1", "device2" ], // preference list deciding the displayed device
-		"tooltip-format": "{controller_alias}\t{controller_address}\n\n{num_connections} connected",
-		"tooltip-format-connected": "{controller_alias}\t{controller_address}\n\n{num_connections} connected\n\n{device_enumerate}",
-		"tooltip-format-enumerate-connected": "{device_alias}\t{device_address}",
-		"tooltip-format-enumerate-connected-battery": "{device_alias}\t{device_address}\t{device_battery_percentage}%"
-	},
-	"custom/text_cpu": {
-		"format": ""
-	},
-	"custom/text_mem": {
-		"format": ""
-	},
-	"custom/text_cal": {
-		"format": ""
-	},
-	"custom/text_wlan": {
-		"format": " "
-	},
-	"custom/text_pulseaudio": {
-		// "scroll-step": 1, // %, can be a float
-		"format": "󰕾",
-	}
+  "layer": "top", // Waybar at top layer
+  "position": "top", // Waybar position (top|bottom|left|right)
+  "height": 28, // Waybar height (to be removed for auto height)
+  // "width": 1280, // Waybar width
+  "spacing": 8, // Gaps between modules (4px)
+  // Choose the order of the modules
+  "margin-top": 6,
+  "margin-right": 6,
+  "margin-bottom": 0,
+  "margin-left": 6,
+  "modules-left": [
+    "hyprland/workspaces",
+    "hyprland/window"
+  ],
+  "modules-center": [],
+  "modules-right": [
+    "custom/text_wlan",
+    "network",
+    "custom/text_cpu",
+    "cpu",
+    "custom/text_mem",
+    "memory",
+    "custom/text_pulseaudio",
+    "pulseaudio",
+    "custom/text_cal",
+    "clock",
+    "tray"
+  ],
+  "hyprland/workspaces": {
+    "disable-scroll": true,
+    "all-outputs": true,
+    "warp-on-scroll": false,
+    "format": "{name}"
+  },
+  "tray": {
+    // "icon-size": 21,
+    "spacing": 10
+  },
+  "clock": {
+    "format": "{:%I:%M %p}",
+    "tooltip-format": "<tt><big><span size='8pt' font='JetBrainsMono NF Medium'>{calendar}</span></big></tt>",
+    "format-alt": "{:%Y-%m-%d}",
+    "calendar": {
+      "mode": "month",
+      "mode-mon-col": 3,
+      "weeks-pos": "right",
+      "on-scroll": 1,
+      "on-click-right": "mode",
+      "format": {
+        "today": "<span color='#81a1c1'><b><u>{}</u></b></span>"
+      }
+    }
+  },
+  "cpu": {
+    "format": "{usage}%",
+    "tooltip": false
+  },
+  "memory": {
+    "format": "{}%"
+  },
+  "network": {
+    // "interface": "wlp2*", // (Optional) To force the use of this interface
+    "format-wifi": "{essid}",
+    "format-ethernet": "󰈀   {ifname}",
+    "tooltip-format": "{ifname} via {gwaddr}  󰄡 ",
+    "format-linked": "{ifname} (No IP)  ",
+    "format-disconnected": "Disconnected ⚠"
+  },
+  "pulseaudio": {
+    // "scroll-step": 1, // %, can be a float
+    "format": "{volume}%",
+    "format-muted": "󰖁    Muted",
+    "format-icons": {
+      "default": [
+        "",
+        "",
+        ""
+      ]
+    },
+    "on-click": "pavucontrol"
+  },
+  "bluetooth": {
+    "format": "󰂯 {status}",
+    "format-connected": "󰂯 {device_alias}",
+    "format-connected-battery": "󰂯 {device_alias}",
+    // "format-device-preference": [ "device1", "device2" ], // preference list deciding the displayed device
+    "tooltip-format": "{controller_alias}\t{controller_address}\n\n{num_connections} connected",
+    "tooltip-format-connected": "{controller_alias}\t{controller_address}\n\n{num_connections} connected\n\n{device_enumerate}",
+    "tooltip-format-enumerate-connected": "{device_alias}\t{device_address}",
+    "tooltip-format-enumerate-connected-battery": "{device_alias}\t{device_address}\t{device_battery_percentage}%"
+  },
+  "custom/text_cpu": {
+    "format": ""
+  },
+  "custom/text_mem": {
+    "format": ""
+  },
+  "custom/text_cal": {
+    "format": ""
+  },
+  "custom/text_wlan": {
+    "format": " "
+  },
+  "custom/text_pulseaudio": {
+    // "scroll-step": 1, // %, can be a float
+    "format": "󰕾",
+  }
 }

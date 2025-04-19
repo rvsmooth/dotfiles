@@ -88,12 +88,6 @@
 			"key": "  Uptime"
 		},
 		{
-			"type": "command",
-			"key": "  Challenge",
-			"text": "python3 ~/.config/fastfetch/countdown.py"
-
-		},
-		{
 			"type": "custom",
 			"format": "\u001b[90m└──────────────────────────────────────────────────────────┘"
 		},
@@ -103,5 +97,5 @@
 			"symbol": "diamond",
 			"paddingLeft": 1
 		}
-			]
+	]
 }

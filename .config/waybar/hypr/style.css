@@ -15,7 +15,7 @@ window#waybar {
   background-color: @bar;
   transition-property: background-color;
   transition-duration: 0.5s;
-  border-radius: 8;
+  border-radius: 8px;
 }
 
 window#waybar.hidden {
@@ -29,7 +29,7 @@ button {
 
 #pulseaudio:hover {
   color: @base;
-  background-color: @pink;
+  background-color: @yellow;
   opacity: 0.8;
 }
 
@@ -180,4 +180,8 @@ tooltip {
 #custom-text_pulseaudio {
 	background-color: @yellow;
 	color: @base
+}
+#window,
+#workspaces {
+    margin: 0 40px;
 }
