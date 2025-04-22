@@ -105,4 +105,4 @@ SpringBlossom = [
 
 ]
 
-default = Catppuccin
+default = Tokyonight

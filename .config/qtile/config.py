@@ -35,7 +35,7 @@ from libqtile.lazy import lazy
 # Variables
 mod = "mod4"
 terminal = "kitty"
-fileman = "pcmanfm"
+fileman = "thunar"
 rofi = "rofi -show drun"
 emacs = "emacsclient -c -a 'emacs' "  # The space at the end is IMPORTANT!
 home = str(Path.home())
