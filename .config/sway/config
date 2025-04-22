@@ -22,7 +22,7 @@ set $right l
 set $term kitty
 set $menu 'rofi -show drun'
 set $terminal2  alacritty
-set $filemanager  pcmanfm
+set $filemanager  thunar
 set $emacs  "emacsclient -c -a 'emacs'"
 set $utilsmenu  ~/.config/rofi/scripts/rofi-utils
 set $hyprscripts  ~/.config/hypr/scripts
