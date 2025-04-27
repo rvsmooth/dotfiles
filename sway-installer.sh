@@ -3,6 +3,7 @@
 SCRIPT_DIR="$(cd "$(dirname "${BASH_SOURCE[0]}")" && pwd)"
 SWAY_PKGS="
 grim
+polkit-gnome
 qt6-wayland
 rofi-wayland
 slurp
