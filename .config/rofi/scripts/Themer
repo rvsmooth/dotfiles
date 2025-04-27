@@ -47,7 +47,7 @@ function apply_theme() {
 
   #dunst
   cp -f "$DUNST_THEME_PATH/$THEME_CHOICE" "$DUNST_THEME_PATH/../dunstrc"
-  killall dunst
+  pkill -9 dunst
 
   # wallpaper
   rm "$WALLPAPER_DIR/default"
@@ -57,15 +57,15 @@ function apply_theme() {
     qtile cmd-obj -o cmd -f restart
     feh --bg-fill "$WALLPAPER_DIR/default" &
   elif [[ "$DESKTOP_SESSION" == "sway" ]]; then
-    killall -9 swaybg
+    pkill -9 swaybg
     swaymsg output * bg "$WALLPAPER_DIR/default" fill &
-    killall waybar &
+    pkill -9 waybar &
     waybar -c "${HOME}/.config/waybar/sway/config.jsonc" -s "${HOME}/.config/waybar/sway/style.css"
     swaymsg reload &
   elif [[ "$DESKTOP_SESSION" == "hyprland" ]]; then
-    killall waybar
+    pkill -9 waybar
     waybar -c "${HOME}/.config/waybar/hypr/config.jsonc" -s "${HOME}/.config/waybar/hypr/style.css"
-    killall hyprpaper
+    pkill -9 hyprpaper
     hyprpaper
     hyprctl reload
 
