@@ -1,5 +1,6 @@
 #!/bin/bash
 
+SCRIPT_DIR="$(cd "$(dirname "${BASH_SOURCE[0]}")" && pwd)"
 SWAY_PKGS="
 grim
 qt6-wayland
@@ -15,6 +16,10 @@ sway
 xdg-desktop-portal-gtk
 xdg-desktop-portal-wlr
 "
+DOTS="
+sway
+waybar
+rofi"
 RED='\033[0;31m'
 GREEN='\033[0;32m'
 YELLOW='\033[0;33m'
@@ -48,6 +53,11 @@ __zypper_install() {
 }
 
 for package in $SWAY_PKGS; do
-  echo $package
+  PBLUE $package
   __zypper_install $package
+done
+
+PYELL Installing dotfiles
+for files in $DOTS; do
+  cp -r $SCRIPT_DIR/$files $HOME/.config
 done
