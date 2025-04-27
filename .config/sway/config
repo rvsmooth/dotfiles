@@ -19,17 +19,15 @@ set $down j
 set $up k
 set $right l
 # Applications
-set $term kitty
+set $term ghostty 
 set $menu 'rofi -show drun'
 set $terminal2  alacritty
-set $filemanager  thunar
-set $emacs  "emacsclient -c -a 'emacs'"
-set $utilsmenu  ~/.config/rofi/scripts/rofi-utils
-set $hyprscripts  ~/.config/hypr/scripts
-set $scriptscommon  ~/.config/scripts-common/
-set $screenshot  $hyprscripts/screenshot.sh
-set $volume  $scriptscommon/volume.sh
-set $defaults  '$scriptscommon/defaults.sh'
+set $browser zen-browser
+set $filemanager thunar
+set $swayconfig ~/.config/sway
+set $utilsmenu ~/.config/rofi/scripts/rofi-utils
+set $screenshot $swayconfig/screenshot.sh
+set $volume $swayconfig/volume.sh
 set $bar $HOME/.config/waybar/sway
 
 ################################################################################
@@ -51,7 +49,7 @@ client.unfocused        #434C5E #434C5E #E5E9F0 #434C5E #434C5E
 client.urgent           #BF616A #BF616A #2E3440 #BF616A #BF616A
 
 # wallpaper
-output * bg $HOME/Pictures/wallpapers/default fill
+output * bg $HOME/.config/sway/wallpaper.jpg fill
 
 ################################################################################
 #                            autostart applications                            #
@@ -77,9 +75,7 @@ exec dunst
     bindsym $mod+p exec $menu
     bindsym $mod+Return exec $term
     bindsym $mod+u exec $utilsmenu
-    bindsym $mod+m exec '$defaults -e'
-    bindsym $mod+b exec '$defaults -b1'
-    bindsym $mod+Shift+b exec '$defaults -b2'
+    bindsym $mod+b exec $browser
     bindsym $mod+shift+f exec $filemanager
 
 # volume management
