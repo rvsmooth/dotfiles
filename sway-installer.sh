@@ -61,3 +61,6 @@ PYELL Installing dotfiles
 for files in $DOTS; do
   cp -r $SCRIPT_DIR/$files $HOME/.config
 done
+
+PYELL Installing wallpapers
+git clone https://github.com/rvsmooth/wallpapers ~/Pictures/wallpapers
