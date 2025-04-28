@@ -13,6 +13,7 @@
 
 # Logo 
 set $mod Mod4
+set $alt Mod1
 # Home row direction keys, like vim
 set $left h
 set $down j
@@ -145,6 +146,8 @@ exec nm-applet
    # Switch to previous or next workspace 
     bindsym $mod+tab workspace next
     bindsym $mod+Shift+tab workspace prev
+    bindsym $alt+tab workspace next
+    bindsym $alt+Shift+tab workspace prev
 
     # Move focused container to workspace
     bindsym $mod+Shift+1 move container to workspace number 1
