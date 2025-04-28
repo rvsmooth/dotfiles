@@ -1,8 +1,8 @@
 #!/bin/bash
 
 # Function to display usage
-browser1="librewolf"
-browser2="chromium"
+browser1="vivaldi"
+browser2="firefox"
 email="thunderbird"
 
 usage() {
@@ -17,17 +17,16 @@ fi
 
 # Parse the command-line arguments
 case "$1" in
-  -b1|--browser1)
-    $browser1 & 
-    ;;
-  -b2|--browser2)
-    $browser2 &  
-    ;;
-  -e|--email)
-    $email &  
-    ;;
-  *)
-    usage
-    ;;
+-b1 | --browser1)
+  $browser1 &
+  ;;
+-b2 | --browser2)
+  $browser2 &
+  ;;
+-e | --email)
+  $email &
+  ;;
+*)
+  usage
+  ;;
 esac
-

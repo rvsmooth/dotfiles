@@ -22,7 +22,7 @@ set $right l
 set $term kitty
 set $menu 'rofi -show drun'
 set $terminal2  alacritty
-set $filemanager  pcmanfm
+set $filemanager  thunar
 set $emacs  "emacsclient -c -a 'emacs'"
 set $utilsmenu  ~/.config/rofi/scripts/rofi-utils
 set $hyprscripts  ~/.config/hypr/scripts
@@ -41,7 +41,9 @@ font pango:Roboto Regular 10
 
 # border
 default_border pixel 1
-smart_borders on
+#smart_borders on
+gaps inner 10
+
 # colors
 # client.<class> <border> <background> <text> [<indicator> [<child_border>]]
 client.focused          #88C0D0 #88C0D0 #2E3440 #88C0D0 #88C0D0
@@ -60,11 +62,11 @@ exec swayidle -w \
      timeout 600 'swaymsg "output * power off"' resume 'swaymsg "output * power on"' \
      before-sleep 'swaylock -f -c 000000'
 exec_always autotiling
-exec_always 'killall waybar; waybar -c $bar/config.jsonc -s $bar/style.css'
+exec_always 'pkill -9 waybar; waybar -c $bar/config.jsonc -s $bar/style.css'
 exec systemctl --user import-environment WAYLAND_DISPLAY XDG_CURRENT_DESKTOP
 exec dbus-update-activation-environment --systemd WAYLAND_DISPLAY XDG_CURRENT_DESKTOP=sway
 exec_always -s 'QT_QPA_PLATFORM=wayland XDG_CURRENT_DESKTOP=sway XDG_SESSION_DESKTOP=sway MOZ_ENABLE_WAYLAND=1'
-exec /usr/lib/polkit-gnome/polkit-gnome-authentication-agent-1
+exec /usr/libexec/polkit-gnome-authentication-agent-1
 exec dunst
 
 ################################################################################
@@ -210,7 +212,7 @@ mode "resize" {
 }
 bindsym $mod+r mode "resize"
 
-include /etc/sway/config.d/*
+#include /etc/sway/config.d/*
 
 # set floating mode for specific application
 for_window [app_id="[Ff]irefox" title="^Library$"] floating enable, border pixel 1
