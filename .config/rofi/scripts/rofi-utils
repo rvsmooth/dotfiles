@@ -6,31 +6,27 @@
 #| |\ \\ \_/ /\__/ / | | | | | (_) | (_) | |_| | | |
 #\_| \_|\___/\____/|_| |_| |_|\___/ \___/ \__|_| |_|
 #
-# Copyright (c) 2024 RVSmooth
-# https://gitlab.com/RVSmooth
+# Copyright (c) 2024 rvsmooth
+# https://github.com/rvsmooth
 
 ROFI_DIR="$HOME/.config/rofi"
 ROFI_SCRIPTS_DIR="$ROFI_DIR/scripts"
 UTILS=(
-	"AppDrawer"
-	"Bluetooth"
-	"Brightness"
-	"ColorShift"
-	"Emojis"
-	"PowerMenu"
-	"Themer"
-	"WifiMenu"
+  "AppDrawer"
+  "Bluetooth"
+  "Brightness"
+  "ColorShift"
+  "ClipBoard"
+  "Emojis"
+  "PowerMenu"
+  "Themer"
+  "WifiMenu"
 )
 
 ROFI_UTILS_CMD=$(printf '%s\n' "${UTILS[@]}" | rofi -dmenu -i -p "Utilities")
 if [ -n "$ROFI_UTILS_CMD" ]; then
-	bash $ROFI_SCRIPTS_DIR/$ROFI_UTILS_CMD
+  bash $ROFI_SCRIPTS_DIR/$ROFI_UTILS_CMD
 
 else
-	exit 1
+  exit 1
 fi
-
-
-
-
-
