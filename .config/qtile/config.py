@@ -43,6 +43,7 @@ defaults = home + "/.config/scripts-common/defaults.sh"
 volume = home + "/.config/scripts-common/volume.sh"
 rofi_utils = home + "/.config/rofi/scripts/rofi-utils"
 rofi_themer = home + "/.config/rofi/scripts/Themer"
+rofi_clipboard = home + "/.config/rofi/scripts/ClipBoard"
 
 # colorscheme
 colors = colors.default
@@ -121,7 +122,9 @@ keys = [
     Key([mod, "shift"], "f", lazy.spawn(fileman), desc="Launch file-manager"),
     Key([mod], "u", lazy.spawn(rofi_utils), desc="Launch rofi-utils"),
     Key([mod, "control"], "t", lazy.spawn(
-        rofi_themer), desc="Launch rofi-utils"),
+        rofi_themer), desc="Launch rofi_themer"),
+    Key([mod], "c", lazy.spawn(
+        rofi_clipboard), desc="Launch clipboard"),
     Key([mod], "e", lazy.spawn(emacs), desc="Emacs Dashboard"),
     # Volume Management
     Key(

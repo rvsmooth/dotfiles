@@ -31,6 +31,8 @@ set $screenshot  $hyprscripts/screenshot.sh
 set $volume  $scriptscommon/volume.sh
 set $defaults  '$scriptscommon/defaults.sh'
 set $bar $HOME/.config/waybar/sway
+set $rofiscripts ~/.config/rofi/scripts
+set $roficlip '$rofiscripts/ClipBoard'
 
 ################################################################################
 #                                Look and feel                                 #
@@ -68,6 +70,8 @@ exec dbus-update-activation-environment --systemd WAYLAND_DISPLAY XDG_CURRENT_DE
 exec_always -s 'QT_QPA_PLATFORM=wayland XDG_CURRENT_DESKTOP=sway XDG_SESSION_DESKTOP=sway MOZ_ENABLE_WAYLAND=1'
 exec /usr/libexec/polkit-gnome-authentication-agent-1
 exec dunst
+exec 'thunar --daemon'
+exec 'wl-paste --watch cliphist store'
 
 ################################################################################
 #                                 Keybindings                                  #
@@ -81,6 +85,7 @@ exec dunst
     bindsym $mod+b exec '$defaults -b1'
     bindsym $mod+Shift+b exec '$defaults -b2'
     bindsym $mod+shift+f exec $filemanager
+    bindsym $mod+c exec $roficlip
 
 # volume management
     bindsym $mod+F1 exec '$volume --pw-decvol'
