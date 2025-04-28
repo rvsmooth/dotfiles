@@ -30,6 +30,8 @@ set $utilsmenu ~/.config/rofi/scripts/rofi-utils
 set $screenshot $swayconfig/screenshot.sh
 set $volume $swayconfig/volume.sh
 set $bar $HOME/.config/waybar/sway
+set $rofiscripts ~/.config/rofi/scripts
+set $roficlip '$rofiscripts/ClipBoard'
 
 ################################################################################
 #                                Look and feel                                 #
@@ -68,6 +70,8 @@ exec /usr/libexec/polkit-gnome-authentication-agent-1
 exec dunst
 exec blueman
 exec nm-applet
+exec 'thunar --daemon'
+exec 'wl-paste --watch cliphist store'
 
 ################################################################################
 #                                 Keybindings                                  #
@@ -79,6 +83,7 @@ exec nm-applet
     bindsym $mod+u exec $utilsmenu
     bindsym $mod+b exec $browser
     bindsym $mod+shift+f exec $filemanager
+    bindsym $mod+c exec $roficlip
 
 # volume management
     bindsym $mod+F1 exec '$volume --pw-decvol'

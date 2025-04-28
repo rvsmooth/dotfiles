@@ -105,4 +105,4 @@ SpringBlossom = [
 
 ]
 
-default = Tokyonight
+default = Dracula
