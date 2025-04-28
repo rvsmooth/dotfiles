@@ -24,63 +24,110 @@
 ---
 
 ### 🪟 **Window Management**
-- **Mod + Shift + c** → Kill focused window
-- **Mod + Shift + r** → Reload Sway config
-- **Mod + Shift + q** → Exit Sway (with confirmation)
+# 🎛️ Sway Keybindings Configuration
+
+## 🔍 Application Launchers
+| Keybinding         | Action                         |
+|--------------------|--------------------------------|
+| `$mod + p`         | Launch menu (`$menu`)          |
+| `$mod + Return`    | Launch terminal (`$term`)      |
+| `$mod + u`         | Launch utilities menu (`$utilsmenu`) |
+| `$mod + b`         | Launch browser (`$browser`)    |
+| `$mod + Shift + f` | Launch file manager (`$filemanager`) |
 
 ---
 
-### 🔀 **Focus Movement**
-- **Mod + h / Left Arrow** → Focus left
-- **Mod + j / Down Arrow** → Focus down
-- **Mod + k / Up Arrow** → Focus up
-- **Mod + l / Right Arrow** → Focus right
+## 🔊 Volume Controls
+| Keybinding      | Action                          |
+|-----------------|---------------------------------|
+| `$mod + F1`     | Decrease volume (`--pw-decvol`) |
+| `$mod + F2`     | Mute volume (`--pw-mute`)       |
+| `$mod + F3`     | Increase volume (`--pw-incvol`) |
 
 ---
 
-### 🚚 **Move Windows**
-- **Mod + Shift + [h/j/k/l/Arrow keys]** → Move window in that direction
+## 📸 Screenshot
+| Keybinding              | Action                          |
+|-------------------------|---------------------------------|
+| `Print`                 | Full screenshot                 |
+| `$mod + Print`          | Area screenshot                 |
+| `$mod + Ctrl + Print`   | Area screenshot (5s delay)      |
 
 ---
 
-### 🪟 **Resize Windows**
-- **Mod + Ctrl + h / Left Arrow** → Shrink width
-- **Mod + Ctrl + j / Down Arrow** → Grow height
-- **Mod + Ctrl + k / Up Arrow** → Shrink height
-- **Mod + Ctrl + l / Right Arrow** → Grow width
+## 🪟 Window Management
+| Keybinding         | Action                                |
+|--------------------|---------------------------------------|
+| `$mod + Shift + c` | Kill focused window                   |
+| `$mod + Shift + r` | Reload Sway config                    |
+| `$mod + Shift + q` | Prompt to exit Sway                   |
+| `$mod + a`         | Focus parent container                |
+| `$mod + space`     | Toggle fullscreen                     |
+| `$mod + t`         | Toggle floating/tiling mode           |
+| `$mod + f`         | Swap focus between tiling/floating    |
 
 ---
 
-### 🔢 **Workspaces**
-- **Mod + [1-10]** → Switch to workspace 1–10
-- **Mod + Shift + [1-10]** → Move focused window to workspace 1–10
+## 🔁 Focus Movement
+| Keybinding          | Action     |
+|---------------------|------------|
+| `$mod + h / Left`   | Focus left |
+| `$mod + j / Down`   | Focus down |
+| `$mod + k / Up`     | Focus up   |
+| `$mod + l / Right`  | Focus right|
 
 ---
 
-### 🧱 **Layout Management**
-- **Mod + s** → Stacking layout
-- **Mod + w** → Tabbed layout
-- **Mod + e** → Toggle split layout
-- **Mod + space** → Toggle fullscreen
-- **Mod + t** → Toggle floating
-- **Mod + Tab** → Toggle between tiling and floating focus
-- **Mod + a** → Focus parent container
+## ↔️ Move Window
+| Keybinding              | Action     |
+|-------------------------|------------|
+| `$mod + Shift + h / Left`  | Move left  |
+| `$mod + Shift + j / Down`  | Move down  |
+| `$mod + Shift + k / Up`    | Move up    |
+| `$mod + Shift + l / Right` | Move right |
 
 ---
 
-### 📦 **Scratchpad**
-- **Mod + Shift + -** → Move window to scratchpad
-- **Mod + -** → Show next window in scratchpad
+## 📐 Resize Window
+| Keybinding               | Action        |
+|--------------------------|---------------|
+| `$mod + Ctrl + h / Left`  | Shrink width  |
+| `$mod + Ctrl + j / Down`  | Grow height   |
+| `$mod + Ctrl + k / Up`    | Shrink height |
+| `$mod + Ctrl + l / Right` | Grow width    |
 
 ---
 
-### 🧰 **Resize Mode (Manual Resize Mode)**
-Enter resize mode with **Mod + r**, then:
-- **h / Left** → Shrink width
-- **j / Down** → Grow height
-- **k / Up** → Shrink height
-- **l / Right** → Grow width
-- **Return or Esc** → Exit resize mode
+## 🖥️ Workspaces
+| Keybinding         | Action                        |
+|--------------------|-------------------------------|
+| `$mod + [1-10]`    | Switch to workspace number     |
+| `$mod + tab`       | Next workspace                 |
+| `$mod + Shift + tab` | Previous workspace           |
+| `$mod + Shift + [1-10]` | Move window to workspace  |
 
 ---
 
+## 🧱 Layouts
+| Keybinding | Action          |
+|------------|-----------------|
+| `$mod + s` | Stacking layout |
+| `$mod + w` | Tabbed layout   |
+| `$mod + e` | Toggle split    |
+
+---
+
+## 📦 Scratchpads
+| Keybinding         | Action                             |
+|--------------------|------------------------------------|
+| `$mod + Shift + -` | Move window to scratchpad          |
+| `$mod + -`         | Show/hide next scratchpad window   |
+
+---
+
+## 🔧 Resize Mode
+Enter with `$mod + r`, then:
+| Keybinding          | Action             |
+|---------------------|--------------------|
+| Arrow Keys / hjkl   | Resize direction   |
+| `Return` / `Escape` | Exit resize mode   |
