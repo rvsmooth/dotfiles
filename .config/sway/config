@@ -65,6 +65,8 @@ exec dbus-update-activation-environment --systemd WAYLAND_DISPLAY XDG_CURRENT_DE
 exec_always -s 'QT_QPA_PLATFORM=wayland XDG_CURRENT_DESKTOP=sway XDG_SESSION_DESKTOP=sway MOZ_ENABLE_WAYLAND=1'
 exec /usr/libexec/polkit-gnome-authentication-agent-1
 exec dunst
+exec blueman
+exec nm-applet
 
 ################################################################################
 #                                 Keybindings                                  #
@@ -139,6 +141,11 @@ exec dunst
     bindsym $mod+8 workspace number 8
     bindsym $mod+9 workspace number 9
     bindsym $mod+0 workspace number 10
+
+   # Switch to previous or next workspace 
+    bindsym $mod+tab workspace next
+    bindsym $mod+Shift+tab workspace prev
+
     # Move focused container to workspace
     bindsym $mod+Shift+1 move container to workspace number 1
     bindsym $mod+Shift+2 move container to workspace number 2
@@ -166,7 +173,7 @@ exec dunst
     bindsym $mod+t floating toggle
 
     # Swap focus between the tiling area and the floating area
-    bindsym $mod+tab focus mode_toggle
+    bindsym $mod+f focus mode_toggle
 
     # Move focus to the parent container
     bindsym $mod+a focus parent

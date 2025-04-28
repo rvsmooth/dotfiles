@@ -2,7 +2,9 @@
 
 SCRIPT_DIR="$(cd "$(dirname "${BASH_SOURCE[0]}")" && pwd)"
 SWAY_PKGS="
+blueman
 grim
+NetworkManager-applet
 polkit-gnome
 qt6-wayland
 rofi-wayland
