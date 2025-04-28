@@ -3,6 +3,7 @@
 SCRIPT_DIR="$(cd "$(dirname "${BASH_SOURCE[0]}")" && pwd)"
 SWAY_PKGS="
 blueman
+cliphist
 grim
 NetworkManager-applet
 polkit-gnome
