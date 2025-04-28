@@ -41,7 +41,7 @@ font pango:Roboto Regular 10
 
 # border
 default_border pixel 1
-smart_borders on
+#smart_borders on
 gaps inner 10
 
 # colors
@@ -66,7 +66,7 @@ exec_always 'pkill -9 waybar; waybar -c $bar/config.jsonc -s $bar/style.css'
 exec systemctl --user import-environment WAYLAND_DISPLAY XDG_CURRENT_DESKTOP
 exec dbus-update-activation-environment --systemd WAYLAND_DISPLAY XDG_CURRENT_DESKTOP=sway
 exec_always -s 'QT_QPA_PLATFORM=wayland XDG_CURRENT_DESKTOP=sway XDG_SESSION_DESKTOP=sway MOZ_ENABLE_WAYLAND=1'
-exec /usr/lib/polkit-gnome/polkit-gnome-authentication-agent-1
+exec /usr/libexec/polkit-gnome-authentication-agent-1
 exec dunst
 
 ################################################################################
