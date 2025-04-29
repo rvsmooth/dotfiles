@@ -47,16 +47,16 @@ set $colurgent '$color5'
 ################################################################################
 
 # font
-font pango:Roboto Regular 10
+font pango:JetBrainsMono NFM 10
 
 # border
-default_border pixel 1
+default_border pixel 2
 #smart_borders on
 gaps inner 10
 
 # colors
 # client.<class> <border> <background> <text> [<indicator> [<child_border>]]
-client.focused          $colfocused $colfocused $colunfocused $colfocused $colfocused
+client.focused          $colfocused $colfocused $color1 $colfocused $colfocused
 client.unfocused        $colunfocused $colunfocused $colfocused $colunfocused $colunfocused
 client.urgent           $colurgent $colurgent $colunfocused $colurgent $colurgent
 
