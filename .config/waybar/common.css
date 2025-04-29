@@ -26,10 +26,12 @@ button {
   border: none;
 }
 
-#pulseaudio:hover {
+#pulseaudio:hover,
+#custom-applications:hover {
   color: @base;
-  background-color: @yellow;
+  background-color: @accent;
   opacity: 0.8;
+  border-radius: 5px;
 }
 
 #workspaces {
@@ -94,8 +96,3 @@ tooltip {
   border: 1px solid @pink;
 }
 
-#custom-applications:hover {
-  border-radius: 7px;
-  padding: 3px;
-  margin: 2px 0 2px 0;
-}
