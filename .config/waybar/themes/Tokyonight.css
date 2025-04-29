@@ -8,9 +8,10 @@
 @define-color yellow  #ffc777;
 @define-color purple  #bb9af7;
 @define-color pink #f5c2e7;
-@define-color blue  #ff757f;
+@define-color blue  #82aaff;
 @define-color white  #c0caf5;
 @define-color gray  #737aa2;
 @define-color orange  #ff9e64;
 @define-color text  #c0caf5;
+@define-color accent  #82aaff;
 @define-color bar rgba(27, 27, 38, 0.8); 
