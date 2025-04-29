@@ -10,6 +10,13 @@
 # https://github.com/rvsmooth
 # Define the options
 
+APP='PowerMenu'
+
+NOTIFY() {
+
+  notify-send --icon=system-shutdown "$APP" "$@"
+
+}
 options="Shutdown\nReboot\nLogout\nSuspend"
 run_rofi() {
 
@@ -38,8 +45,12 @@ Reboot)
 Logout)
   if [[ $XDG_SESSION_DESKTOP == "Hyprland" ]]; then
     hyprctl dispatch exit
-  else
+  elif [[ $XDG_SESSION_DESKTOP == "sway" ]]; then
+    swaymsg exit
+  elif [[ $XDG_SESSION_DESKTOP == "qtile" ]]; then
     qtile cmd-obj -o cmd -f shutdown
+  else
+    NOTIFY "Unable to determine WM. Check PowerMenu script"
   fi
   ;;
 Suspend)
