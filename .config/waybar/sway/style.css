@@ -28,8 +28,76 @@ button {
 
 #pulseaudio:hover {
   color: @base;
-  background-color: @pink;
+  background-color: @yellow;
   opacity: 0.8;
+}
+
+#workspaces {
+  margin-right: 20px;
+}
+
+.modules-left > widget:first-child > #workspaces {
+  margin-left: 0;
+}
+
+.modules-right > widget:last-child > #workspaces {
+  margin-right: 0;
+}
+
+#mode {
+  background-color: @gray;
+  box-shadow: inset 0 -3px @white;
+}
+
+#clock,
+#battery,
+#cpu,
+#memory,
+#disk,
+#temperature,
+#network,
+#pulseaudio,
+#tray {
+  padding: 0 5px 0 5px;
+  color: @white;
+}
+
+@keyframes blink {
+  to {
+    background-color: @white;
+    color: @background;
+  }
+}
+
+label:focus {
+  background-color: @background;
+}
+
+#network.disconnected {
+  color: @text;
+}
+
+#tray > .passive {
+  -gtk-icon-effect: dim;
+}
+
+#tray > .needs-attention {
+  -gtk-icon-effect: highlight;
+  background-color: @red;
+}
+
+tooltip {
+  color: @text;
+  background-color: @background;
+  text-shadow: none;
+  border: 1px solid @pink;
+}
+
+#custom-applications:hover {
+  background-color: @base;
+  border-radius: 7px;
+  padding: 3px;
+  margin: 2px 0 2px 0;
 }
 
 #workspaces button {
@@ -54,131 +122,3 @@ border: 1px solid @pink;
 #workspaces button:hover label {
   color: white;
 }
-
-.modules-left > widget:first-child > #workspaces {
-  margin-left: 0;
-}
-
-.modules-right > widget:last-child > #workspaces {
-  margin-right: 0;
-}
-
-#mode {
-  background-color: @gray;
-  box-shadow: inset 0 -3px @white;
-}
-
-
-#clock,
-#battery,
-#cpu,
-#memory,
-#disk,
-#temperature,
-#network,
-#pulseaudio,
-#custom-text_cpu,
-#custom-text_wlan,
-#custom-text_mem,
-#custom-text_cal,
-#custom-text_pulseaudio,
-#tray {
-  padding: 0 5px 0 5px;
-}
-
-#clock {
-  color: @orange;
-}
-
-@keyframes blink {
-  to {
-    background-color: @white;
-    color: @background;
-  }
-}
-
-label:focus {
-  background-color: @background;
-}
-
-#cpu {
-  color: @purple;
-}
-
-#memory {
-  color: @pink;
-}
-
-#disk {
-  color: @text;
-}
-
-#bluetooth {
-  color: @text;
-}
-#network {
-  color: @green;
-}
-
-#network.disconnected {
-  color: @text;
-}
-
-#pulseaudio {
-  color: @yellow;
-}
-
-#pulseaudio.muted {
-  color: @yellow;
-}
-
-#wireplumber {
-  color: @yellow;
-}
-
-#wireplumber.muted {
-  color: @yellow;
-}
-
-#tray {
-  color: @text;
-}
-
-#tray > .passive {
-  -gtk-icon-effect: dim;
-}
-
-#tray > .needs-attention {
-  -gtk-icon-effect: highlight;
-  background-color: @red;
-}
-
-tooltip {
-  color: @text;
-  background-color: @background;
-  text-shadow: none;
-  border: 1px solid @pink;
-}
-
-#custom-text_cpu {
-	background-color: @purple;
-	color: @base
-}
-
-#custom-text_wlan {
-	background-color: @green;
-	color: @base
-}
-#custom-text_mem {
-	background-color: @pink;
-	color: @base
-}
-#custom-text_cal {
-	background-color: @orange;
-	color: @base
-}
-#custom-text_pulseaudio {
-	background-color: @yellow;
-	color: @base
-}
-

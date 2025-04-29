@@ -15,6 +15,7 @@ window#waybar {
   background-color: @bar;
   transition-property: background-color;
   transition-duration: 0.5s;
+  border-radius: 8px;
 }
 
 window#waybar.hidden {
@@ -32,9 +33,6 @@ button {
   opacity: 0.8;
 }
 
-#workspaces {
-  margin-right: 20px;
-}
 #workspaces button {
   border-radius: 0;
   font-size: 12px;
@@ -79,9 +77,17 @@ button {
 #temperature,
 #network,
 #pulseaudio,
+#custom-text_cpu,
+#custom-text_wlan,
+#custom-text_mem,
+#custom-text_cal,
+#custom-text_pulseaudio,
 #tray {
   padding: 0 5px 0 5px;
-  color: @white;
+}
+
+#clock {
+  color: @orange;
 }
 
 @keyframes blink {
@@ -95,7 +101,46 @@ label:focus {
   background-color: @background;
 }
 
+#cpu {
+  color: @purple;
+}
+
+#memory {
+  color: @pink;
+}
+
+#disk {
+  color: @text;
+}
+
+#bluetooth {
+  color: @text;
+}
+#network {
+  color: @green;
+}
+
 #network.disconnected {
+  color: @text;
+}
+
+#pulseaudio {
+  color: @yellow;
+}
+
+#pulseaudio.muted {
+  color: @yellow;
+}
+
+#wireplumber {
+  color: @yellow;
+}
+
+#wireplumber.muted {
+  color: @yellow;
+}
+
+#tray {
   color: @text;
 }
 
@@ -115,9 +160,28 @@ tooltip {
   border: 1px solid @pink;
 }
 
-#custom-applications:hover {
-  background-color: @base;
-  border-radius: 7px;
-  padding: 3px;
-  margin: 2px 0 2px 0;
+#custom-text_cpu {
+	background-color: @purple;
+	color: @base
+}
+
+#custom-text_wlan {
+	background-color: @green;
+	color: @base
+}
+#custom-text_mem {
+	background-color: @pink;
+	color: @base
+}
+#custom-text_cal {
+	background-color: @orange;
+	color: @base
+}
+#custom-text_pulseaudio {
+	background-color: @yellow;
+	color: @base
+}
+#window,
+#workspaces {
+    margin: 0 40px;
 }

@@ -13,7 +13,7 @@
 @define-color gray #7A8478;
 @define-color orange #E69875;
 @define-color text #D3C6AA;
-@define-color bar rgba(30, 35, 38, 1); 
+@define-color bar rgba(30, 35, 38, 0.8); 
 
 @define-color identifier #DBBC7F;
 @define-color statement #E67E80;
