@@ -1,0 +1,101 @@
+* {
+  all: initial;
+  font-family:
+  Adwaita Sans,
+  sans-serif,
+  JetbrainsMono NF;
+  font-size: 13px;
+  font-weight: 500;
+  min-height: 0;
+}
+
+@import "./themes/default.css";
+
+window#waybar {
+  background-color: @bar;
+  transition-property: background-color;
+  transition-duration: 0.5s;
+}
+
+window#waybar.hidden {
+  opacity: 0.2;
+}
+
+button {
+  box-shadow: inset 0 -3px transparent;
+  border: none;
+}
+
+#pulseaudio:hover {
+  color: @base;
+  background-color: @yellow;
+  opacity: 0.8;
+}
+
+#workspaces {
+  margin-right: 20px;
+}
+
+.modules-left > widget:first-child > #workspaces {
+  margin-left: 0;
+}
+
+.modules-right > widget:last-child > #workspaces {
+  margin-right: 0;
+}
+
+#mode {
+  background-color: @gray;
+  box-shadow: inset 0 -3px @white;
+}
+
+#clock,
+#battery,
+#cpu,
+#memory,
+#disk,
+#temperature,
+#network,
+#pulseaudio,
+#tray {
+  padding: 0 5px 0 5px;
+  color: @white;
+}
+
+@keyframes blink {
+  to {
+    background-color: @white;
+    color: @background;
+  }
+}
+
+label:focus {
+  background-color: @background;
+}
+
+#network.disconnected {
+  color: @text;
+}
+
+#tray > .passive {
+  -gtk-icon-effect: dim;
+}
+
+#tray > .needs-attention {
+  -gtk-icon-effect: highlight;
+  background-color: @red;
+}
+
+tooltip {
+  color: @text;
+  background-color: @background;
+  text-shadow: none;
+  border: 1px solid @pink;
+}
+
+#custom-applications:hover {
+  background-color: @base;
+  border-radius: 7px;
+  padding: 3px;
+  margin: 2px 0 2px 0;
+}
