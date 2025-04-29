@@ -16,6 +16,8 @@ KITTY_CONFIG_PATH="${HOME}/.config/kitty"
 WAYBAR_THEME_PATH="${HOME}/.config/waybar/themes"
 DUNST_THEME_PATH="${HOME}/.config/dunst/themes"
 WALLPAPER_DIR="${HOME}/Pictures/wallpapers"
+HYPR_THEMES_PATH="${HOME}/.config/hypr/themes"
+SWAY_THEMES_PATH="${HOME}/.config/sway/themes"
 
 THEMES=(
   "Catppuccin"
@@ -50,6 +52,8 @@ function apply_theme() {
 
   #hypr and sway
   cp -f "$WAYBAR_THEME_PATH/$THEME_CHOICE.css" "$WAYBAR_THEME_PATH/default.css"
+  cp -r "$HYPR_THEMES_PATH/$THEME_CHOICE.conf" "$HYPR_THEMES_PATH/default.conf"
+  cp -r "$SWAY_THEMES_PATH/$THEME_CHOICE.conf" "$SWAY_THEMES_PATH/default.conf"
 
   #kitty
   cp -f "$KITTY_CONFIG_PATH/$THEME_CHOICE.conf" "$KITTY_CONFIG_PATH/default.conf"
