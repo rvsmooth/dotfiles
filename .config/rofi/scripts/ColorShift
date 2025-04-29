@@ -38,8 +38,8 @@ case "$CHOICE" in
   ;;
 "ON")
   if [[ $XDG_SESSION_TYPE == "wayland" ]]; then
-    wlsunset -t 4500 &&
-      NOTIFY "Bluelight filter has been turned on."
+    wlsunset -T 4500 &
+    NOTIFY "Bluelight filter has been turned on."
   else
     redshift -O 4500K &&
       NOTIFY "Bluelight filter has been turned on."
@@ -47,7 +47,7 @@ case "$CHOICE" in
   ;;
 "OFF")
   if [[ $XDG_SESSION_TYPE == "wayland" ]]; then
-    killall -9 wlsunset &&
+    pkill -9 wlsunset &&
       NOTIFY "Bluelight filter has been turned off."
   else
     redshift -x &&
