@@ -8,8 +8,11 @@
   margin: 0 2px 0 2px;
 }
 
+#workspaces button label {
+  color: @white;
+}
+
 #workspaces button.active {
-  background-color: @pblack;
   border-radius: 5px;
   border: 1px solid @text;
 }
@@ -17,9 +20,5 @@
 #workspaces button:hover {
   border-radius: 5px;
   border: 1px solid @pink;
-}
-
-#workspaces button:hover label {
-  color: white;
 }
 

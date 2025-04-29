@@ -9,7 +9,6 @@
 }
 
 #workspaces button.focused {
-background-color: @pblack;
 border-radius: 5px;
 border: 1px solid @text;
 }
