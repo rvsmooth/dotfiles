@@ -1,23 +1,23 @@
-*{
-  background: #1E2326;
-  foreground: #D3C6AA;
+* {
+  background: #16161E;           // c1-background (replacing #1E2326)
+  foreground: #C0CAF5;           // c11-text (replacing #D3C6AA)
 
-  black: #1E2326;
-  red: #E67E80;
-  green: #A7C080;
-  yellow: #DBBC7F;
-  blue: #7FBBB3;
-  purple: #D699B6;
-  aqua: #83C092;
-  white: #D3C6AA;
-  comment: #7A8478;
-  orange: #E69875;
-  identifier: #DBBC7F;
-  statement: #E67E80;
-  type: #A7C080;
-  special: #D699B6;
-  accent: @green;
-  background-color: #1E2326;
+  black: #16161E;                // c1-background
+  red: #F7768E;                  // c5-red
+  green: #9ECE6A;                // c6-green
+  yellow: #E0AF68;               // c7-yellow
+  blue: #82AAFF;                 // c10-blue
+  purple: #9D7CD8;               // c4-accent
+  aqua: #9ECE6A;                 // c6-green (as a substitute)
+  white: #C0CAF5;                // c11-text
+  comment: #565F89;              // c3-grey
+  orange: #FF9E64;               // c8-orange
+  identifier: #E0AF68;           // c7-yellow
+  statement: #F7768E;            // c5-red
+  type: #9ECE6A;                 // c6-green
+  special: #FCA7EA;              // c9-pink
+  accent: #82AAFF;               // c4-accent
+  background-color: #16161E;     // c1-background
   border-radius: 5px;
 }
 

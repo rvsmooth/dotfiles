@@ -26,10 +26,9 @@ button {
   border: none;
 }
 
-#pulseaudio:hover,
-#custom-applications:hover {
+#pulseaudio:hover {
   color: @base;
-  background-color: @accent;
+  background-color: @yellow;
   opacity: 0.8;
   border-radius: 5px;
 }
@@ -96,3 +95,8 @@ tooltip {
   border: 1px solid @pink;
 }
 
+#custom-applications:hover {
+  border-radius: 7px;
+  padding: 3px;
+  margin: 2px 0 2px 0;
+}

@@ -311,7 +311,7 @@ screens = [
                     background=colors[7],
                     foreground=colors[0]
                 ),
-                widget.Volume(
+                widget.PulseVolume(
                     foreground=colors[7],
                     fmt=" {}",
                 ),
@@ -363,6 +363,7 @@ bring_front_click = False
 floats_kept_above = True
 cursor_warp = False
 floating_layout = layout.Floating(
+    border_width= 3,
     border_focus=colors[4],
     border_normal=colors[3],
     float_rules=[

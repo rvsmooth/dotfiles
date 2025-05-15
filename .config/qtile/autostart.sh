@@ -1,4 +1,5 @@
 #!/bin/bash
+export DESKTOP_SESSION=qtile
 picom --daemon &
 dunst &
 feh --bg-fill $HOME/Pictures/wallpapers/default &

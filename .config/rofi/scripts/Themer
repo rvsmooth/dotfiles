@@ -1,4 +1,4 @@
-#!/usr/bin/env bash
+#!/bin/bash
 #______ _   _ _____                       _   _
 #| ___ \ | | /  ___|                     | | | |
 #| |_/ / | | \ `--. _ __ ___   ___   ___ | |_| |__
@@ -16,9 +16,7 @@ KITTY_CONFIG_PATH="${HOME}/.config/kitty"
 WAYBAR_THEME_PATH="${HOME}/.config/waybar/themes"
 DUNST_THEME_PATH="${HOME}/.config/dunst/themes"
 WALLPAPER_DIR="${HOME}/Pictures/wallpapers"
-HYPR_THEMES_PATH="${HOME}/.config/hypr/themes"
-SWAY_THEMES_PATH="${HOME}/.config/sway/themes"
-
+IS_QTILE_RUNNING=$(ps -C qtile | grep qtile | awk '{print $4}')
 THEMES=(
   "Catppuccin"
   "Dracula"
@@ -52,8 +50,6 @@ function apply_theme() {
 
   #hypr and sway
   cp -f "$WAYBAR_THEME_PATH/$THEME_CHOICE.css" "$WAYBAR_THEME_PATH/default.css"
-  cp -r "$HYPR_THEMES_PATH/$THEME_CHOICE.conf" "$HYPR_THEMES_PATH/default.conf"
-  cp -r "$SWAY_THEMES_PATH/$THEME_CHOICE.conf" "$SWAY_THEMES_PATH/default.conf"
 
   #kitty
   cp -f "$KITTY_CONFIG_PATH/$THEME_CHOICE.conf" "$KITTY_CONFIG_PATH/default.conf"
@@ -68,14 +64,19 @@ function apply_theme() {
 
   if [[ "$DESKTOP_SESSION" == "qtile" ]]; then
     qtile cmd-obj -o cmd -f restart
+    feh --bg-fill "$WALLPAPER_DIR/default" 
+  elif [[ "$IS_QTILE_RUNNING" == "qtile"  ]]; then
     feh --bg-fill "$WALLPAPER_DIR/default" &
+    sleep 1
+    qtile cmd-obj -o cmd -f restart || echo "failed 2"
   elif [[ "$DESKTOP_SESSION" == "sway" ]]; then
     pkill -9 swaybg
     swaymsg output * bg "$WALLPAPER_DIR/default" fill &
     pkill -9 waybar &
     waybar -c "${HOME}/.config/waybar/sway/config.jsonc" -s "${HOME}/.config/waybar/sway/style.css"
     swaymsg reload &
-  elif [[ "$DESKTOP_SESSION" == "hyprland" ]]; then
+  elif [[ -z "$HYPRLAND_CMD" ]]; then
+    notify-send hyprland runs
     pkill -9 waybar
     waybar -c "${HOME}/.config/waybar/hypr/config.jsonc" -s "${HOME}/.config/waybar/hypr/style.css"
     pkill -9 hyprpaper
