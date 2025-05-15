@@ -16,7 +16,7 @@
   statement: #F7768E;            // c5-red
   type: #9ECE6A;                 // c6-green
   special: #FCA7EA;              // c9-pink
-  accent: #9D7CD8;               // c4-accent
+  accent: #82AAFF;               // c4-accent
   background-color: #16161E;     // c1-background
   border-radius: 5px;
 }

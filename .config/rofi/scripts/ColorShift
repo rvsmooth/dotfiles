@@ -37,17 +37,17 @@ case "$CHOICE" in
   fi
   ;;
 "ON")
-  if [[ $XDG_SESSION_TYPE == "wayland" ]]; then
-    wlsunset -T 4500 &
-    NOTIFY "Bluelight filter has been turned on."
+  if [[ $XDG_SESSION_DESKTOP == "Hyprland" ]]; then
+    hyprctl keyword decoration:screen_shader ~/.config/hypr/scripts/nightlight_shader.frag &&
+      NOTIFY "Bluelight filter has been turned on."
   else
     redshift -O 4500K &&
       NOTIFY "Bluelight filter has been turned on."
   fi
   ;;
 "OFF")
-  if [[ $XDG_SESSION_TYPE == "wayland" ]]; then
-    pkill -9 wlsunset &&
+  if [[ $XDG_SESSION_DESKTOP == "Hyprland" ]]; then
+    hyprctl reload &&
       NOTIFY "Bluelight filter has been turned off."
   else
     redshift -x &&
