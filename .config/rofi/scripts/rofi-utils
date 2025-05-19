@@ -14,6 +14,7 @@ ROFI_SCRIPTS_DIR="$ROFI_DIR/scripts"
 UTILS=(
   "AppDrawer"
   "Bluetooth"
+  "Bluetooth-bzmenu"
   "Brightness"
   "ColorShift"
   "ClipBoard"
@@ -21,12 +22,12 @@ UTILS=(
   "PowerMenu"
   "Themer"
   "WifiMenu"
+  "WifiMenu-iwmenu"
 )
 
 ROFI_UTILS_CMD=$(printf '%s\n' "${UTILS[@]}" | rofi -dmenu -i -p "Utilities")
 if [ -n "$ROFI_UTILS_CMD" ]; then
   bash $ROFI_SCRIPTS_DIR/$ROFI_UTILS_CMD
-
 else
   exit 1
 fi
