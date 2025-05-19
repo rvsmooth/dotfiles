@@ -40,11 +40,24 @@ themes["Nord"]="Nord.png"
 themes["SpringBlossom"]="SpringBlossom.jpg"
 themes["Tokyonight"]="Tokyonight.png"
 
-function hypr_theme() {
-  kill_app waybar
+function theme_hypr() {
+  __kill_app waybar
   waybar -c "${HOME}/.config/waybar/hypr/config.jsonc" -s "${HOME}/.config/waybar/hypr/style.css" &
-  reload_app hyprpaper &&
+  __reload_app hyprpaper &&
     hyprctl reload
+}
+
+function theme_sway() {
+  __kill_app swaybg
+  swaymsg output * bg "$WALLPAPER_DIR/default" fill &
+  __kill_app waybar
+  waybar -c "${HOME}/.config/waybar/sway/config.jsonc" -s "${HOME}/.config/waybar/sway/style.css" &
+  swaymsg reload &
+}
+
+function theme_qtile() {
+  qtile cmd-obj -o cmd -f restart
+  feh --bg-fill "$WALLPAPER_DIR/default" &
 }
 
 function apply_theme() {
@@ -75,18 +88,17 @@ function apply_theme() {
   cp -f -v "$WALLPAPER_DIR/${themes[$THEME_CHOICE]}" "$WALLPAPER_DIR/default"
 
   if [[ "$DESKTOP_SESSION" == "qtile" ]]; then
-    qtile cmd-obj -o cmd -f restart
-    feh --bg-fill "$WALLPAPER_DIR/default" &
+    theme_qtile
+  elif [[ -n "$(pgrep qtile)" ]]; then
+    theme_qtile
   elif [[ "$DESKTOP_SESSION" == "sway" ]]; then
-    pkill -9 swaybg
-    swaymsg output * bg "$WALLPAPER_DIR/default" fill &
-    pkill -9 waybar &
-    waybar -c "${HOME}/.config/waybar/sway/config.jsonc" -s "${HOME}/.config/waybar/sway/style.css"
-    swaymsg reload &
+    theme_sway
+  elif [[ -n "$(pgrep sway)" ]]; then
+    theme_sway
   elif [[ "$XDG_DESKTOP_SESSION" == "hyprland" ]]; then
-    hypr_theme
+    theme_hypr
   elif [[ -n "$(pgrep Hyprland)" ]]; then
-    hypr_theme
+    theme_hypr
   else
     echo "Neither sway nor hyprland is installed."
   fi
