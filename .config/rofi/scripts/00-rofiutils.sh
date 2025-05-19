@@ -11,23 +11,22 @@
 
 ROFI_DIR="$HOME/.config/rofi"
 ROFI_SCRIPTS_DIR="$ROFI_DIR/scripts"
-UTILS=(
-  "AppDrawer"
-  "Bluetooth"
-  "Bluetooth-bzmenu"
-  "Brightness"
-  "ColorShift"
-  "ClipBoard"
-  "Emojis"
-  "PowerMenu"
-  "Themer"
-  "WifiMenu"
-  "WifiMenu-iwmenu"
-)
 
-ROFI_UTILS_CMD=$(printf '%s\n' "${UTILS[@]}" | rofi -dmenu -i -p "Utilities")
+declare -A utils
+utils["Appdrawer"]="01-appdrawer.sh"
+utils["Bluetooth"]="02-bluetooth.sh"
+utils["Brightness"]="03-brightness.sh"
+utils["Clipboard"]="04-clipboard.sh"
+utils["Emojis"]="05-emojis.sh"
+utils["Powermenu"]="06-powermenu.sh"
+utils["Themer"]="07-themer.sh"
+utils["Wifimenu"]="08-wifimenu.sh"
+utils["Colorshift"]="09-colorshift.sh"
+
+ROFI_UTILS_CMD=$(printf '%s\n' "${!utils[@]}" | rofi -dmenu -i -p "Utilities")
+
 if [ -n "$ROFI_UTILS_CMD" ]; then
-  bash $ROFI_SCRIPTS_DIR/$ROFI_UTILS_CMD
+  bash "$ROFI_SCRIPTS_DIR/${utils[$ROFI_UTILS_CMD]}"
 else
   exit 1
 fi

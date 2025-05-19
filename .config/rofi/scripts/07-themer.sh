@@ -9,7 +9,8 @@
 # Copyright (c) 2024 rvsmooth
 # https://github.com/rvsmooth
 set -x
-source ~/.config/rofi/scripts/reload.sh
+source ~/.config/rofi/scripts/utils.sh
+
 ROFI_THEMES_PATH="${HOME}/.config/rofi/themes/colors"
 QTILE_COLORS_PATH="${HOME}/.config/qtile/colors.py"
 QTILE_THEME_CURRENT="$(cat $QTILE_COLORS_PATH | awk -F '=' '/default/ {print $2}' | xargs)"
