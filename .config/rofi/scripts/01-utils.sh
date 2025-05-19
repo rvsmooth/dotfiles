@@ -17,7 +17,7 @@ NOTIFY() {
 
 }
 set -x
-function reload_app() {
+function __reload_app() {
   APP_PID=$(pgrep "$1")
   APP_PATH=$(which "$1")
   APP_NAME="$1"
@@ -29,7 +29,7 @@ function reload_app() {
     "$APP_PATH"
   fi
 }
-function kill_app() {
+function __kill_app() {
   APP_PID=$(pgrep "$1")
   if [ -n "$APP_PID" ]; then
     kill -9 "$APP_PID"
