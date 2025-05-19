@@ -1,20 +1,25 @@
 * {
-  background: #2e3440;
-  foreground: #eceff4;
+  background: #1e1e2e;
+  foreground: #bac2de;
 
-  black: #2e3440;
-  red: #bf616a;
-  green: #a3be8c;
-  yellow: #ebcb8b;
-  blue: #81a1c1;
-  purple: #b48ead;
-  aqua: #7f849c;
-  white: #eceff4;
+  black: @background;
+  red: #f38ba8;
+  green: #a6e3a1;
+  pink: #f5c2e7;
+  yellow: #f9e2af;
+  blue: #89b4fa;
+  purple: #cba6f7;
+  aqua: #94e2d5;
+  white: #cdd6f4;
+  orange: #fab387;
+  identifier: #b8bb26;
+  statement: #f38ba8;
   comment: #7f849c;
-  orange: #d08770;
-  accent: @blue;
-  
-  background-color: #2e3440;
+  type: #a6e3a1;
+  special: #f5c2e7;
+
+  accent: @pink;
+  background-color: #1e1e2e;
   border-radius: 5px;
 }
 
