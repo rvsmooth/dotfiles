@@ -105,4 +105,19 @@ SpringBlossom = [
 
 ]
 
-default = Tokyonight
+Graphite = [
+    ["#0A0A0A", "#0A0A0A"],    # c0-crust (background-color)
+    ["#0A0A0A", "#0A0A0A"],    # c1-background (background-color)
+    ["#dbdee5", "#dbdee5"],    # c2-foreground (foreground)
+    ["#434c5e", "#434c5e"],    # c3-grey (comment)
+    ["#5e81ac", "#5e81ac"],    # c4-accent (blue)
+    ["#c35b65", "#c35b65"],    # c5-red (red)
+    ["#82ac5d", "#82ac5d"],    # c6-green (green)
+    ["#e4b558", "#e4b558"],    # c7-yellow (yellow)
+    ["#d0846c", "#d0846c"],    # c8-orange (orange)
+    ["#b57daa", "#b57daa"],    # c9-pink (purple/special)
+    ["#5e81ac", "#5e81ac"],    # c10-blue (blue)
+    ["#dbdee5", "#dbdee5"],    # c11-text (white)
+]
+
+default = Graphite
