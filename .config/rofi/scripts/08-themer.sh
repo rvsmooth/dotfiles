@@ -28,6 +28,7 @@ THEMES=(
   "Nord"
   "SpringBlossom"
   "Tokyonight"
+  "Graphite"
 )
 
 declare -A themes
@@ -39,6 +40,7 @@ themes["GruvBox"]="GruvBox.jpg"
 themes["Nord"]="Nord.png"
 themes["SpringBlossom"]="SpringBlossom.jpg"
 themes["Tokyonight"]="Tokyonight.png"
+themes["Graphite"]="Graphite.png"
 
 function theme_hypr() {
   __kill_app waybar

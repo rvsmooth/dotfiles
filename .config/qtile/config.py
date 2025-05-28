@@ -176,7 +176,7 @@ groups = [
 ]
 
 layout_theme = {
-    "border_width": 2,
+    "border_width": 3,
     "margin": 8,
     "border_focus": colors[4],
     "border_normal": colors[3],
@@ -363,8 +363,8 @@ bring_front_click = False
 floats_kept_above = True
 cursor_warp = False
 floating_layout = layout.Floating(
-    border_width= 3,
-    border_focus=colors[4],
+    border_focus=colors[5],
+    border_width=3,
     border_normal=colors[3],
     float_rules=[
         # Run the utility of `xprop` to see the wm class and name of an X client.
