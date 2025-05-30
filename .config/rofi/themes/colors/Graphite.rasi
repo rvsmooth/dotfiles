@@ -11,14 +11,14 @@
   purple: #b57daa;
   aqua: #63a6a5;
   white: #dbdee5;
-  orange: #d0846c;
+  orange: @blue;
   identifier: #a0c082;
   statement: #dc98b1;
   comment: #434c5e;
   type: #a0c082;
   special: #e4b558;
 
-  accent: @yellow;
+  accent: @white;
   background-color: @background;
   border-radius: 5px;
 }
