@@ -43,15 +43,15 @@ theme_qtile() {
 
 apply_wall() {
 
-  if [[ "$DESKTOP_SESSION" == "qtile" ]]; then
+  if [[ "$XDG_SESSION_DESKTOP" == "qtile" ]]; then
     theme_qtile
   elif [[ -n "$(pgrep qtile)" ]]; then
     theme_qtile
-  elif [[ "$DESKTOP_SESSION" == "sway" ]]; then
+  elif [[ "$XDG_SESSION_DESKTOP" == "sway" ]]; then
     theme_sway
   elif [[ -n "$(pgrep sway)" ]]; then
     theme_sway
-  elif [[ "$XDG_DESKTOP_SESSION" == "hyprland" ]]; then
+  elif [[ "$XDG_SESSION_DESKTOP" == "hyprland" ]]; then
     theme_hypr
   elif [[ -n "$(pgrep Hyprland)" ]]; then
     theme_hypr
