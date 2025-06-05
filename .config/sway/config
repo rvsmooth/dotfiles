@@ -53,7 +53,7 @@ client.unfocused        #434C5E #434C5E #E5E9F0 #434C5E #434C5E
 client.urgent           #BF616A #BF616A #2E3440 #BF616A #BF616A
 
 # wallpaper
-output * bg $HOME/Pictures/wallpapers/default fill
+output * bg $HOME/.cache/wallpaper/default fill
 
 ################################################################################
 #                            autostart applications                            #

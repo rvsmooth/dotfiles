@@ -8,7 +8,8 @@
 #
 # Copyright (c) 2024 rvsmooth
 # https://github.com/rvsmooth
-set -x
+#
+set -e
 source ~/.config/rofi/scripts/01-utils.sh
 
 ROFI_THEMES_PATH="${HOME}/.config/rofi/themes/colors"
@@ -17,19 +18,12 @@ QTILE_THEME_CURRENT="$(cat $QTILE_COLORS_PATH | awk -F '=' '/default/ {print $2}
 KITTY_CONFIG_PATH="${HOME}/.config/kitty"
 WAYBAR_THEME_PATH="${HOME}/.config/waybar/themes"
 DUNST_THEME_PATH="${HOME}/.config/dunst/themes"
-WALLPAPER_DIR="${HOME}/Pictures/wallpapers"
+WALL_SRC="${HOME}/Pictures/wallpapers/themed"
+WALL_TGT="${HOME}/.cache/wallpaper"
 HYPR_THEMES_PATH="${HOME}/.config/hypr/themes"
 SWAY_THEMES_PATH="${HOME}/.config/sway/themes"
-THEMES=(
-  "Catppuccin"
-  "Dracula"
-  "EverforestDarkHard"
-  "GruvBox"
-  "Nord"
-  "SpringBlossom"
-  "Tokyonight"
-  "Graphite"
-)
+
+[ ! -d "${HOME}/.cache/wallpaper" ] && mkdir -p"${HOME}/.cache/wallpaper"
 
 declare -A themes
 
@@ -51,7 +45,7 @@ function theme_hypr() {
 
 function theme_sway() {
   __kill_app swaybg
-  swaymsg output * bg "$WALLPAPER_DIR/default" fill &
+  swaymsg output * bg "$WALL_SRC/default" fill &
   __kill_app waybar
   waybar -c "${HOME}/.config/waybar/sway/config.jsonc" -s "${HOME}/.config/waybar/sway/style.css" &
   swaymsg reload &
@@ -59,7 +53,7 @@ function theme_sway() {
 
 function theme_qtile() {
   qtile cmd-obj -o cmd -f restart
-  feh --bg-fill "$WALLPAPER_DIR/default" &
+  feh --bg-fill "$WALL_SRC/default" &
 }
 
 function apply_theme() {
@@ -86,8 +80,9 @@ function apply_theme() {
   pkill -9 dunst
 
   # wallpaper
-  rm "$WALLPAPER_DIR/default"
-  cp -f -v "$WALLPAPER_DIR/${themes[$THEME_CHOICE]}" "$WALLPAPER_DIR/default"
+  rm "$WALL_SRC/default"
+  cp -f -v "$WALL_SRC/${themes[$THEME_CHOICE]}" "$WALL_SRC/default"
+  cp -f -v "$WALL_SRC/${themes[$THEME_CHOICE]}" "$WALL_TGT/default"
 
   if [[ "$DESKTOP_SESSION" == "qtile" ]]; then
     theme_qtile
