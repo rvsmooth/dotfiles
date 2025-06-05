@@ -22,6 +22,7 @@ utils["Powermenu"]="07-powermenu.sh"
 utils["Themer"]="08-themer.sh"
 utils["Wifimenu"]="09-wifimenu.sh"
 utils["Colorshift"]="10-colorshift.sh"
+utils["Wallpaper"]="11-wallpaper.sh"
 
 ROFI_UTILS_CMD=$(printf '%s\n' "${!utils[@]}" | rofi -dmenu -i -p "Utilities")
 
