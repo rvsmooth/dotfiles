@@ -8,7 +8,7 @@
 #
 # Copyright (c) 2025 rvsmooth
 # https://github.com/rvsmooth
-set -e
+set -x
 source ~/.config/rofi/scripts/01-utils.sh
 APP='Wallpaper'
 WALL_SRC="${HOME}/Pictures/wallpapers"
@@ -28,6 +28,38 @@ OPTIONS=(
   "Extra Wallpapers"
 )
 
+theme_hypr() {
+  __reload_app hyprpaper
+}
+
+theme_sway() {
+  __kill_app swaybg
+  swaymsg output * bg "$WALL_SRC/default" fill &
+}
+
+theme_qtile() {
+  feh --bg-fill "$WALL_SRC/default" &
+}
+
+apply_wall() {
+
+  if [[ "$DESKTOP_SESSION" == "qtile" ]]; then
+    theme_qtile
+  elif [[ -n "$(pgrep qtile)" ]]; then
+    theme_qtile
+  elif [[ "$DESKTOP_SESSION" == "sway" ]]; then
+    theme_sway
+  elif [[ -n "$(pgrep sway)" ]]; then
+    theme_sway
+  elif [[ "$XDG_DESKTOP_SESSION" == "hyprland" ]]; then
+    theme_hypr
+  elif [[ -n "$(pgrep Hyprland)" ]]; then
+    theme_hypr
+  else
+    echo "Neither sway nor hyprland is installed."
+  fi
+
+}
 # Create a menu for Rofi
 CHOICE=$(printf "%s\n" "${OPTIONS[@]}" | rofi -dmenu -i -p "$APP")
 
@@ -37,7 +69,7 @@ case "$CHOICE" in
   WALL=${CUSTOM_WALL}
   if [[ -n "$WALL" ]]; then
     cp -f "$WALL" "$WALL_TGT"
-    __reload_app hyprpaper
+    apply_wall
   fi
   ;;
 "Themed Wallpapers")
@@ -47,7 +79,7 @@ case "$CHOICE" in
   WALL=${THEMED_WALL}
   if [[ -n "$WALL" ]]; then
     cp -f "$WALL_SRC/$WALL" "$WALL_TGT"
-    __reload_app hyprpaper
+    apply_wall
   fi
   ;;
 "Extra Wallpapers")
@@ -57,7 +89,7 @@ case "$CHOICE" in
   WALL=${EXTRA_WALL}
   if [[ -n "$WALL" ]]; then
     cp -f "$WALL_EXTRA/$WALL" "$WALL_TGT"
-    __reload_app hyprpaper
+    apply_wall
   fi
   ;;
 *)
