@@ -9,7 +9,7 @@
 # Copyright (c) 2024 rvsmooth
 # https://github.com/rvsmooth
 #
-set -e
+set -x
 source ~/.config/rofi/scripts/01-utils.sh
 
 ROFI_THEMES_PATH="${HOME}/.config/rofi/themes/colors"
@@ -80,19 +80,18 @@ function apply_theme() {
   pkill -9 dunst
 
   # wallpaper
-  rm "$WALL_SRC/default"
-  cp -f -v "$WALL_SRC/${themes[$THEME_CHOICE]}" "$WALL_SRC/default"
+  rm "$WALL_TGT/default"
   cp -f -v "$WALL_SRC/${themes[$THEME_CHOICE]}" "$WALL_TGT/default"
 
-  if [[ "$DESKTOP_SESSION" == "qtile" ]]; then
+  if [[ "$XDG_SESSION_DESKTOP" == "qtile" ]]; then
     theme_qtile
   elif [[ -n "$(pgrep qtile)" ]]; then
     theme_qtile
-  elif [[ "$DESKTOP_SESSION" == "sway" ]]; then
+  elif [[ "$XDG_SESSION_DESKTOP" == "sway" ]]; then
     theme_sway
   elif [[ -n "$(pgrep sway)" ]]; then
     theme_sway
-  elif [[ "$XDG_DESKTOP_SESSION" == "hyprland" ]]; then
+  elif [[ "$XDG_SESSION_DESKTOP" == "hyprland" ]]; then
     theme_hypr
   elif [[ -n "$(pgrep Hyprland)" ]]; then
     theme_hypr
