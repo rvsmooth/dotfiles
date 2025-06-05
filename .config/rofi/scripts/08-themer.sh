@@ -101,7 +101,7 @@ function apply_theme() {
 
 }
 
-THEME_CHOICE=$(printf '%s\n' "${!themes[@]}" | rofi -dmenu -p "Select a theme:")
+THEME_CHOICE=$(printf '%s\n' "${!themes[@]}" | rofi -dmenu -i -p "Select a theme:")
 
 if [[ -n "$THEME_CHOICE" ]]; then
   echo "You selected: $THEME_CHOICE"

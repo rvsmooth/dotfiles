@@ -78,7 +78,7 @@ case "$CHOICE" in
   THEMED_WALL=$(for a in $FILES; do echo -en "$a\0icon\x1f$a\n"; done | rofi -dmenu -theme fullscreen-preview)
   WALL=${THEMED_WALL}
   if [[ -n "$WALL" ]]; then
-    cp -f "$WALL_SRC/$WALL" "$WALL_TGT"
+    cp -f "$WALL_THM/$WALL" "$WALL_TGT"
     apply_wall
   fi
   ;;
