@@ -43,6 +43,11 @@ function theme_hypr() {
     hyprctl reload
 }
 
+theme_niri() {
+  __kill_app waybar
+  waybar -c "${HOME}/.config/waybar/niri/config.jsonc" -s "${HOME}/.config/waybar/niri/style.css" &
+  __reload_app hyprpaper
+}
 function theme_sway() {
   __kill_app swaybg
   swaymsg output * bg "$WALL_SRC/default" fill &
@@ -95,6 +100,8 @@ function apply_theme() {
     theme_hypr
   elif [[ -n "$(pgrep Hyprland)" ]]; then
     theme_hypr
+  elif [[ -n "$(pgrep niri)" ]]; then
+    theme_niri
   else
     echo "Neither sway nor hyprland is installed."
   fi

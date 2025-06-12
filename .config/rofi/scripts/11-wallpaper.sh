@@ -34,11 +34,16 @@ theme_hypr() {
 
 theme_sway() {
   __kill_app swaybg
-  swaymsg output * bg "$WALL_SRC/default" fill &
+  swaymsg output * bg "$WALL_TGT" fill &
+}
+
+theme_niri() {
+  __kill_app swaybg
+  swaybg -i "$WALL_TGT" &
 }
 
 theme_qtile() {
-  feh --bg-fill "$WALL_SRC/default" &
+  feh --bg-fill "$WALL_TGT" &
 }
 
 apply_wall() {
@@ -55,6 +60,8 @@ apply_wall() {
     theme_hypr
   elif [[ -n "$(pgrep Hyprland)" ]]; then
     theme_hypr
+  elif [[ -n "$(pgrep niri)" ]]; then
+    theme_niri
   else
     echo "Neither sway nor hyprland is installed."
   fi

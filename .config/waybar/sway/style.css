@@ -10,12 +10,12 @@
 
 #workspaces button.focused {
 border-radius: 5px;
-border: 1px solid @text;
+border: 2px solid @accent;
 }
 
 #workspaces button:hover {
 border-radius: 5px;
-border: 1px solid @pink;
+border: 2px solid @text;
 }
 
 #workspaces button:hover label {
