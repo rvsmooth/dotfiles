@@ -260,13 +260,8 @@ layout {
 // Note that running niri as a session supports xdg-desktop-autostart,
 // which may be more convenient to use.
 // See the binds section below for more spawn examples.
-
-// This line starts waybar, a commonly used bar for Wayland compositors.
-spawn-at-startup "dash" "-c" "waybar -c ~/.config/waybar/niri/config.jsonc -s ~/.config/waybar/niri/style.css"
-spawn-at-startup "hyprpaper"
-spawn-at-startup "dunst"
-spawn-at-startup "/usr/lib/polkit-gnome/polkit-gnome-authentication-agent-1"
-spawn-at-startup "dash" "-c" "wl-paste --watch cliphist store"
+spawn-at-startup "bash" "-c" "~/.config/niri/autostart.sh"
+spawn-at-startup "bash" "-c" "~/.config/niri/portal.sh"
 
 
 // Uncomment this line to ask the clients to omit their client-side decorations if possible.
@@ -371,7 +366,7 @@ binds {
     // or do a four-finger swipe up on a touchpad.
     Mod+O repeat=false { toggle-overview; }
 
-    Mod+Shift+C { close-window; }
+    Mod+Shift+C repeat=false { close-window; }
 
     Mod+Left  { focus-column-left; }
     Mod+Down  { focus-window-down; }
