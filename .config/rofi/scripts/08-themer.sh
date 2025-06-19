@@ -50,7 +50,7 @@ theme_niri() {
 }
 function theme_sway() {
   __kill_app swaybg
-  swaymsg output * bg "$WALL_SRC/default" fill &
+  swaymsg output * bg "$WALL_TGT/default" fill &
   __kill_app waybar
   waybar -c "${HOME}/.config/waybar/sway/config.jsonc" -s "${HOME}/.config/waybar/sway/style.css" &
   swaymsg reload &
@@ -58,7 +58,7 @@ function theme_sway() {
 
 function theme_qtile() {
   qtile cmd-obj -o cmd -f restart
-  feh --bg-fill "$WALL_SRC/default" &
+  feh --bg-fill "$WALL_TGT/default" &
 }
 
 function apply_theme() {
