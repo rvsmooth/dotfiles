@@ -1,0 +1,23 @@
+@import "../common.css";
+
+#workspaces button {
+  border-radius: 0;
+  font-size: 12px;
+  font-weight: bold;
+  padding: 1px 14px 1px 14px;
+  margin: 0 2px 0 2px;
+}
+
+#workspaces button.focused {
+border-radius: 5px;
+border: 2px solid @accent;
+}
+
+#workspaces button:hover {
+border-radius: 5px;
+border: 2px solid @text;
+}
+
+#workspaces button:hover label {
+  color: white;
+}

@@ -5,4 +5,3 @@ configuration {
 }
 
 @theme "~/.config/rofi/themes/RVS_Menu.rasi"
-

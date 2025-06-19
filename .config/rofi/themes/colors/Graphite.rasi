@@ -1,0 +1,25 @@
+* {
+  background: #0A0A0A;
+  foreground: #3C3C3C;
+
+  black: @background;
+  red: #c35b65;
+  green: #82ac5d;
+  pink: #cd7092;
+  yellow: #e4b558;
+  blue: #5e81ac;
+  purple: #b57daa;
+  aqua: #63a6a5;
+  white: #dbdee5;
+  orange: @blue;
+  identifier: #a0c082;
+  statement: #dc98b1;
+  comment: #434c5e;
+  type: #a0c082;
+  special: #e4b558;
+
+  accent: @white;
+  background-color: @background;
+  border-radius: 5px;
+}
+

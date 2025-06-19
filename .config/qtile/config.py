@@ -41,9 +41,9 @@ emacs = "emacsclient -c -a 'emacs' "  # The space at the end is IMPORTANT!
 home = str(Path.home())
 defaults = home + "/.config/scripts-common/defaults.sh"
 volume = home + "/.config/scripts-common/volume.sh"
-rofi_utils = home + "/.config/rofi/scripts/rofi-utils"
-rofi_themer = home + "/.config/rofi/scripts/Themer"
-rofi_clipboard = home + "/.config/rofi/scripts/ClipBoard"
+rofi_utils = home + "/.config/rofi/scripts/00-rofiutils.sh"
+rofi_themer = home + "/.config/rofi/scripts/08-themer.sh"
+rofi_clipboard = home + "/.config/rofi/scripts/05-clipboard.sh"
 
 # colorscheme
 colors = colors.default
@@ -176,7 +176,7 @@ groups = [
 ]
 
 layout_theme = {
-    "border_width": 2,
+    "border_width": 3,
     "margin": 8,
     "border_focus": colors[4],
     "border_normal": colors[3],
@@ -311,7 +311,7 @@ screens = [
                     background=colors[7],
                     foreground=colors[0]
                 ),
-                widget.Volume(
+                widget.PulseVolume(
                     foreground=colors[7],
                     fmt=" {}",
                 ),
@@ -363,7 +363,8 @@ bring_front_click = False
 floats_kept_above = True
 cursor_warp = False
 floating_layout = layout.Floating(
-    border_focus=colors[4],
+    border_focus=colors[5],
+    border_width=3,
     border_normal=colors[3],
     float_rules=[
         # Run the utility of `xprop` to see the wm class and name of an X client.

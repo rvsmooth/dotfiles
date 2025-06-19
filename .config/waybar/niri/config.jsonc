@@ -1,0 +1,27 @@
+{
+ "include": [
+    "~/.config/waybar/common.jsonc"
+  ],
+  // Choose the order of the modules
+  "modules-left": [
+    "custom/spacer",
+    "niri/workspaces",
+    "custom/applications"
+  ],
+  "modules-center": ["clock"],
+  "modules-right": [
+    "pulseaudio",
+    "network",
+    "cpu",
+    "memory",
+    "tray",
+    "custom/spacer"
+  ],
+  "niri/workspaces": {
+    "disable-scroll": true,
+    "all-outputs": true,
+    "warp-on-scroll": false,
+    "format": "{index}"
+  },
+
+}
