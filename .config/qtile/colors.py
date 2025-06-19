@@ -76,7 +76,7 @@ GruvBox = [
 
 Nord = [
     ["#2e3440", "#2e3440"],  # c0-crust (background-color)
-    ["#2e3440", "#2e3440"],  # c1-background (background-color)
+    ["#242933", "#242933"],  # c1-background (background-color)
     ["#eceff4", "#eceff4"],  # c2-foreground (foreground)
     ["#7f849c", "#7f849c"],  # c3-grey (comment)
     ["#81a1c1", "#81a1c1"],  # c4-accent (blue)
@@ -120,4 +120,4 @@ Graphite = [
     ["#dbdee5", "#dbdee5"],    # c11-text (white)
 ]
 
-default = Graphite
+default = Nord

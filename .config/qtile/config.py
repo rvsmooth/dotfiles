@@ -41,9 +41,9 @@ emacs = "emacsclient -c -a 'emacs' "  # The space at the end is IMPORTANT!
 home = str(Path.home())
 defaults = home + "/.config/scripts-common/defaults.sh"
 volume = home + "/.config/scripts-common/volume.sh"
-rofi_utils = home + "/.config/rofi/scripts/rofi-utils"
-rofi_themer = home + "/.config/rofi/scripts/Themer"
-rofi_clipboard = home + "/.config/rofi/scripts/ClipBoard"
+rofi_utils = home + "/.config/rofi/scripts/00-rofiutils.sh"
+rofi_themer = home + "/.config/rofi/scripts/08-themer.sh"
+rofi_clipboard = home + "/.config/rofi/scripts/05-clipboard.sh"
 
 # colorscheme
 colors = colors.default

@@ -38,8 +38,7 @@ theme_sway() {
 }
 
 theme_niri() {
-  __kill_app swaybg
-  swaybg -i "$WALL_TGT" &
+  __reload_app hyprpaper
 }
 
 theme_qtile() {
