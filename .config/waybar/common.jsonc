@@ -62,7 +62,7 @@
   },
   "custom/applications": {
     "format": "Applications",
-    "on-click": "~/.config/rofi/scripts/AppDrawer",
+    "on-click": "~/.config/rofi/scripts/02-appdrawer.sh",
     "tooltip-format": "Click to display a list of apps in a drawer"
   },
   "custom/spacer": {

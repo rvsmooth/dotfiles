@@ -1,25 +1,20 @@
 * {
-  background: #0A0A0A;
-  foreground: #3C3C3C;
+  background: #2e3440;
+  foreground: #eceff4;
 
-  black: @background;
-  red: #c35b65;
-  green: #82ac5d;
-  pink: #cd7092;
-  yellow: #e4b558;
-  blue: #5e81ac;
-  purple: #b57daa;
-  aqua: #63a6a5;
-  white: #dbdee5;
-  orange: @blue;
-  identifier: #a0c082;
-  statement: #dc98b1;
-  comment: #434c5e;
-  type: #a0c082;
-  special: #e4b558;
-
-  accent: @white;
-  background-color: @background;
+  black: #2e3440;
+  red: #bf616a;
+  green: #a3be8c;
+  yellow: #ebcb8b;
+  blue: #81a1c1;
+  purple: #b48ead;
+  aqua: #7f849c;
+  white: #eceff4;
+  comment: #7f849c;
+  orange: #d08770;
+  accent: @blue;
+  
+  background-color: #2e3440;
   border-radius: 5px;
 }
 
