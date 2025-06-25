@@ -2,15 +2,20 @@
 
 window {
  width: 500;
- height: 400;
- padding: 10px;
+ height: 600;
+ padding: 150px 10px 10px;
  border: 2px;
  border-radius: 5px;
  border-color: @accent;
+ background-image: url("~/.cache/wallpaper/default", width);
+}
+
+mainbox {
+padding: 30px;
 }
 
 element {
- padding: 5px;
+ padding: 8px;
  cursor: pointer;
  spacing: 5px;
  border: 0;
@@ -40,6 +45,7 @@ inputbar {
 }
 
 prompt {
+  enabled: false;
     spacing:    0;
     text-color: @black;
     background-color: @orange;
@@ -54,6 +60,7 @@ entry {
     placeholder-color: @comment;
     placeholder:       "Type to filter";
     horizontal-align: 0.5;
+    margin: 0px 0px 8px 0;
 }
 
 listview {

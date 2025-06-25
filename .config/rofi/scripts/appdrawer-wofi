@@ -9,9 +9,9 @@
 # Copyright (c) 2024 rvsmooth
 # https://github.com/rvsmooth
 
-rofi -disable-history -show drun -font "Roboto 11" -drun-display-format {name} -show-icons -p "Apps:" \
+wofi -disable-history --show drun -font "Roboto 11" -drun-display-format {name} -show-icons -p "Apps:" \
   -theme-str '* {background-color: @background;}' \
-  -theme-str 'window {width: 1700; height: 1000;}' \
+  -theme-str 'window {width: 1700; height: 900;}' \
   -theme-str 'listview {margin: 40px 0px -40 0px; spacing: 20px; columns: 10; layout: vertical; dynamic: true;}' \
   -theme-str 'element {padding: 10px; spacing: 20px; orientation: vertical; border-radius: 16px;}' \
   -theme-str 'element-text, element-icon { size: 2.5em; background-color: inherit; horizontal-align: 0.5; }' \

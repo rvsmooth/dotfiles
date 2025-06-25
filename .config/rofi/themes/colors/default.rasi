@@ -1,20 +1,20 @@
 * {
-  background: #2e3440;
-  foreground: #eceff4;
+background: #282a36 ;
+foreground: #f8f8f2 ;
 
-  black: #2e3440;
-  red: #bf616a;
-  green: #a3be8c;
-  yellow: #ebcb8b;
-  blue: #81a1c1;
-  purple: #b48ead;
-  aqua: #7f849c;
-  white: #eceff4;
-  comment: #7f849c;
-  orange: #d08770;
-  accent: @blue;
-  
-  background-color: #2e3440;
-  border-radius: 5px;
+black: @background;
+red: #ff5555;
+green: #50fa7b;
+yellow: #f1fa8c;
+blue: #8be9fd;
+purple: #bd93f9;
+aqua: #689d6a;
+white: @foreground;
+comment: #6272a4;
+orange: #ffb86c;
+accent: @purple;
+ 
+ background-color: @background;
+ border-radius: 5px;
 }
 
