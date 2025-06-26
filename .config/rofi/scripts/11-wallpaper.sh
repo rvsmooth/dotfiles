@@ -38,7 +38,7 @@ theme_sway() {
 }
 
 theme_niri() {
-  __reload_app hyprpaper
+  swww img $WALL_TGT
 }
 
 theme_qtile() {

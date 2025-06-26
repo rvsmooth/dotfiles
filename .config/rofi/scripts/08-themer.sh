@@ -62,7 +62,7 @@ function theme_hypr() {
 theme_niri() {
   __kill_app waybar
   waybar -c "${HOME}/.config/waybar/niri/config.jsonc" -s "${HOME}/.config/waybar/niri/style.css" &
-  __reload_app hyprpaper &
+  swww img $HOME/.cache/wallpaper/default
 }
 function theme_sway() {
   __kill_app swaybg
