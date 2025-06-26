@@ -353,6 +353,7 @@ binds {
     // Suggested binds for running programs: terminal, app launcher, screen locker.
     Mod+Return        hotkey-overlay-title="Open a Terminal: kitty"          { spawn "kitty"; }
     Mod+P             hotkey-overlay-title="Run run launcher: rofi"          { spawn "dash" "-c" "rofi -show drun"; }
+    Mod+D             hotkey-overlay-title="Run run launcher: rofi"          { spawn "dash" "-c" "wofi --show drun"; }
     Mod+B             hotkey-overlay-title="Run default browser"             { spawn "dash" "-c" "~/.config/scripts-common/defaults.sh -b1"; }
     Mod+U             hotkey-overlay-title="Run rofi utilities"              { spawn "dash" "-c" "~/.config/rofi/scripts/00-rofiutils.sh"; }
     //Mod+C           hotkey-overlay-title="Open Clipboard"                  { spawn "dash" "-c" "~/.config/rofi/scripts/05-clipboard.sh"; }
