@@ -10,28 +10,30 @@
 # https://github.com/rvsmooth
 
 APP='Brightness Control'
-CURRENT_BRIGHTNESS=$(ddcutil getvcp 10 | awk -F 'current value =' '{print $2}' | awk -F ',' '{print $1}' | xargs)
-BRIGHTNESS_STRING="󰃠  $CURRENT_BRIGHTNESS% (current)"
 NOTIFY() {
   notify-send --icon=brightness "$APP" "$@"
 }
-BRIGHTNESS_OPTS=(
-  "$BRIGHTNESS_STRING"
-  "10%"
-  "20%"
-  "30%"
-  "40%"
-  "50%"
-  "60%"
-  "70%"
-  "80%"
-  "90%"
-  "100%"
-  "Custom"
-  "Exit"
-)
 
 brighten_it() {
+
+  CURRENT_BRIGHTNESS=$(ddcutil getvcp 10 | awk -F 'current value =' '{print $2}' | awk -F ',' '{print $1}' | xargs)
+  BRIGHTNESS_STRING="󰃠  $CURRENT_BRIGHTNESS% (current)"
+  BRIGHTNESS_OPTS=(
+    "$BRIGHTNESS_STRING"
+    "10%"
+    "20%"
+    "30%"
+    "40%"
+    "50%"
+    "60%"
+    "70%"
+    "80%"
+    "90%"
+    "100%"
+    "Custom"
+    "Exit"
+  )
+
   # Create a menu for Rofi
   CHOICE=$(printf "%s\n" "${BRIGHTNESS_OPTS[@]}" | rofi -dmenu -i -p "Current Brightness: $CURRENT_BRIGHTNESS%" -theme-str 'window { height: 540; }')
 
