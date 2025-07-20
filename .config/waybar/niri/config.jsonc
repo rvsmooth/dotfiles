@@ -1,14 +1,17 @@
 {
- "include": [
+  "include": [
     "~/.config/waybar/common.jsonc"
   ],
   // Choose the order of the modules
   "modules-left": [
     "custom/spacer",
+    "custom/applications",
     "niri/workspaces",
-    "custom/applications"
+    "niri/window"
   ],
-  "modules-center": ["clock"],
+  "modules-center": [
+    "clock"
+  ],
   "modules-right": [
     "pulseaudio",
     "network",
@@ -23,5 +26,8 @@
     "warp-on-scroll": false,
     "format": "{index}"
   },
-
+  "niri/window": {
+    "max-length": 60,
+    "format": "<span color='#c0c0c0' style=\"italic\">{}</span>"
+  }
 }

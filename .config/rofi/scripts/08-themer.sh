@@ -15,6 +15,7 @@ ROFI_THEMES_PATH="${HOME}/.config/rofi/themes/colors"
 QTILE_COLORS_PATH="${HOME}/.config/qtile/colors.py"
 QTILE_THEME_CURRENT="$(cat $QTILE_COLORS_PATH | awk -F '=' '/default/ {print $2}' | xargs)"
 KITTY_CONFIG_PATH="${HOME}/.config/kitty"
+ALACRITTY_CONFIG_PATH="${HOME}/.config/alacritty"
 WAYBAR_THEME_PATH="${HOME}/.config/waybar/themes"
 DUNST_THEME_PATH="${HOME}/.config/dunst/themes"
 WALL_SRC="${HOME}/Pictures/wallpapers/themed"
@@ -97,6 +98,9 @@ function apply_theme() {
   #kitty
   cp -f "$KITTY_CONFIG_PATH/$THEME_CHOICE.conf" "$KITTY_CONFIG_PATH/default.conf"
   kill -SIGUSR1 $(pidof kitty)
+
+  #alacritty
+  cp -f "$ALACRITTY_CONFIG_PATH/themes/$THEME_CHOICE.toml" "$ALACRITTY_CONFIG_PATH/themes/default.toml"
 
   #dunst
   cp -f "$DUNST_THEME_PATH/$THEME_CHOICE" "$DUNST_THEME_PATH/../dunstrc"

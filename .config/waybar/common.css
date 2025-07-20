@@ -98,6 +98,6 @@ tooltip {
 
 #custom-applications:hover {
   border-radius: 7px;
-  padding: 3px;
-  margin: 2px 0 2px 0;
+  background-color: @accent;
+  color: @background;
 }

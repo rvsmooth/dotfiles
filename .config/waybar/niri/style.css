@@ -21,3 +21,8 @@ border: 2px solid @text;
 #workspaces button:hover label {
   color: white;
 }
+
+#niri-window {
+  font-family: Adwaita Mono;
+  font-size: 12px;
+}

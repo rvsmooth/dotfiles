@@ -10,7 +10,7 @@
     "spacing": 10
   },
   "clock": {
-  "format": "{:%B %d, %H:%M %p}",
+    "format": "{:%B %d, %H:%M %p}",
     "tooltip-format": "<tt><big><span size='8pt' font='JetBrainsMono NF Medium'>{calendar}</span></big></tt>",
     "format-alt": "{:%Y-%m-%d}",
     "calendar": {
@@ -61,7 +61,7 @@
     "tooltip-format-enumerate-connected-battery": "{device_alias}\t{device_address}\t{device_battery_percentage}%"
   },
   "custom/applications": {
-    "format": "Applications",
+    "format": " 󰋁 ",
     "on-click": "~/.config/rofi/scripts/02-appdrawer.sh",
     "tooltip-format": "Click to display a list of apps in a drawer"
   },

@@ -1,12 +1,9 @@
-general.import = [
-    "~/.config/alacritty/themes/catppuccin_mocha.toml"
-]
+general.import = ["~/.config/alacritty/themes/default.toml"]
 
 [font]
 
-normal = { family = "JetBrainsMono Nerd Font", style = "Medium"}
-bold = { family = "JetBrainsMono Nerd Font", style = "Bold"}
-italic = { family = "JetBrainsMono Nerd Font", style = "Italic"}
-bold_italic = { family = "JetBrainsMono Nerd Font", style = "Bold Italic"}
+normal = { family = "JetBrainsMono Nerd Font", style = "Medium" }
+bold = { family = "JetBrainsMono Nerd Font", style = "Bold" }
+italic = { family = "JetBrainsMono Nerd Font", style = "Italic" }
+bold_italic = { family = "JetBrainsMono Nerd Font", style = "Bold Italic" }
 size = 9.00
-

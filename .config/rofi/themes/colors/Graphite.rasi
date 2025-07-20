@@ -1,6 +1,6 @@
 * {
   background: #0A0A0A;
-  foreground: #3C3C3C;
+  foreground: #AFAFAF;
 
   black: @background;
   red: #c35b65;
