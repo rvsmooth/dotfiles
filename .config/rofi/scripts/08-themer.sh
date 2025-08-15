@@ -65,6 +65,26 @@ theme_niri() {
   waybar -c "${HOME}/.config/waybar/niri/config.jsonc" -s "${HOME}/.config/waybar/niri/style.css" &
   swww img $HOME/.cache/wallpaper/default
 }
+
+niri_theme() {
+  NIRI_CONFIG_SRC="${HOME}/.config/niri/config.kdl.src"
+  NIRI_CONFIG="${HOME}/.config/niri/config.kdl"
+
+  # niri
+  local Dracula="#BD93F9"
+  local Catppuccin="#F5C2E7"
+  local Tokyonight="#82AAFF"
+  local EverforestDarkHard="#A7C080"
+  local GruvBox="#d65d0e"
+  local SpringBlossom="#BB4C12"
+  local Graphite="#dbdee5"
+  local Nord="#81a1c1"
+
+  color="$1"
+  cp $NIRI_CONFIG_SRC $NIRI_CONFIG
+  sed -i "s/BORDER_COLOR/${!color}/g" $NIRI_CONFIG
+}
+
 function theme_sway() {
   __kill_app swaybg
   swaymsg output * bg "$WALL_TGT/default" fill &
@@ -124,6 +144,7 @@ function apply_theme() {
     theme_hypr
   elif [[ -n "$(pgrep niri)" ]]; then
     theme_niri
+    niri_theme $THEME_CHOICE
   else
     echo "Neither sway nor hyprland is installed."
   fi
