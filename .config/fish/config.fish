@@ -18,7 +18,7 @@ function sssh
     ssh-add $argv
 end
 
-function config
+function config_old
     set -l git_cmd /usr/bin/git
     set -l git_options "--git-dir=$HOME/.dotfiles --work-tree=$HOME"
     eval $git_cmd $git_options config --unset status.showUntrackedFiles
@@ -32,7 +32,6 @@ function convert_file
     mv $argv (echo -e (ls $argv | tr ' ' '_'))
 
 end
-
 
 #                                 _   
 # _ __  _ __ ___  _ __ ___  _ __ | |_ 

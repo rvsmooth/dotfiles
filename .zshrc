@@ -76,7 +76,7 @@ eval "$(ssh-agent -s)"
 ssh-add $1
 }
 
-function config() {
+function config_old() {
     git_cmd='/usr/bin/git'
     git_dir="$HOME/.dotfiles/"
     work_tree="$HOME"

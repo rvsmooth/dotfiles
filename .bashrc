@@ -41,7 +41,7 @@ function sssh() {
   ssh-add $1
 }
 
-function config() {
+function config_old() {
   git_cmd="/usr/bin/git"
   git_options="--git-dir=$HOME/.dotfiles --work-tree=$HOME"
 
