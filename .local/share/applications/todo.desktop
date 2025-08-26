@@ -1,0 +1,8 @@
+[Desktop Entry]
+Type=Application
+Name=todolist
+Exec=todo
+Icon=utilities-terminal
+Terminal=false
+Categories=Utility;
+

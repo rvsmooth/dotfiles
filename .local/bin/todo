@@ -1,0 +1,7 @@
+#!/bin/bash
+title="todolist"
+dir="$HOME/Documents/syncthing"
+file="${dir}/todo.txt"
+
+[ ! -d $dir ] && mkdir -p $dir
+kitty --title $title sh -c "nvim $file"

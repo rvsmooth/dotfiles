@@ -161,7 +161,7 @@ layout {
         // - CSS-like notation: "rgb(255, 127, 0)", rgba(), hsl() and a few others.
 
         // Color of the ring on the active monitor.
-        active-color "#81a1c1"
+        active-color "#82AAFF"
 
         // Color of the ring on inactive monitors.
         //
@@ -316,6 +316,14 @@ window-rule {
     open-floating true
 }
 
+window-rule {
+  match app-id=r#"kitty$"# title="^todolist$"
+  open-floating true
+
+  default-column-width { proportion 0.50; }
+  default-window-height { fixed 500; }
+
+}
 // Example: block out two password managers from screen capture.
 // (This example rule is commented out with a "/-" in front.)
 /-window-rule {
@@ -360,6 +368,7 @@ binds {
     //Mod+C           hotkey-overlay-title="Open Clipboard"                  { spawn "dash" "-c" "~/.config/rofi/scripts/05-clipboard.sh"; }
     Mod+Alt+L         hotkey-overlay-title="Lock the Screen: swaylock"       { spawn "swaylock"; }
     Mod+Shift+F       hotkey-overlay-title="Run file manager"                { spawn "thunar"; }
+    Mod+Shift+T       hotkey-overlay-title="Todo list"                       { spawn "kitty" "--hold" "sh" "-c" "nvim ~/Documents/syncthing/todo.txt";}
 
     // The allow-when-locked=true property makes them work even when the session is locked.
     Mod+F1            allow-when-locked=true hotkey-overlay-title="Decrease Volume" { spawn "dash" "-c" "~/.config/scripts-common/volume.sh --pw-decvol"; }
