@@ -2,7 +2,7 @@
 
 Hello, there!
 
-Welcome to my dotfiles repository. I keep here all of my dotfiles for various software I use, like [QTile](https://qtile.org/) and [Hyprland](https://hyprland.org/).
+Welcome to my dotfiles repository. I keep here all of my dotfiles for various software I use, like [QTile](https://qtile.org/) and [Hyprland](https://hyprland.org/) and niri, sway
 
 Dotfiles are files whose names begin with a period (`.`) and are generally hidden. They are used by software to store configuration settings.
 
