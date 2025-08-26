@@ -1,0 +1,8 @@
+[Desktop Entry]
+Type=Application
+Name=Syncthing Browser
+Exec=syncthing browser
+Icon=utilities-terminal
+Terminal=false
+Categories=Utility;
+

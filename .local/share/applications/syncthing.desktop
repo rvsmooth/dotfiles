@@ -1,0 +1,8 @@
+[Desktop Entry]
+Type=Application
+Name=Syncthing Server
+Exec=syncthing serve
+Icon=utilities-terminal
+Terminal=false
+Categories=Utility;
+
