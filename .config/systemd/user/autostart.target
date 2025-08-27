@@ -1,0 +1,4 @@
+[Unit]
+Description=graphical autostart target
+BindsTo=graphical-session.target
+Wants=xdg-desktop-autostart.target
