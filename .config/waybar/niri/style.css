@@ -11,6 +11,7 @@
 #workspaces button.focused {
 border-radius: 5px;
 border: 2px solid @accent;
+animation: blink 0.5s;
 }
 
 #workspaces button:hover {
@@ -22,7 +23,8 @@ border: 2px solid @text;
   color: white;
 }
 
-#niri-window {
+#niri-window label{
   font-family: Adwaita Mono;
   font-size: 12px;
+  color: @accent;
 }

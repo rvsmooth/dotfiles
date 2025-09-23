@@ -67,5 +67,11 @@
   },
   "custom/spacer": {
     "format": " "
+  },
+  "custom/top_arr": {
+    "format": ""
+  },
+  "custom/bot_arr": {
+    "format": ""
   }
 }

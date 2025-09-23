@@ -1,8 +1,8 @@
 #!/bin/bash
 
 # Function to display usage
-browser1="flatpak run app.zen_browser.zen"
-browser2="flatpak run com.brave.Browser"
+browser1="librefox"
+browser2="vivaldi"
 email="thunderbird"
 
 usage() {

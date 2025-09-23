@@ -161,7 +161,7 @@ layout {
         // - CSS-like notation: "rgb(255, 127, 0)", rgba(), hsl() and a few others.
 
         // Color of the ring on the active monitor.
-        active-color "#82AAFF"
+        active-color "#81a1c1"
 
         // Color of the ring on inactive monitors.
         //
@@ -323,6 +323,13 @@ window-rule {
   default-column-width { proportion 0.50; }
   default-window-height { fixed 500; }
 }
+
+window-rule {
+  match app-id=r#"pomodorolm$"# title="^Pomodorolm$"
+  open-floating true
+
+  default-window-height { fixed 516; }
+}
 // Example: block out two password managers from screen capture.
 // (This example rule is commented out with a "/-" in front.)
 /-window-rule {
@@ -366,7 +373,7 @@ binds {
     Mod+U             hotkey-overlay-title="Run rofi utilities"              { spawn "dash" "-c" "~/.config/rofi/scripts/00-rofiutils.sh"; }
     //Mod+C           hotkey-overlay-title="Open Clipboard"                  { spawn "dash" "-c" "~/.config/rofi/scripts/05-clipboard.sh"; }
     Mod+Alt+L         hotkey-overlay-title="Lock the Screen: swaylock"       { spawn "swaylock"; }
-    Mod+Shift+F       hotkey-overlay-title="Run file manager"                { spawn "thunar"; }
+    Mod+Shift+F       hotkey-overlay-title="Run file manager"                { spawn "nautilus"; }
     Mod+Shift+T       hotkey-overlay-title="Todo list"                       { spawn "dash" "-c" "~/.local/bin/todo";}
 
     // The allow-when-locked=true property makes them work even when the session is locked.

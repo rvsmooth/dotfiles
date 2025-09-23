@@ -1,5 +1,5 @@
 {
- "include": [
+  "include": [
     "~/.config/waybar/common.jsonc"
   ],
   // Choose the order of the modules
@@ -8,9 +8,12 @@
     "sway/workspaces",
     "custom/applications"
   ],
-  "modules-center": ["clock"],
+  "modules-center": [
+    "clock"
+  ],
   "modules-right": [
     "pulseaudio",
+    "custom/bot_arr",
     "network",
     "cpu",
     "memory",
@@ -23,5 +26,4 @@
     "warp-on-scroll": false,
     "format": "{name}"
   },
-
 }

@@ -66,9 +66,25 @@ button {
 }
 
 @keyframes blink {
-  to {
-    background-color: @white;
-    color: @background;
+  0% {
+    background-color: @yellow;
+    padding: 0;
+  }
+  25% {
+    background-color: @green;
+    padding: 1px 4px 1px 4px;
+  }
+  50% {
+    background-color: @pink;
+    padding: 1px 7px 1px 4px;
+  }
+  75% {
+    background-color: @blue;
+    padding: 1px 9px 1px 9px;
+  }
+  100% {
+    background-color: @accent;
+    padding: 1px 14px 1px 14px;
   }
 }
 
