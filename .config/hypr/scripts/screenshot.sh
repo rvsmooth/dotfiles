@@ -11,7 +11,7 @@
 # https://gitlab.com/RVSmooth
 
 SCREENSHOT_DIR="$HOME/Pictures/screenshots"
-SCREENSHOT="$SCREENSHOT_DIR"/"$(date +'screenshot_%d-%m-%Y-%H:%M:%S.png')"
+SCREENSHOT="$SCREENSHOT_DIR"/"$(date +'screenshot_%d-%m-%Y_%H:%M:%S.png')"
 
 if [ -d "$SCREENSHOT_DIR" ]; then
   echo "SCREENSHOT_DIR exists"
