@@ -59,10 +59,11 @@ apply_wall() {
     theme_hypr
   elif [[ -n "$(pgrep Hyprland)" ]]; then
     theme_hypr
-  elif [[ -n "$(pgrep niri)" ]]; then
-    theme_niri
   else
     echo "Neither sway nor hyprland is installed."
+  fi
+  if [[ -n "$(pgrep niri)" ]]; then
+    theme_niri
   fi
 
 }

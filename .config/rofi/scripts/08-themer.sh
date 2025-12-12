@@ -67,7 +67,7 @@ theme_niri() {
 }
 
 niri_theme() {
-  NIRI_CONFIG_SRC="${HOME}/.config/niri/config.kdl.src"
+  NIRI_CONFIG_SRC="${HOME}/.config/niri/config.src.kdl"
   NIRI_CONFIG="${HOME}/.config/niri/config.kdl"
 
   # niri
@@ -143,6 +143,13 @@ function apply_theme() {
   elif [[ -n "$(pgrep Hyprland)" ]]; then
     theme_hypr
   elif [[ -n "$(pgrep niri)" ]]; then
+    theme_niri
+    niri_theme $THEME_CHOICE
+  else
+    echo "Neither sway nor hyprland is installed."
+  fi
+
+  if [[ -n "$(pgrep niri)" ]]; then
     theme_niri
     niri_theme $THEME_CHOICE
   else

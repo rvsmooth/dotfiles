@@ -373,7 +373,7 @@ binds {
     Mod+U             hotkey-overlay-title="Run rofi utilities"              { spawn "dash" "-c" "~/.config/rofi/scripts/00-rofiutils.sh"; }
     //Mod+C           hotkey-overlay-title="Open Clipboard"                  { spawn "dash" "-c" "~/.config/rofi/scripts/05-clipboard.sh"; }
     Mod+Alt+L         hotkey-overlay-title="Lock the Screen: swaylock"       { spawn "swaylock"; }
-    Mod+Shift+F       hotkey-overlay-title="Run file manager"                { spawn  "dash" "-c" "kitty yazi"; }
+    Mod+Shift+F       hotkey-overlay-title="Run file manager"                { spawn  "thunar"; }
     Mod+Shift+T       hotkey-overlay-title="Todo list"                       { spawn "dash" "-c" "~/.local/bin/todo";}
 
     // The allow-when-locked=true property makes them work even when the session is locked.
